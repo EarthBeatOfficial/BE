@@ -23,13 +23,13 @@ export class UsersService {
     });
   }
 
-  async getUserByNickname(nickname: string) {
+  async getUserById(id: number) {
     const user = await this.prisma.user.findUnique({
-      where: { username: nickname },
+      where: { id: id },
     });
 
     if (!user) {
-      throw new NotFoundException(`User with nickname ${nickname} not found`);
+      throw new NotFoundException(`User with Id ${id} not found`);
     }
 
     return user;

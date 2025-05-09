@@ -35,8 +35,8 @@ export class UsersController {
     return this.usersService.createUser(dto);
   }
 
-  @Get(':nickname')
-  @ApiOperation({ summary: 'Get user by their nickname' })
+  @Get(':id')
+  @ApiOperation({ summary: 'Get user by their id' })
   @ApiResponse({ 
     status: 200, 
     description: 'User found',
@@ -46,7 +46,7 @@ export class UsersController {
     status: 404, 
     description: 'User not found' 
   })
-  getUserByNickname(@Param('nickname') nickname: string) {
-    return this.usersService.getUserByNickname(nickname);
+  getUserById(@Param('id', ParseIntPipe) id: number) {
+    return this.usersService.getUserById(id);
   }
 } 
