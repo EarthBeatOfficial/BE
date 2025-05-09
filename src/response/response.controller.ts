@@ -1,4 +1,11 @@
-import { Controller, Post, Get, Body, Param, ParseIntPipe } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Get,
+  Body,
+  Param,
+  ParseIntPipe,
+} from '@nestjs/common';
 import { ResponseService } from './response.service';
 import { CreateResponseDto } from './dto/create-response.dto';
 
@@ -18,4 +25,4 @@ export class ResponseController {
   getSignalResponses(@Param('signalId', ParseIntPipe) signalId: number) {
     return this.responseService.getSignalResponses(signalId);
   }
-} 
+}

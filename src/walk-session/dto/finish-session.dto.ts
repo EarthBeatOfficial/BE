@@ -12,4 +12,4 @@ export class FinishSessionDto {
     signalId: number;
     responseId: number;
   }[];
-} 
+}

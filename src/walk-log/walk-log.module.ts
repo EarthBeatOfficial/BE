@@ -9,4 +9,4 @@ import { PrismaModule } from '../prisma/prisma.module';
   providers: [WalkLogService],
   exports: [WalkLogService],
 })
-export class WalkLogModule {} 
+export class WalkLogModule {}

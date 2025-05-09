@@ -1,4 +1,10 @@
-import { Injectable, NotFoundException, BadRequestException, UnauthorizedException, ForbiddenException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  BadRequestException,
+  UnauthorizedException,
+  ForbiddenException,
+} from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateSignalDto } from './dto/create-signal.dto';
 import { Cron, CronExpression } from '@nestjs/schedule';
@@ -6,7 +12,7 @@ import { Cron, CronExpression } from '@nestjs/schedule';
 enum SignalStatus {
   PENDING = 'PENDING',
   IN_PROGRESS = 'IN_PROGRESS',
-  COMPLETED = 'COMPLETED'
+  COMPLETED = 'COMPLETED',
 }
 
 @Injectable()
@@ -84,7 +90,9 @@ export class SignalService {
     }
 
     if (signal.selectedUserId !== userId) {
-      throw new BadRequestException('You are not the user who selected this signal');
+      throw new BadRequestException(
+        'You are not the user who selected this signal',
+      );
     }
 
     if (signal.status !== SignalStatus.IN_PROGRESS) {
@@ -110,7 +118,9 @@ export class SignalService {
     }
 
     if (signal.selectedUserId !== userId) {
-      throw new BadRequestException('Only the selected user can complete this signal');
+      throw new BadRequestException(
+        'Only the selected user can complete this signal',
+      );
     }
 
     if (signal.status !== SignalStatus.IN_PROGRESS) {
@@ -157,4 +167,4 @@ export class SignalService {
       where: { id },
     });
   }
-} 
+}

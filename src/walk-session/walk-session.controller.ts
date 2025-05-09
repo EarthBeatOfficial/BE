@@ -30,4 +30,4 @@ export class WalkSessionController {
   getUserSessions(@Param('userId') userId: number) {
     return this.walkSessionService.getUserSessions(userId);
   }
-} 
+}

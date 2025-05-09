@@ -9,4 +9,4 @@ import { RouteController } from './route.controller';
   providers: [RouteService],
   exports: [RouteService],
 })
-export class RouteModule {} 
+export class RouteModule {}

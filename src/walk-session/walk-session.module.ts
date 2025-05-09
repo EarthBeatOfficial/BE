@@ -7,4 +7,4 @@ import { WalkSessionController } from './walk-session.controller';
   providers: [WalkSessionService],
   exports: [WalkSessionService],
 })
-export class WalkSessionModule {} 
+export class WalkSessionModule {}

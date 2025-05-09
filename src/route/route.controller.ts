@@ -1,4 +1,11 @@
-import { Controller, Post, Get, Body, Param, ParseIntPipe } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Get,
+  Body,
+  Param,
+  ParseIntPipe,
+} from '@nestjs/common';
 import { RouteService } from './route.service';
 import { RecommendRouteDto } from './dto/recommend-route.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
@@ -16,4 +23,4 @@ export class RouteController {
   ) {
     return this.routeService.recommendRoute(userId, dto);
   }
-} 
+}

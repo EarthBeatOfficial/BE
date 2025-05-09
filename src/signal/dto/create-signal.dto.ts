@@ -4,7 +4,7 @@ import { IsString, IsNumber, IsNotEmpty, Min, Max } from 'class-validator';
 export class CreateSignalDto {
   @ApiProperty({
     description: 'Title of the signal',
-    example: 'Help needed with recycling'
+    example: 'Help needed with recycling',
   })
   @IsString()
   @IsNotEmpty()
@@ -12,7 +12,7 @@ export class CreateSignalDto {
 
   @ApiProperty({
     description: 'Detailed description of the signal',
-    example: 'Need help sorting recyclables at the community center'
+    example: 'Need help sorting recyclables at the community center',
   })
   @IsString()
   @IsNotEmpty()
@@ -20,7 +20,7 @@ export class CreateSignalDto {
 
   @ApiProperty({
     description: 'Latitude coordinate of the signal location',
-    example: 37.5665
+    example: 37.5665,
   })
   @IsNumber()
   @Min(-90)
@@ -29,7 +29,7 @@ export class CreateSignalDto {
 
   @ApiProperty({
     description: 'Longitude coordinate of the signal location',
-    example: 126.9780
+    example: 126.978,
   })
   @IsNumber()
   @Min(-180)
@@ -40,7 +40,7 @@ export class CreateSignalDto {
     description: 'Time limit in minutes for completing the signal',
     example: 30,
     minimum: 10,
-    maximum: 180
+    maximum: 180,
   })
   @IsNumber()
   @Min(10)
@@ -49,9 +49,9 @@ export class CreateSignalDto {
 
   @ApiProperty({
     description: 'ID of the signal category',
-    example: 1
+    example: 1,
   })
   @IsNumber()
   @IsNotEmpty()
   categoryId: number;
-} 
+}

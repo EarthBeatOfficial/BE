@@ -1,9 +1,13 @@
-import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  BadRequestException,
+} from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 
 enum SessionStatus {
   IN_PROGRESS = 'IN_PROGRESS',
-  COMPLETED = 'COMPLETED'
+  COMPLETED = 'COMPLETED',
 }
 
 @Injectable()
@@ -20,7 +24,9 @@ export class WalkSessionService {
     });
 
     if (activeSession) {
-      throw new BadRequestException('You already have an active walking session');
+      throw new BadRequestException(
+        'You already have an active walking session',
+      );
     }
 
     // Create new walk session
@@ -42,7 +48,11 @@ export class WalkSessionService {
     });
   }
 
-  async endWalking(userId: number, sessionId: number, walkData: { distance: number; duration: number }) {
+  async endWalking(
+    userId: number,
+    sessionId: number,
+    walkData: { distance: number; duration: number },
+  ) {
     const session = await this.prisma.walkSession.findFirst({
       where: {
         id: sessionId,
@@ -118,4 +128,4 @@ export class WalkSessionService {
       },
     });
   }
-} 
+}

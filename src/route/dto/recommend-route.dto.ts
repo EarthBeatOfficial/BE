@@ -12,7 +12,10 @@ export class LocationDto {
 }
 
 export class RecommendRouteDto {
-  @ApiProperty({ description: 'Starting location as JSON string', example: '{"latitude": 37.544582, "longitude": 127.037589}' })
+  @ApiProperty({
+    description: 'Starting location as JSON string',
+    example: '{"latitude": 37.544582, "longitude": 127.037589}',
+  })
   @IsString()
   location: string;
 
@@ -25,4 +28,4 @@ export class RecommendRouteDto {
   @IsNumber()
   @IsPositive()
   distance: number;
-} 
+}

@@ -19,7 +19,7 @@ import { WalkLogModule } from 'src/walk-log/walk-log.module';
     ResponseModule,
     RouteModule,
     WalkSessionModule,
-    WalkLogModule
+    WalkLogModule,
   ],
   controllers: [AppController],
   providers: [AppService],

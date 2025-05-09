@@ -29,10 +29,10 @@ export class WalkLogService {
       },
     });
 
-    return walkLogs.map(log => ({
+    return walkLogs.map((log) => ({
       distance: log.distance,
       walkedAt: log.walkedAt,
-      respondedSignals: log.respondedSignals.map(ws => ({
+      respondedSignals: log.respondedSignals.map((ws) => ({
         title: ws.signal.title,
         description: ws.signal.description,
         category: ws.signal.category.name,
@@ -54,4 +54,4 @@ export class WalkLogService {
 
     return count;
   }
-} 
+}

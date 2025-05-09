@@ -7,4 +7,4 @@ import { ResponseController } from './response.controller';
   providers: [ResponseService],
   exports: [ResponseService],
 })
-export class ResponseModule {} 
+export class ResponseModule {}

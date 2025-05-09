@@ -10,6 +10,9 @@ export class DirectionsResponseDto {
   @ApiProperty({ description: 'Intermediate points' })
   waypoints: { location: { lat: number; lng: number } }[];
 
-  @ApiProperty({ description: 'Travel mode', example: 'google.maps.TravelMode.WALKING' })
+  @ApiProperty({
+    description: 'Travel mode',
+    example: 'google.maps.TravelMode.WALKING',
+  })
   travelMode: string;
-} 
+}
