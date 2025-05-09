@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Param, ParseIntPipe } from '@nestjs/common';
 import { UsersService } from './users.service';
-import { CreateUserDto } from './dto/create-user.dto';
+import { CreateUserDto, UserResponseDto } from './dto/create-user.dto';
 import { ApiTags, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger';
 
 @ApiTags('Users')
@@ -9,14 +9,14 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post()
-  @ApiOperation({ summary: 'Create a new user through this endpoint' })
+  @ApiOperation({ summary: 'Create a new user' })
   @ApiBody({
     type: CreateUserDto,
     description: 'User Data',
     examples: {
       example1: {
         value: {
-          username: "jeffkim"
+          username: "jeffkim",
         },
         summary: 'Example of a user creation'
       }
@@ -25,7 +25,7 @@ export class UsersController {
   @ApiResponse({ 
     status: 201, 
     description: 'User successfully created',
-    type: CreateUserDto
+    type: UserResponseDto,
   })
   @ApiResponse({ 
     status: 400, 
@@ -35,12 +35,12 @@ export class UsersController {
     return this.usersService.createUser(dto);
   }
 
-  @Get('nickname')
-  @ApiOperation({ summary: 'Get user by their nickname' })
+  @Get(':username')
+  @ApiOperation({ summary: 'Get user by their username' })
   @ApiResponse({ 
     status: 200, 
     description: 'User found',
-    type: CreateUserDto
+    type: UserResponseDto,
   })
   @ApiResponse({ 
     status: 404, 

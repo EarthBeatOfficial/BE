@@ -27,7 +27,7 @@ export class RouteService {
 
     // Send request to AI server
     const response = await firstValueFrom(
-      this.httpService.post<AIResponse>(process.env.AI_SERVER_URL + '/recommend-route', {
+      this.httpService.post<AIResponse>(process.env.AI_SERVER_URL + '/recommend', {
         startLocation: {
           lat: dto.lat,
           lng: dto.lng,

@@ -59,10 +59,10 @@ export type WalkSession = $Result.DefaultSelection<Prisma.$WalkSessionPayload>
  */
 export type WalkLog = $Result.DefaultSelection<Prisma.$WalkLogPayload>
 /**
- * Model WalkSignal
+ * Model RespondedSignal
  * 
  */
-export type WalkSignal = $Result.DefaultSelection<Prisma.$WalkSignalPayload>
+export type RespondedSignal = $Result.DefaultSelection<Prisma.$RespondedSignalPayload>
 
 /**
  * Enums
@@ -310,14 +310,14 @@ export class PrismaClient<
   get walkLog(): Prisma.WalkLogDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.walkSignal`: Exposes CRUD operations for the **WalkSignal** model.
+   * `prisma.respondedSignal`: Exposes CRUD operations for the **RespondedSignal** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more WalkSignals
-    * const walkSignals = await prisma.walkSignal.findMany()
+    * // Fetch zero or more RespondedSignals
+    * const respondedSignals = await prisma.respondedSignal.findMany()
     * ```
     */
-  get walkSignal(): Prisma.WalkSignalDelegate<ExtArgs, ClientOptions>;
+  get respondedSignal(): Prisma.RespondedSignalDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -767,7 +767,7 @@ export namespace Prisma {
     RoutePoint: 'RoutePoint',
     WalkSession: 'WalkSession',
     WalkLog: 'WalkLog',
-    WalkSignal: 'WalkSignal'
+    RespondedSignal: 'RespondedSignal'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -786,7 +786,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "theme" | "signalCategory" | "signal" | "response" | "route" | "routePoint" | "walkSession" | "walkLog" | "walkSignal"
+      modelProps: "user" | "theme" | "signalCategory" | "signal" | "response" | "route" | "routePoint" | "walkSession" | "walkLog" | "respondedSignal"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1456,77 +1456,77 @@ export namespace Prisma {
           }
         }
       }
-      WalkSignal: {
-        payload: Prisma.$WalkSignalPayload<ExtArgs>
-        fields: Prisma.WalkSignalFieldRefs
+      RespondedSignal: {
+        payload: Prisma.$RespondedSignalPayload<ExtArgs>
+        fields: Prisma.RespondedSignalFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.WalkSignalFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$WalkSignalPayload> | null
+            args: Prisma.RespondedSignalFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RespondedSignalPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.WalkSignalFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$WalkSignalPayload>
+            args: Prisma.RespondedSignalFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RespondedSignalPayload>
           }
           findFirst: {
-            args: Prisma.WalkSignalFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$WalkSignalPayload> | null
+            args: Prisma.RespondedSignalFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RespondedSignalPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.WalkSignalFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$WalkSignalPayload>
+            args: Prisma.RespondedSignalFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RespondedSignalPayload>
           }
           findMany: {
-            args: Prisma.WalkSignalFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$WalkSignalPayload>[]
+            args: Prisma.RespondedSignalFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RespondedSignalPayload>[]
           }
           create: {
-            args: Prisma.WalkSignalCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$WalkSignalPayload>
+            args: Prisma.RespondedSignalCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RespondedSignalPayload>
           }
           createMany: {
-            args: Prisma.WalkSignalCreateManyArgs<ExtArgs>
+            args: Prisma.RespondedSignalCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           createManyAndReturn: {
-            args: Prisma.WalkSignalCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$WalkSignalPayload>[]
+            args: Prisma.RespondedSignalCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RespondedSignalPayload>[]
           }
           delete: {
-            args: Prisma.WalkSignalDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$WalkSignalPayload>
+            args: Prisma.RespondedSignalDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RespondedSignalPayload>
           }
           update: {
-            args: Prisma.WalkSignalUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$WalkSignalPayload>
+            args: Prisma.RespondedSignalUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RespondedSignalPayload>
           }
           deleteMany: {
-            args: Prisma.WalkSignalDeleteManyArgs<ExtArgs>
+            args: Prisma.RespondedSignalDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.WalkSignalUpdateManyArgs<ExtArgs>
+            args: Prisma.RespondedSignalUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateManyAndReturn: {
-            args: Prisma.WalkSignalUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$WalkSignalPayload>[]
+            args: Prisma.RespondedSignalUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RespondedSignalPayload>[]
           }
           upsert: {
-            args: Prisma.WalkSignalUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$WalkSignalPayload>
+            args: Prisma.RespondedSignalUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$RespondedSignalPayload>
           }
           aggregate: {
-            args: Prisma.WalkSignalAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateWalkSignal>
+            args: Prisma.RespondedSignalAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateRespondedSignal>
           }
           groupBy: {
-            args: Prisma.WalkSignalGroupByArgs<ExtArgs>
-            result: $Utils.Optional<WalkSignalGroupByOutputType>[]
+            args: Prisma.RespondedSignalGroupByArgs<ExtArgs>
+            result: $Utils.Optional<RespondedSignalGroupByOutputType>[]
           }
           count: {
-            args: Prisma.WalkSignalCountArgs<ExtArgs>
-            result: $Utils.Optional<WalkSignalCountAggregateOutputType> | number
+            args: Prisma.RespondedSignalCountArgs<ExtArgs>
+            result: $Utils.Optional<RespondedSignalCountAggregateOutputType> | number
           }
         }
       }
@@ -1623,7 +1623,7 @@ export namespace Prisma {
     routePoint?: RoutePointOmit
     walkSession?: WalkSessionOmit
     walkLog?: WalkLogOmit
-    walkSignal?: WalkSignalOmit
+    respondedSignal?: RespondedSignalOmit
   }
 
   /* Types for Logging */
@@ -1848,12 +1848,12 @@ export namespace Prisma {
 
   export type SignalCountOutputType = {
     responses: number
-    walkSignals: number
+    respondedSignals: number
   }
 
   export type SignalCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     responses?: boolean | SignalCountOutputTypeCountResponsesArgs
-    walkSignals?: boolean | SignalCountOutputTypeCountWalkSignalsArgs
+    respondedSignals?: boolean | SignalCountOutputTypeCountRespondedSignalsArgs
   }
 
   // Custom InputTypes
@@ -1877,8 +1877,8 @@ export namespace Prisma {
   /**
    * SignalCountOutputType without action
    */
-  export type SignalCountOutputTypeCountWalkSignalsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: WalkSignalWhereInput
+  export type SignalCountOutputTypeCountRespondedSignalsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RespondedSignalWhereInput
   }
 
 
@@ -1887,11 +1887,11 @@ export namespace Prisma {
    */
 
   export type ResponseCountOutputType = {
-    walkSignals: number
+    respondedSignals: number
   }
 
   export type ResponseCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    walkSignals?: boolean | ResponseCountOutputTypeCountWalkSignalsArgs
+    respondedSignals?: boolean | ResponseCountOutputTypeCountRespondedSignalsArgs
   }
 
   // Custom InputTypes
@@ -1908,8 +1908,8 @@ export namespace Prisma {
   /**
    * ResponseCountOutputType without action
    */
-  export type ResponseCountOutputTypeCountWalkSignalsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: WalkSignalWhereInput
+  export type ResponseCountOutputTypeCountRespondedSignalsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RespondedSignalWhereInput
   }
 
 
@@ -1958,11 +1958,11 @@ export namespace Prisma {
    */
 
   export type WalkLogCountOutputType = {
-    signals: number
+    respondedSignals: number
   }
 
   export type WalkLogCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    signals?: boolean | WalkLogCountOutputTypeCountSignalsArgs
+    respondedSignals?: boolean | WalkLogCountOutputTypeCountRespondedSignalsArgs
   }
 
   // Custom InputTypes
@@ -1979,8 +1979,8 @@ export namespace Prisma {
   /**
    * WalkLogCountOutputType without action
    */
-  export type WalkLogCountOutputTypeCountSignalsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: WalkSignalWhereInput
+  export type WalkLogCountOutputTypeCountRespondedSignalsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RespondedSignalWhereInput
   }
 
 
@@ -5582,7 +5582,7 @@ export namespace Prisma {
     selectedUser?: boolean | Signal$selectedUserArgs<ExtArgs>
     category?: boolean | SignalCategoryDefaultArgs<ExtArgs>
     responses?: boolean | Signal$responsesArgs<ExtArgs>
-    walkSignals?: boolean | Signal$walkSignalsArgs<ExtArgs>
+    respondedSignals?: boolean | Signal$respondedSignalsArgs<ExtArgs>
     _count?: boolean | SignalCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["signal"]>
 
@@ -5640,7 +5640,7 @@ export namespace Prisma {
     selectedUser?: boolean | Signal$selectedUserArgs<ExtArgs>
     category?: boolean | SignalCategoryDefaultArgs<ExtArgs>
     responses?: boolean | Signal$responsesArgs<ExtArgs>
-    walkSignals?: boolean | Signal$walkSignalsArgs<ExtArgs>
+    respondedSignals?: boolean | Signal$respondedSignalsArgs<ExtArgs>
     _count?: boolean | SignalCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type SignalIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5661,7 +5661,7 @@ export namespace Prisma {
       selectedUser: Prisma.$UserPayload<ExtArgs> | null
       category: Prisma.$SignalCategoryPayload<ExtArgs>
       responses: Prisma.$ResponsePayload<ExtArgs>[]
-      walkSignals: Prisma.$WalkSignalPayload<ExtArgs>[]
+      respondedSignals: Prisma.$RespondedSignalPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -6073,7 +6073,7 @@ export namespace Prisma {
     selectedUser<T extends Signal$selectedUserArgs<ExtArgs> = {}>(args?: Subset<T, Signal$selectedUserArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     category<T extends SignalCategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SignalCategoryDefaultArgs<ExtArgs>>): Prisma__SignalCategoryClient<$Result.GetResult<Prisma.$SignalCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     responses<T extends Signal$responsesArgs<ExtArgs> = {}>(args?: Subset<T, Signal$responsesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ResponsePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    walkSignals<T extends Signal$walkSignalsArgs<ExtArgs> = {}>(args?: Subset<T, Signal$walkSignalsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WalkSignalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    respondedSignals<T extends Signal$respondedSignalsArgs<ExtArgs> = {}>(args?: Subset<T, Signal$respondedSignalsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RespondedSignalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6553,27 +6553,27 @@ export namespace Prisma {
   }
 
   /**
-   * Signal.walkSignals
+   * Signal.respondedSignals
    */
-  export type Signal$walkSignalsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Signal$respondedSignalsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the WalkSignal
+     * Select specific fields to fetch from the RespondedSignal
      */
-    select?: WalkSignalSelect<ExtArgs> | null
+    select?: RespondedSignalSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the WalkSignal
+     * Omit specific fields from the RespondedSignal
      */
-    omit?: WalkSignalOmit<ExtArgs> | null
+    omit?: RespondedSignalOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: WalkSignalInclude<ExtArgs> | null
-    where?: WalkSignalWhereInput
-    orderBy?: WalkSignalOrderByWithRelationInput | WalkSignalOrderByWithRelationInput[]
-    cursor?: WalkSignalWhereUniqueInput
+    include?: RespondedSignalInclude<ExtArgs> | null
+    where?: RespondedSignalWhereInput
+    orderBy?: RespondedSignalOrderByWithRelationInput | RespondedSignalOrderByWithRelationInput[]
+    cursor?: RespondedSignalWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: WalkSignalScalarFieldEnum | WalkSignalScalarFieldEnum[]
+    distinct?: RespondedSignalScalarFieldEnum | RespondedSignalScalarFieldEnum[]
   }
 
   /**
@@ -6803,7 +6803,7 @@ export namespace Prisma {
     respondedAt?: boolean
     signal?: boolean | SignalDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
-    walkSignals?: boolean | Response$walkSignalsArgs<ExtArgs>
+    respondedSignals?: boolean | Response$respondedSignalsArgs<ExtArgs>
     _count?: boolean | ResponseCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["response"]>
 
@@ -6839,7 +6839,7 @@ export namespace Prisma {
   export type ResponseInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     signal?: boolean | SignalDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
-    walkSignals?: boolean | Response$walkSignalsArgs<ExtArgs>
+    respondedSignals?: boolean | Response$respondedSignalsArgs<ExtArgs>
     _count?: boolean | ResponseCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ResponseIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6856,7 +6856,7 @@ export namespace Prisma {
     objects: {
       signal: Prisma.$SignalPayload<ExtArgs>
       user: Prisma.$UserPayload<ExtArgs>
-      walkSignals: Prisma.$WalkSignalPayload<ExtArgs>[]
+      respondedSignals: Prisma.$RespondedSignalPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -7260,7 +7260,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     signal<T extends SignalDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SignalDefaultArgs<ExtArgs>>): Prisma__SignalClient<$Result.GetResult<Prisma.$SignalPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     user<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    walkSignals<T extends Response$walkSignalsArgs<ExtArgs> = {}>(args?: Subset<T, Response$walkSignalsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WalkSignalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    respondedSignals<T extends Response$respondedSignalsArgs<ExtArgs> = {}>(args?: Subset<T, Response$respondedSignalsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RespondedSignalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7691,27 +7691,27 @@ export namespace Prisma {
   }
 
   /**
-   * Response.walkSignals
+   * Response.respondedSignals
    */
-  export type Response$walkSignalsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Response$respondedSignalsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the WalkSignal
+     * Select specific fields to fetch from the RespondedSignal
      */
-    select?: WalkSignalSelect<ExtArgs> | null
+    select?: RespondedSignalSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the WalkSignal
+     * Omit specific fields from the RespondedSignal
      */
-    omit?: WalkSignalOmit<ExtArgs> | null
+    omit?: RespondedSignalOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: WalkSignalInclude<ExtArgs> | null
-    where?: WalkSignalWhereInput
-    orderBy?: WalkSignalOrderByWithRelationInput | WalkSignalOrderByWithRelationInput[]
-    cursor?: WalkSignalWhereUniqueInput
+    include?: RespondedSignalInclude<ExtArgs> | null
+    where?: RespondedSignalWhereInput
+    orderBy?: RespondedSignalOrderByWithRelationInput | RespondedSignalOrderByWithRelationInput[]
+    cursor?: RespondedSignalWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: WalkSignalScalarFieldEnum | WalkSignalScalarFieldEnum[]
+    distinct?: RespondedSignalScalarFieldEnum | RespondedSignalScalarFieldEnum[]
   }
 
   /**
@@ -11367,7 +11367,7 @@ export namespace Prisma {
     distance?: boolean
     walkedAt?: boolean
     session?: boolean | WalkSessionDefaultArgs<ExtArgs>
-    signals?: boolean | WalkLog$signalsArgs<ExtArgs>
+    respondedSignals?: boolean | WalkLog$respondedSignalsArgs<ExtArgs>
     _count?: boolean | WalkLogCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["walkLog"]>
 
@@ -11397,7 +11397,7 @@ export namespace Prisma {
   export type WalkLogOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "sessionId" | "distance" | "walkedAt", ExtArgs["result"]["walkLog"]>
   export type WalkLogInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     session?: boolean | WalkSessionDefaultArgs<ExtArgs>
-    signals?: boolean | WalkLog$signalsArgs<ExtArgs>
+    respondedSignals?: boolean | WalkLog$respondedSignalsArgs<ExtArgs>
     _count?: boolean | WalkLogCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type WalkLogIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -11411,7 +11411,7 @@ export namespace Prisma {
     name: "WalkLog"
     objects: {
       session: Prisma.$WalkSessionPayload<ExtArgs>
-      signals: Prisma.$WalkSignalPayload<ExtArgs>[]
+      respondedSignals: Prisma.$RespondedSignalPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -11813,7 +11813,7 @@ export namespace Prisma {
   export interface Prisma__WalkLogClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     session<T extends WalkSessionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, WalkSessionDefaultArgs<ExtArgs>>): Prisma__WalkSessionClient<$Result.GetResult<Prisma.$WalkSessionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    signals<T extends WalkLog$signalsArgs<ExtArgs> = {}>(args?: Subset<T, WalkLog$signalsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WalkSignalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    respondedSignals<T extends WalkLog$respondedSignalsArgs<ExtArgs> = {}>(args?: Subset<T, WalkLog$respondedSignalsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RespondedSignalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -12243,27 +12243,27 @@ export namespace Prisma {
   }
 
   /**
-   * WalkLog.signals
+   * WalkLog.respondedSignals
    */
-  export type WalkLog$signalsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type WalkLog$respondedSignalsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the WalkSignal
+     * Select specific fields to fetch from the RespondedSignal
      */
-    select?: WalkSignalSelect<ExtArgs> | null
+    select?: RespondedSignalSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the WalkSignal
+     * Omit specific fields from the RespondedSignal
      */
-    omit?: WalkSignalOmit<ExtArgs> | null
+    omit?: RespondedSignalOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: WalkSignalInclude<ExtArgs> | null
-    where?: WalkSignalWhereInput
-    orderBy?: WalkSignalOrderByWithRelationInput | WalkSignalOrderByWithRelationInput[]
-    cursor?: WalkSignalWhereUniqueInput
+    include?: RespondedSignalInclude<ExtArgs> | null
+    where?: RespondedSignalWhereInput
+    orderBy?: RespondedSignalOrderByWithRelationInput | RespondedSignalOrderByWithRelationInput[]
+    cursor?: RespondedSignalWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: WalkSignalScalarFieldEnum | WalkSignalScalarFieldEnum[]
+    distinct?: RespondedSignalScalarFieldEnum | RespondedSignalScalarFieldEnum[]
   }
 
   /**
@@ -12286,40 +12286,32 @@ export namespace Prisma {
 
 
   /**
-   * Model WalkSignal
+   * Model RespondedSignal
    */
 
-  export type AggregateWalkSignal = {
-    _count: WalkSignalCountAggregateOutputType | null
-    _avg: WalkSignalAvgAggregateOutputType | null
-    _sum: WalkSignalSumAggregateOutputType | null
-    _min: WalkSignalMinAggregateOutputType | null
-    _max: WalkSignalMaxAggregateOutputType | null
+  export type AggregateRespondedSignal = {
+    _count: RespondedSignalCountAggregateOutputType | null
+    _avg: RespondedSignalAvgAggregateOutputType | null
+    _sum: RespondedSignalSumAggregateOutputType | null
+    _min: RespondedSignalMinAggregateOutputType | null
+    _max: RespondedSignalMaxAggregateOutputType | null
   }
 
-  export type WalkSignalAvgAggregateOutputType = {
+  export type RespondedSignalAvgAggregateOutputType = {
     id: number | null
     walkLogId: number | null
     signalId: number | null
     responseId: number | null
   }
 
-  export type WalkSignalSumAggregateOutputType = {
+  export type RespondedSignalSumAggregateOutputType = {
     id: number | null
     walkLogId: number | null
     signalId: number | null
     responseId: number | null
   }
 
-  export type WalkSignalMinAggregateOutputType = {
-    id: number | null
-    walkLogId: number | null
-    signalId: number | null
-    responseId: number | null
-    respondedAt: Date | null
-  }
-
-  export type WalkSignalMaxAggregateOutputType = {
+  export type RespondedSignalMinAggregateOutputType = {
     id: number | null
     walkLogId: number | null
     signalId: number | null
@@ -12327,7 +12319,15 @@ export namespace Prisma {
     respondedAt: Date | null
   }
 
-  export type WalkSignalCountAggregateOutputType = {
+  export type RespondedSignalMaxAggregateOutputType = {
+    id: number | null
+    walkLogId: number | null
+    signalId: number | null
+    responseId: number | null
+    respondedAt: Date | null
+  }
+
+  export type RespondedSignalCountAggregateOutputType = {
     id: number
     walkLogId: number
     signalId: number
@@ -12337,29 +12337,21 @@ export namespace Prisma {
   }
 
 
-  export type WalkSignalAvgAggregateInputType = {
+  export type RespondedSignalAvgAggregateInputType = {
     id?: true
     walkLogId?: true
     signalId?: true
     responseId?: true
   }
 
-  export type WalkSignalSumAggregateInputType = {
+  export type RespondedSignalSumAggregateInputType = {
     id?: true
     walkLogId?: true
     signalId?: true
     responseId?: true
   }
 
-  export type WalkSignalMinAggregateInputType = {
-    id?: true
-    walkLogId?: true
-    signalId?: true
-    responseId?: true
-    respondedAt?: true
-  }
-
-  export type WalkSignalMaxAggregateInputType = {
+  export type RespondedSignalMinAggregateInputType = {
     id?: true
     walkLogId?: true
     signalId?: true
@@ -12367,7 +12359,15 @@ export namespace Prisma {
     respondedAt?: true
   }
 
-  export type WalkSignalCountAggregateInputType = {
+  export type RespondedSignalMaxAggregateInputType = {
+    id?: true
+    walkLogId?: true
+    signalId?: true
+    responseId?: true
+    respondedAt?: true
+  }
+
+  export type RespondedSignalCountAggregateInputType = {
     id?: true
     walkLogId?: true
     signalId?: true
@@ -12376,120 +12376,120 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type WalkSignalAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RespondedSignalAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which WalkSignal to aggregate.
+     * Filter which RespondedSignal to aggregate.
      */
-    where?: WalkSignalWhereInput
+    where?: RespondedSignalWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of WalkSignals to fetch.
+     * Determine the order of RespondedSignals to fetch.
      */
-    orderBy?: WalkSignalOrderByWithRelationInput | WalkSignalOrderByWithRelationInput[]
+    orderBy?: RespondedSignalOrderByWithRelationInput | RespondedSignalOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: WalkSignalWhereUniqueInput
+    cursor?: RespondedSignalWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` WalkSignals from the position of the cursor.
+     * Take `±n` RespondedSignals from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` WalkSignals.
+     * Skip the first `n` RespondedSignals.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned WalkSignals
+     * Count returned RespondedSignals
     **/
-    _count?: true | WalkSignalCountAggregateInputType
+    _count?: true | RespondedSignalCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
-    _avg?: WalkSignalAvgAggregateInputType
+    _avg?: RespondedSignalAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to sum
     **/
-    _sum?: WalkSignalSumAggregateInputType
+    _sum?: RespondedSignalSumAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: WalkSignalMinAggregateInputType
+    _min?: RespondedSignalMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: WalkSignalMaxAggregateInputType
+    _max?: RespondedSignalMaxAggregateInputType
   }
 
-  export type GetWalkSignalAggregateType<T extends WalkSignalAggregateArgs> = {
-        [P in keyof T & keyof AggregateWalkSignal]: P extends '_count' | 'count'
+  export type GetRespondedSignalAggregateType<T extends RespondedSignalAggregateArgs> = {
+        [P in keyof T & keyof AggregateRespondedSignal]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateWalkSignal[P]>
-      : GetScalarType<T[P], AggregateWalkSignal[P]>
+        : GetScalarType<T[P], AggregateRespondedSignal[P]>
+      : GetScalarType<T[P], AggregateRespondedSignal[P]>
   }
 
 
 
 
-  export type WalkSignalGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: WalkSignalWhereInput
-    orderBy?: WalkSignalOrderByWithAggregationInput | WalkSignalOrderByWithAggregationInput[]
-    by: WalkSignalScalarFieldEnum[] | WalkSignalScalarFieldEnum
-    having?: WalkSignalScalarWhereWithAggregatesInput
+  export type RespondedSignalGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: RespondedSignalWhereInput
+    orderBy?: RespondedSignalOrderByWithAggregationInput | RespondedSignalOrderByWithAggregationInput[]
+    by: RespondedSignalScalarFieldEnum[] | RespondedSignalScalarFieldEnum
+    having?: RespondedSignalScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: WalkSignalCountAggregateInputType | true
-    _avg?: WalkSignalAvgAggregateInputType
-    _sum?: WalkSignalSumAggregateInputType
-    _min?: WalkSignalMinAggregateInputType
-    _max?: WalkSignalMaxAggregateInputType
+    _count?: RespondedSignalCountAggregateInputType | true
+    _avg?: RespondedSignalAvgAggregateInputType
+    _sum?: RespondedSignalSumAggregateInputType
+    _min?: RespondedSignalMinAggregateInputType
+    _max?: RespondedSignalMaxAggregateInputType
   }
 
-  export type WalkSignalGroupByOutputType = {
+  export type RespondedSignalGroupByOutputType = {
     id: number
     walkLogId: number
     signalId: number
     responseId: number
     respondedAt: Date
-    _count: WalkSignalCountAggregateOutputType | null
-    _avg: WalkSignalAvgAggregateOutputType | null
-    _sum: WalkSignalSumAggregateOutputType | null
-    _min: WalkSignalMinAggregateOutputType | null
-    _max: WalkSignalMaxAggregateOutputType | null
+    _count: RespondedSignalCountAggregateOutputType | null
+    _avg: RespondedSignalAvgAggregateOutputType | null
+    _sum: RespondedSignalSumAggregateOutputType | null
+    _min: RespondedSignalMinAggregateOutputType | null
+    _max: RespondedSignalMaxAggregateOutputType | null
   }
 
-  type GetWalkSignalGroupByPayload<T extends WalkSignalGroupByArgs> = Prisma.PrismaPromise<
+  type GetRespondedSignalGroupByPayload<T extends RespondedSignalGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<WalkSignalGroupByOutputType, T['by']> &
+      PickEnumerable<RespondedSignalGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof WalkSignalGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof RespondedSignalGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], WalkSignalGroupByOutputType[P]>
-            : GetScalarType<T[P], WalkSignalGroupByOutputType[P]>
+              : GetScalarType<T[P], RespondedSignalGroupByOutputType[P]>
+            : GetScalarType<T[P], RespondedSignalGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type WalkSignalSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type RespondedSignalSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     walkLogId?: boolean
     signalId?: boolean
@@ -12498,9 +12498,9 @@ export namespace Prisma {
     walkLog?: boolean | WalkLogDefaultArgs<ExtArgs>
     signal?: boolean | SignalDefaultArgs<ExtArgs>
     response?: boolean | ResponseDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["walkSignal"]>
+  }, ExtArgs["result"]["respondedSignal"]>
 
-  export type WalkSignalSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type RespondedSignalSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     walkLogId?: boolean
     signalId?: boolean
@@ -12509,9 +12509,9 @@ export namespace Prisma {
     walkLog?: boolean | WalkLogDefaultArgs<ExtArgs>
     signal?: boolean | SignalDefaultArgs<ExtArgs>
     response?: boolean | ResponseDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["walkSignal"]>
+  }, ExtArgs["result"]["respondedSignal"]>
 
-  export type WalkSignalSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type RespondedSignalSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     walkLogId?: boolean
     signalId?: boolean
@@ -12520,9 +12520,9 @@ export namespace Prisma {
     walkLog?: boolean | WalkLogDefaultArgs<ExtArgs>
     signal?: boolean | SignalDefaultArgs<ExtArgs>
     response?: boolean | ResponseDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["walkSignal"]>
+  }, ExtArgs["result"]["respondedSignal"]>
 
-  export type WalkSignalSelectScalar = {
+  export type RespondedSignalSelectScalar = {
     id?: boolean
     walkLogId?: boolean
     signalId?: boolean
@@ -12530,25 +12530,25 @@ export namespace Prisma {
     respondedAt?: boolean
   }
 
-  export type WalkSignalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "walkLogId" | "signalId" | "responseId" | "respondedAt", ExtArgs["result"]["walkSignal"]>
-  export type WalkSignalInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RespondedSignalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "walkLogId" | "signalId" | "responseId" | "respondedAt", ExtArgs["result"]["respondedSignal"]>
+  export type RespondedSignalInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     walkLog?: boolean | WalkLogDefaultArgs<ExtArgs>
     signal?: boolean | SignalDefaultArgs<ExtArgs>
     response?: boolean | ResponseDefaultArgs<ExtArgs>
   }
-  export type WalkSignalIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RespondedSignalIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     walkLog?: boolean | WalkLogDefaultArgs<ExtArgs>
     signal?: boolean | SignalDefaultArgs<ExtArgs>
     response?: boolean | ResponseDefaultArgs<ExtArgs>
   }
-  export type WalkSignalIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RespondedSignalIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     walkLog?: boolean | WalkLogDefaultArgs<ExtArgs>
     signal?: boolean | SignalDefaultArgs<ExtArgs>
     response?: boolean | ResponseDefaultArgs<ExtArgs>
   }
 
-  export type $WalkSignalPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "WalkSignal"
+  export type $RespondedSignalPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "RespondedSignal"
     objects: {
       walkLog: Prisma.$WalkLogPayload<ExtArgs>
       signal: Prisma.$SignalPayload<ExtArgs>
@@ -12560,136 +12560,136 @@ export namespace Prisma {
       signalId: number
       responseId: number
       respondedAt: Date
-    }, ExtArgs["result"]["walkSignal"]>
+    }, ExtArgs["result"]["respondedSignal"]>
     composites: {}
   }
 
-  type WalkSignalGetPayload<S extends boolean | null | undefined | WalkSignalDefaultArgs> = $Result.GetResult<Prisma.$WalkSignalPayload, S>
+  type RespondedSignalGetPayload<S extends boolean | null | undefined | RespondedSignalDefaultArgs> = $Result.GetResult<Prisma.$RespondedSignalPayload, S>
 
-  type WalkSignalCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<WalkSignalFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: WalkSignalCountAggregateInputType | true
+  type RespondedSignalCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<RespondedSignalFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: RespondedSignalCountAggregateInputType | true
     }
 
-  export interface WalkSignalDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['WalkSignal'], meta: { name: 'WalkSignal' } }
+  export interface RespondedSignalDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['RespondedSignal'], meta: { name: 'RespondedSignal' } }
     /**
-     * Find zero or one WalkSignal that matches the filter.
-     * @param {WalkSignalFindUniqueArgs} args - Arguments to find a WalkSignal
+     * Find zero or one RespondedSignal that matches the filter.
+     * @param {RespondedSignalFindUniqueArgs} args - Arguments to find a RespondedSignal
      * @example
-     * // Get one WalkSignal
-     * const walkSignal = await prisma.walkSignal.findUnique({
+     * // Get one RespondedSignal
+     * const respondedSignal = await prisma.respondedSignal.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends WalkSignalFindUniqueArgs>(args: SelectSubset<T, WalkSignalFindUniqueArgs<ExtArgs>>): Prisma__WalkSignalClient<$Result.GetResult<Prisma.$WalkSignalPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends RespondedSignalFindUniqueArgs>(args: SelectSubset<T, RespondedSignalFindUniqueArgs<ExtArgs>>): Prisma__RespondedSignalClient<$Result.GetResult<Prisma.$RespondedSignalPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one WalkSignal that matches the filter or throw an error with `error.code='P2025'`
+     * Find one RespondedSignal that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {WalkSignalFindUniqueOrThrowArgs} args - Arguments to find a WalkSignal
+     * @param {RespondedSignalFindUniqueOrThrowArgs} args - Arguments to find a RespondedSignal
      * @example
-     * // Get one WalkSignal
-     * const walkSignal = await prisma.walkSignal.findUniqueOrThrow({
+     * // Get one RespondedSignal
+     * const respondedSignal = await prisma.respondedSignal.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends WalkSignalFindUniqueOrThrowArgs>(args: SelectSubset<T, WalkSignalFindUniqueOrThrowArgs<ExtArgs>>): Prisma__WalkSignalClient<$Result.GetResult<Prisma.$WalkSignalPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends RespondedSignalFindUniqueOrThrowArgs>(args: SelectSubset<T, RespondedSignalFindUniqueOrThrowArgs<ExtArgs>>): Prisma__RespondedSignalClient<$Result.GetResult<Prisma.$RespondedSignalPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first WalkSignal that matches the filter.
+     * Find the first RespondedSignal that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {WalkSignalFindFirstArgs} args - Arguments to find a WalkSignal
+     * @param {RespondedSignalFindFirstArgs} args - Arguments to find a RespondedSignal
      * @example
-     * // Get one WalkSignal
-     * const walkSignal = await prisma.walkSignal.findFirst({
+     * // Get one RespondedSignal
+     * const respondedSignal = await prisma.respondedSignal.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends WalkSignalFindFirstArgs>(args?: SelectSubset<T, WalkSignalFindFirstArgs<ExtArgs>>): Prisma__WalkSignalClient<$Result.GetResult<Prisma.$WalkSignalPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends RespondedSignalFindFirstArgs>(args?: SelectSubset<T, RespondedSignalFindFirstArgs<ExtArgs>>): Prisma__RespondedSignalClient<$Result.GetResult<Prisma.$RespondedSignalPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first WalkSignal that matches the filter or
+     * Find the first RespondedSignal that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {WalkSignalFindFirstOrThrowArgs} args - Arguments to find a WalkSignal
+     * @param {RespondedSignalFindFirstOrThrowArgs} args - Arguments to find a RespondedSignal
      * @example
-     * // Get one WalkSignal
-     * const walkSignal = await prisma.walkSignal.findFirstOrThrow({
+     * // Get one RespondedSignal
+     * const respondedSignal = await prisma.respondedSignal.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends WalkSignalFindFirstOrThrowArgs>(args?: SelectSubset<T, WalkSignalFindFirstOrThrowArgs<ExtArgs>>): Prisma__WalkSignalClient<$Result.GetResult<Prisma.$WalkSignalPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends RespondedSignalFindFirstOrThrowArgs>(args?: SelectSubset<T, RespondedSignalFindFirstOrThrowArgs<ExtArgs>>): Prisma__RespondedSignalClient<$Result.GetResult<Prisma.$RespondedSignalPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more WalkSignals that matches the filter.
+     * Find zero or more RespondedSignals that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {WalkSignalFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {RespondedSignalFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all WalkSignals
-     * const walkSignals = await prisma.walkSignal.findMany()
+     * // Get all RespondedSignals
+     * const respondedSignals = await prisma.respondedSignal.findMany()
      * 
-     * // Get first 10 WalkSignals
-     * const walkSignals = await prisma.walkSignal.findMany({ take: 10 })
+     * // Get first 10 RespondedSignals
+     * const respondedSignals = await prisma.respondedSignal.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const walkSignalWithIdOnly = await prisma.walkSignal.findMany({ select: { id: true } })
+     * const respondedSignalWithIdOnly = await prisma.respondedSignal.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends WalkSignalFindManyArgs>(args?: SelectSubset<T, WalkSignalFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WalkSignalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends RespondedSignalFindManyArgs>(args?: SelectSubset<T, RespondedSignalFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RespondedSignalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a WalkSignal.
-     * @param {WalkSignalCreateArgs} args - Arguments to create a WalkSignal.
+     * Create a RespondedSignal.
+     * @param {RespondedSignalCreateArgs} args - Arguments to create a RespondedSignal.
      * @example
-     * // Create one WalkSignal
-     * const WalkSignal = await prisma.walkSignal.create({
+     * // Create one RespondedSignal
+     * const RespondedSignal = await prisma.respondedSignal.create({
      *   data: {
-     *     // ... data to create a WalkSignal
+     *     // ... data to create a RespondedSignal
      *   }
      * })
      * 
      */
-    create<T extends WalkSignalCreateArgs>(args: SelectSubset<T, WalkSignalCreateArgs<ExtArgs>>): Prisma__WalkSignalClient<$Result.GetResult<Prisma.$WalkSignalPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends RespondedSignalCreateArgs>(args: SelectSubset<T, RespondedSignalCreateArgs<ExtArgs>>): Prisma__RespondedSignalClient<$Result.GetResult<Prisma.$RespondedSignalPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many WalkSignals.
-     * @param {WalkSignalCreateManyArgs} args - Arguments to create many WalkSignals.
+     * Create many RespondedSignals.
+     * @param {RespondedSignalCreateManyArgs} args - Arguments to create many RespondedSignals.
      * @example
-     * // Create many WalkSignals
-     * const walkSignal = await prisma.walkSignal.createMany({
+     * // Create many RespondedSignals
+     * const respondedSignal = await prisma.respondedSignal.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends WalkSignalCreateManyArgs>(args?: SelectSubset<T, WalkSignalCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends RespondedSignalCreateManyArgs>(args?: SelectSubset<T, RespondedSignalCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create many WalkSignals and returns the data saved in the database.
-     * @param {WalkSignalCreateManyAndReturnArgs} args - Arguments to create many WalkSignals.
+     * Create many RespondedSignals and returns the data saved in the database.
+     * @param {RespondedSignalCreateManyAndReturnArgs} args - Arguments to create many RespondedSignals.
      * @example
-     * // Create many WalkSignals
-     * const walkSignal = await prisma.walkSignal.createManyAndReturn({
+     * // Create many RespondedSignals
+     * const respondedSignal = await prisma.respondedSignal.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      * 
-     * // Create many WalkSignals and only return the `id`
-     * const walkSignalWithIdOnly = await prisma.walkSignal.createManyAndReturn({
+     * // Create many RespondedSignals and only return the `id`
+     * const respondedSignalWithIdOnly = await prisma.respondedSignal.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -12699,28 +12699,28 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    createManyAndReturn<T extends WalkSignalCreateManyAndReturnArgs>(args?: SelectSubset<T, WalkSignalCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WalkSignalPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+    createManyAndReturn<T extends RespondedSignalCreateManyAndReturnArgs>(args?: SelectSubset<T, RespondedSignalCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RespondedSignalPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Delete a WalkSignal.
-     * @param {WalkSignalDeleteArgs} args - Arguments to delete one WalkSignal.
+     * Delete a RespondedSignal.
+     * @param {RespondedSignalDeleteArgs} args - Arguments to delete one RespondedSignal.
      * @example
-     * // Delete one WalkSignal
-     * const WalkSignal = await prisma.walkSignal.delete({
+     * // Delete one RespondedSignal
+     * const RespondedSignal = await prisma.respondedSignal.delete({
      *   where: {
-     *     // ... filter to delete one WalkSignal
+     *     // ... filter to delete one RespondedSignal
      *   }
      * })
      * 
      */
-    delete<T extends WalkSignalDeleteArgs>(args: SelectSubset<T, WalkSignalDeleteArgs<ExtArgs>>): Prisma__WalkSignalClient<$Result.GetResult<Prisma.$WalkSignalPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends RespondedSignalDeleteArgs>(args: SelectSubset<T, RespondedSignalDeleteArgs<ExtArgs>>): Prisma__RespondedSignalClient<$Result.GetResult<Prisma.$RespondedSignalPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one WalkSignal.
-     * @param {WalkSignalUpdateArgs} args - Arguments to update one WalkSignal.
+     * Update one RespondedSignal.
+     * @param {RespondedSignalUpdateArgs} args - Arguments to update one RespondedSignal.
      * @example
-     * // Update one WalkSignal
-     * const walkSignal = await prisma.walkSignal.update({
+     * // Update one RespondedSignal
+     * const respondedSignal = await prisma.respondedSignal.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -12730,30 +12730,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends WalkSignalUpdateArgs>(args: SelectSubset<T, WalkSignalUpdateArgs<ExtArgs>>): Prisma__WalkSignalClient<$Result.GetResult<Prisma.$WalkSignalPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends RespondedSignalUpdateArgs>(args: SelectSubset<T, RespondedSignalUpdateArgs<ExtArgs>>): Prisma__RespondedSignalClient<$Result.GetResult<Prisma.$RespondedSignalPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more WalkSignals.
-     * @param {WalkSignalDeleteManyArgs} args - Arguments to filter WalkSignals to delete.
+     * Delete zero or more RespondedSignals.
+     * @param {RespondedSignalDeleteManyArgs} args - Arguments to filter RespondedSignals to delete.
      * @example
-     * // Delete a few WalkSignals
-     * const { count } = await prisma.walkSignal.deleteMany({
+     * // Delete a few RespondedSignals
+     * const { count } = await prisma.respondedSignal.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends WalkSignalDeleteManyArgs>(args?: SelectSubset<T, WalkSignalDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends RespondedSignalDeleteManyArgs>(args?: SelectSubset<T, RespondedSignalDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more WalkSignals.
+     * Update zero or more RespondedSignals.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {WalkSignalUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {RespondedSignalUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many WalkSignals
-     * const walkSignal = await prisma.walkSignal.updateMany({
+     * // Update many RespondedSignals
+     * const respondedSignal = await prisma.respondedSignal.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -12763,14 +12763,14 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends WalkSignalUpdateManyArgs>(args: SelectSubset<T, WalkSignalUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends RespondedSignalUpdateManyArgs>(args: SelectSubset<T, RespondedSignalUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more WalkSignals and returns the data updated in the database.
-     * @param {WalkSignalUpdateManyAndReturnArgs} args - Arguments to update many WalkSignals.
+     * Update zero or more RespondedSignals and returns the data updated in the database.
+     * @param {RespondedSignalUpdateManyAndReturnArgs} args - Arguments to update many RespondedSignals.
      * @example
-     * // Update many WalkSignals
-     * const walkSignal = await prisma.walkSignal.updateManyAndReturn({
+     * // Update many RespondedSignals
+     * const respondedSignal = await prisma.respondedSignal.updateManyAndReturn({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -12779,8 +12779,8 @@ export namespace Prisma {
      *   ]
      * })
      * 
-     * // Update zero or more WalkSignals and only return the `id`
-     * const walkSignalWithIdOnly = await prisma.walkSignal.updateManyAndReturn({
+     * // Update zero or more RespondedSignals and only return the `id`
+     * const respondedSignalWithIdOnly = await prisma.respondedSignal.updateManyAndReturn({
      *   select: { id: true },
      *   where: {
      *     // ... provide filter here
@@ -12793,56 +12793,56 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      * 
      */
-    updateManyAndReturn<T extends WalkSignalUpdateManyAndReturnArgs>(args: SelectSubset<T, WalkSignalUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WalkSignalPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+    updateManyAndReturn<T extends RespondedSignalUpdateManyAndReturnArgs>(args: SelectSubset<T, RespondedSignalUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RespondedSignalPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
 
     /**
-     * Create or update one WalkSignal.
-     * @param {WalkSignalUpsertArgs} args - Arguments to update or create a WalkSignal.
+     * Create or update one RespondedSignal.
+     * @param {RespondedSignalUpsertArgs} args - Arguments to update or create a RespondedSignal.
      * @example
-     * // Update or create a WalkSignal
-     * const walkSignal = await prisma.walkSignal.upsert({
+     * // Update or create a RespondedSignal
+     * const respondedSignal = await prisma.respondedSignal.upsert({
      *   create: {
-     *     // ... data to create a WalkSignal
+     *     // ... data to create a RespondedSignal
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the WalkSignal we want to update
+     *     // ... the filter for the RespondedSignal we want to update
      *   }
      * })
      */
-    upsert<T extends WalkSignalUpsertArgs>(args: SelectSubset<T, WalkSignalUpsertArgs<ExtArgs>>): Prisma__WalkSignalClient<$Result.GetResult<Prisma.$WalkSignalPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends RespondedSignalUpsertArgs>(args: SelectSubset<T, RespondedSignalUpsertArgs<ExtArgs>>): Prisma__RespondedSignalClient<$Result.GetResult<Prisma.$RespondedSignalPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of WalkSignals.
+     * Count the number of RespondedSignals.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {WalkSignalCountArgs} args - Arguments to filter WalkSignals to count.
+     * @param {RespondedSignalCountArgs} args - Arguments to filter RespondedSignals to count.
      * @example
-     * // Count the number of WalkSignals
-     * const count = await prisma.walkSignal.count({
+     * // Count the number of RespondedSignals
+     * const count = await prisma.respondedSignal.count({
      *   where: {
-     *     // ... the filter for the WalkSignals we want to count
+     *     // ... the filter for the RespondedSignals we want to count
      *   }
      * })
     **/
-    count<T extends WalkSignalCountArgs>(
-      args?: Subset<T, WalkSignalCountArgs>,
+    count<T extends RespondedSignalCountArgs>(
+      args?: Subset<T, RespondedSignalCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], WalkSignalCountAggregateOutputType>
+          : GetScalarType<T['select'], RespondedSignalCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a WalkSignal.
+     * Allows you to perform aggregations operations on a RespondedSignal.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {WalkSignalAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {RespondedSignalAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -12862,13 +12862,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends WalkSignalAggregateArgs>(args: Subset<T, WalkSignalAggregateArgs>): Prisma.PrismaPromise<GetWalkSignalAggregateType<T>>
+    aggregate<T extends RespondedSignalAggregateArgs>(args: Subset<T, RespondedSignalAggregateArgs>): Prisma.PrismaPromise<GetRespondedSignalAggregateType<T>>
 
     /**
-     * Group by WalkSignal.
+     * Group by RespondedSignal.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {WalkSignalGroupByArgs} args - Group by arguments.
+     * @param {RespondedSignalGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -12883,14 +12883,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends WalkSignalGroupByArgs,
+      T extends RespondedSignalGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: WalkSignalGroupByArgs['orderBy'] }
-        : { orderBy?: WalkSignalGroupByArgs['orderBy'] },
+        ? { orderBy: RespondedSignalGroupByArgs['orderBy'] }
+        : { orderBy?: RespondedSignalGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -12939,20 +12939,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, WalkSignalGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetWalkSignalGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, RespondedSignalGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRespondedSignalGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the WalkSignal model
+   * Fields of the RespondedSignal model
    */
-  readonly fields: WalkSignalFieldRefs;
+  readonly fields: RespondedSignalFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for WalkSignal.
+   * The delegate class that acts as a "Promise-like" for RespondedSignal.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__WalkSignalClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__RespondedSignalClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     walkLog<T extends WalkLogDefaultArgs<ExtArgs> = {}>(args?: Subset<T, WalkLogDefaultArgs<ExtArgs>>): Prisma__WalkLogClient<$Result.GetResult<Prisma.$WalkLogPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     signal<T extends SignalDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SignalDefaultArgs<ExtArgs>>): Prisma__SignalClient<$Result.GetResult<Prisma.$SignalPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
@@ -12983,425 +12983,425 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the WalkSignal model
+   * Fields of the RespondedSignal model
    */
-  interface WalkSignalFieldRefs {
-    readonly id: FieldRef<"WalkSignal", 'Int'>
-    readonly walkLogId: FieldRef<"WalkSignal", 'Int'>
-    readonly signalId: FieldRef<"WalkSignal", 'Int'>
-    readonly responseId: FieldRef<"WalkSignal", 'Int'>
-    readonly respondedAt: FieldRef<"WalkSignal", 'DateTime'>
+  interface RespondedSignalFieldRefs {
+    readonly id: FieldRef<"RespondedSignal", 'Int'>
+    readonly walkLogId: FieldRef<"RespondedSignal", 'Int'>
+    readonly signalId: FieldRef<"RespondedSignal", 'Int'>
+    readonly responseId: FieldRef<"RespondedSignal", 'Int'>
+    readonly respondedAt: FieldRef<"RespondedSignal", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * WalkSignal findUnique
+   * RespondedSignal findUnique
    */
-  export type WalkSignalFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RespondedSignalFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the WalkSignal
+     * Select specific fields to fetch from the RespondedSignal
      */
-    select?: WalkSignalSelect<ExtArgs> | null
+    select?: RespondedSignalSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the WalkSignal
+     * Omit specific fields from the RespondedSignal
      */
-    omit?: WalkSignalOmit<ExtArgs> | null
+    omit?: RespondedSignalOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: WalkSignalInclude<ExtArgs> | null
+    include?: RespondedSignalInclude<ExtArgs> | null
     /**
-     * Filter, which WalkSignal to fetch.
+     * Filter, which RespondedSignal to fetch.
      */
-    where: WalkSignalWhereUniqueInput
+    where: RespondedSignalWhereUniqueInput
   }
 
   /**
-   * WalkSignal findUniqueOrThrow
+   * RespondedSignal findUniqueOrThrow
    */
-  export type WalkSignalFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RespondedSignalFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the WalkSignal
+     * Select specific fields to fetch from the RespondedSignal
      */
-    select?: WalkSignalSelect<ExtArgs> | null
+    select?: RespondedSignalSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the WalkSignal
+     * Omit specific fields from the RespondedSignal
      */
-    omit?: WalkSignalOmit<ExtArgs> | null
+    omit?: RespondedSignalOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: WalkSignalInclude<ExtArgs> | null
+    include?: RespondedSignalInclude<ExtArgs> | null
     /**
-     * Filter, which WalkSignal to fetch.
+     * Filter, which RespondedSignal to fetch.
      */
-    where: WalkSignalWhereUniqueInput
+    where: RespondedSignalWhereUniqueInput
   }
 
   /**
-   * WalkSignal findFirst
+   * RespondedSignal findFirst
    */
-  export type WalkSignalFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RespondedSignalFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the WalkSignal
+     * Select specific fields to fetch from the RespondedSignal
      */
-    select?: WalkSignalSelect<ExtArgs> | null
+    select?: RespondedSignalSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the WalkSignal
+     * Omit specific fields from the RespondedSignal
      */
-    omit?: WalkSignalOmit<ExtArgs> | null
+    omit?: RespondedSignalOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: WalkSignalInclude<ExtArgs> | null
+    include?: RespondedSignalInclude<ExtArgs> | null
     /**
-     * Filter, which WalkSignal to fetch.
+     * Filter, which RespondedSignal to fetch.
      */
-    where?: WalkSignalWhereInput
+    where?: RespondedSignalWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of WalkSignals to fetch.
+     * Determine the order of RespondedSignals to fetch.
      */
-    orderBy?: WalkSignalOrderByWithRelationInput | WalkSignalOrderByWithRelationInput[]
+    orderBy?: RespondedSignalOrderByWithRelationInput | RespondedSignalOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for WalkSignals.
+     * Sets the position for searching for RespondedSignals.
      */
-    cursor?: WalkSignalWhereUniqueInput
+    cursor?: RespondedSignalWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` WalkSignals from the position of the cursor.
+     * Take `±n` RespondedSignals from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` WalkSignals.
+     * Skip the first `n` RespondedSignals.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of WalkSignals.
+     * Filter by unique combinations of RespondedSignals.
      */
-    distinct?: WalkSignalScalarFieldEnum | WalkSignalScalarFieldEnum[]
+    distinct?: RespondedSignalScalarFieldEnum | RespondedSignalScalarFieldEnum[]
   }
 
   /**
-   * WalkSignal findFirstOrThrow
+   * RespondedSignal findFirstOrThrow
    */
-  export type WalkSignalFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RespondedSignalFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the WalkSignal
+     * Select specific fields to fetch from the RespondedSignal
      */
-    select?: WalkSignalSelect<ExtArgs> | null
+    select?: RespondedSignalSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the WalkSignal
+     * Omit specific fields from the RespondedSignal
      */
-    omit?: WalkSignalOmit<ExtArgs> | null
+    omit?: RespondedSignalOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: WalkSignalInclude<ExtArgs> | null
+    include?: RespondedSignalInclude<ExtArgs> | null
     /**
-     * Filter, which WalkSignal to fetch.
+     * Filter, which RespondedSignal to fetch.
      */
-    where?: WalkSignalWhereInput
+    where?: RespondedSignalWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of WalkSignals to fetch.
+     * Determine the order of RespondedSignals to fetch.
      */
-    orderBy?: WalkSignalOrderByWithRelationInput | WalkSignalOrderByWithRelationInput[]
+    orderBy?: RespondedSignalOrderByWithRelationInput | RespondedSignalOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for WalkSignals.
+     * Sets the position for searching for RespondedSignals.
      */
-    cursor?: WalkSignalWhereUniqueInput
+    cursor?: RespondedSignalWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` WalkSignals from the position of the cursor.
+     * Take `±n` RespondedSignals from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` WalkSignals.
+     * Skip the first `n` RespondedSignals.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of WalkSignals.
+     * Filter by unique combinations of RespondedSignals.
      */
-    distinct?: WalkSignalScalarFieldEnum | WalkSignalScalarFieldEnum[]
+    distinct?: RespondedSignalScalarFieldEnum | RespondedSignalScalarFieldEnum[]
   }
 
   /**
-   * WalkSignal findMany
+   * RespondedSignal findMany
    */
-  export type WalkSignalFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RespondedSignalFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the WalkSignal
+     * Select specific fields to fetch from the RespondedSignal
      */
-    select?: WalkSignalSelect<ExtArgs> | null
+    select?: RespondedSignalSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the WalkSignal
+     * Omit specific fields from the RespondedSignal
      */
-    omit?: WalkSignalOmit<ExtArgs> | null
+    omit?: RespondedSignalOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: WalkSignalInclude<ExtArgs> | null
+    include?: RespondedSignalInclude<ExtArgs> | null
     /**
-     * Filter, which WalkSignals to fetch.
+     * Filter, which RespondedSignals to fetch.
      */
-    where?: WalkSignalWhereInput
+    where?: RespondedSignalWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of WalkSignals to fetch.
+     * Determine the order of RespondedSignals to fetch.
      */
-    orderBy?: WalkSignalOrderByWithRelationInput | WalkSignalOrderByWithRelationInput[]
+    orderBy?: RespondedSignalOrderByWithRelationInput | RespondedSignalOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing WalkSignals.
+     * Sets the position for listing RespondedSignals.
      */
-    cursor?: WalkSignalWhereUniqueInput
+    cursor?: RespondedSignalWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` WalkSignals from the position of the cursor.
+     * Take `±n` RespondedSignals from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` WalkSignals.
+     * Skip the first `n` RespondedSignals.
      */
     skip?: number
-    distinct?: WalkSignalScalarFieldEnum | WalkSignalScalarFieldEnum[]
+    distinct?: RespondedSignalScalarFieldEnum | RespondedSignalScalarFieldEnum[]
   }
 
   /**
-   * WalkSignal create
+   * RespondedSignal create
    */
-  export type WalkSignalCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RespondedSignalCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the WalkSignal
+     * Select specific fields to fetch from the RespondedSignal
      */
-    select?: WalkSignalSelect<ExtArgs> | null
+    select?: RespondedSignalSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the WalkSignal
+     * Omit specific fields from the RespondedSignal
      */
-    omit?: WalkSignalOmit<ExtArgs> | null
+    omit?: RespondedSignalOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: WalkSignalInclude<ExtArgs> | null
+    include?: RespondedSignalInclude<ExtArgs> | null
     /**
-     * The data needed to create a WalkSignal.
+     * The data needed to create a RespondedSignal.
      */
-    data: XOR<WalkSignalCreateInput, WalkSignalUncheckedCreateInput>
+    data: XOR<RespondedSignalCreateInput, RespondedSignalUncheckedCreateInput>
   }
 
   /**
-   * WalkSignal createMany
+   * RespondedSignal createMany
    */
-  export type WalkSignalCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RespondedSignalCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many WalkSignals.
+     * The data used to create many RespondedSignals.
      */
-    data: WalkSignalCreateManyInput | WalkSignalCreateManyInput[]
+    data: RespondedSignalCreateManyInput | RespondedSignalCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * WalkSignal createManyAndReturn
+   * RespondedSignal createManyAndReturn
    */
-  export type WalkSignalCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RespondedSignalCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the WalkSignal
+     * Select specific fields to fetch from the RespondedSignal
      */
-    select?: WalkSignalSelectCreateManyAndReturn<ExtArgs> | null
+    select?: RespondedSignalSelectCreateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the WalkSignal
+     * Omit specific fields from the RespondedSignal
      */
-    omit?: WalkSignalOmit<ExtArgs> | null
+    omit?: RespondedSignalOmit<ExtArgs> | null
     /**
-     * The data used to create many WalkSignals.
+     * The data used to create many RespondedSignals.
      */
-    data: WalkSignalCreateManyInput | WalkSignalCreateManyInput[]
+    data: RespondedSignalCreateManyInput | RespondedSignalCreateManyInput[]
     skipDuplicates?: boolean
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: WalkSignalIncludeCreateManyAndReturn<ExtArgs> | null
+    include?: RespondedSignalIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * WalkSignal update
+   * RespondedSignal update
    */
-  export type WalkSignalUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RespondedSignalUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the WalkSignal
+     * Select specific fields to fetch from the RespondedSignal
      */
-    select?: WalkSignalSelect<ExtArgs> | null
+    select?: RespondedSignalSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the WalkSignal
+     * Omit specific fields from the RespondedSignal
      */
-    omit?: WalkSignalOmit<ExtArgs> | null
+    omit?: RespondedSignalOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: WalkSignalInclude<ExtArgs> | null
+    include?: RespondedSignalInclude<ExtArgs> | null
     /**
-     * The data needed to update a WalkSignal.
+     * The data needed to update a RespondedSignal.
      */
-    data: XOR<WalkSignalUpdateInput, WalkSignalUncheckedUpdateInput>
+    data: XOR<RespondedSignalUpdateInput, RespondedSignalUncheckedUpdateInput>
     /**
-     * Choose, which WalkSignal to update.
+     * Choose, which RespondedSignal to update.
      */
-    where: WalkSignalWhereUniqueInput
+    where: RespondedSignalWhereUniqueInput
   }
 
   /**
-   * WalkSignal updateMany
+   * RespondedSignal updateMany
    */
-  export type WalkSignalUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RespondedSignalUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update WalkSignals.
+     * The data used to update RespondedSignals.
      */
-    data: XOR<WalkSignalUpdateManyMutationInput, WalkSignalUncheckedUpdateManyInput>
+    data: XOR<RespondedSignalUpdateManyMutationInput, RespondedSignalUncheckedUpdateManyInput>
     /**
-     * Filter which WalkSignals to update
+     * Filter which RespondedSignals to update
      */
-    where?: WalkSignalWhereInput
+    where?: RespondedSignalWhereInput
     /**
-     * Limit how many WalkSignals to update.
+     * Limit how many RespondedSignals to update.
      */
     limit?: number
   }
 
   /**
-   * WalkSignal updateManyAndReturn
+   * RespondedSignal updateManyAndReturn
    */
-  export type WalkSignalUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RespondedSignalUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the WalkSignal
+     * Select specific fields to fetch from the RespondedSignal
      */
-    select?: WalkSignalSelectUpdateManyAndReturn<ExtArgs> | null
+    select?: RespondedSignalSelectUpdateManyAndReturn<ExtArgs> | null
     /**
-     * Omit specific fields from the WalkSignal
+     * Omit specific fields from the RespondedSignal
      */
-    omit?: WalkSignalOmit<ExtArgs> | null
+    omit?: RespondedSignalOmit<ExtArgs> | null
     /**
-     * The data used to update WalkSignals.
+     * The data used to update RespondedSignals.
      */
-    data: XOR<WalkSignalUpdateManyMutationInput, WalkSignalUncheckedUpdateManyInput>
+    data: XOR<RespondedSignalUpdateManyMutationInput, RespondedSignalUncheckedUpdateManyInput>
     /**
-     * Filter which WalkSignals to update
+     * Filter which RespondedSignals to update
      */
-    where?: WalkSignalWhereInput
+    where?: RespondedSignalWhereInput
     /**
-     * Limit how many WalkSignals to update.
+     * Limit how many RespondedSignals to update.
      */
     limit?: number
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: WalkSignalIncludeUpdateManyAndReturn<ExtArgs> | null
+    include?: RespondedSignalIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
-   * WalkSignal upsert
+   * RespondedSignal upsert
    */
-  export type WalkSignalUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RespondedSignalUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the WalkSignal
+     * Select specific fields to fetch from the RespondedSignal
      */
-    select?: WalkSignalSelect<ExtArgs> | null
+    select?: RespondedSignalSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the WalkSignal
+     * Omit specific fields from the RespondedSignal
      */
-    omit?: WalkSignalOmit<ExtArgs> | null
+    omit?: RespondedSignalOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: WalkSignalInclude<ExtArgs> | null
+    include?: RespondedSignalInclude<ExtArgs> | null
     /**
-     * The filter to search for the WalkSignal to update in case it exists.
+     * The filter to search for the RespondedSignal to update in case it exists.
      */
-    where: WalkSignalWhereUniqueInput
+    where: RespondedSignalWhereUniqueInput
     /**
-     * In case the WalkSignal found by the `where` argument doesn't exist, create a new WalkSignal with this data.
+     * In case the RespondedSignal found by the `where` argument doesn't exist, create a new RespondedSignal with this data.
      */
-    create: XOR<WalkSignalCreateInput, WalkSignalUncheckedCreateInput>
+    create: XOR<RespondedSignalCreateInput, RespondedSignalUncheckedCreateInput>
     /**
-     * In case the WalkSignal was found with the provided `where` argument, update it with this data.
+     * In case the RespondedSignal was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<WalkSignalUpdateInput, WalkSignalUncheckedUpdateInput>
+    update: XOR<RespondedSignalUpdateInput, RespondedSignalUncheckedUpdateInput>
   }
 
   /**
-   * WalkSignal delete
+   * RespondedSignal delete
    */
-  export type WalkSignalDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RespondedSignalDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the WalkSignal
+     * Select specific fields to fetch from the RespondedSignal
      */
-    select?: WalkSignalSelect<ExtArgs> | null
+    select?: RespondedSignalSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the WalkSignal
+     * Omit specific fields from the RespondedSignal
      */
-    omit?: WalkSignalOmit<ExtArgs> | null
+    omit?: RespondedSignalOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: WalkSignalInclude<ExtArgs> | null
+    include?: RespondedSignalInclude<ExtArgs> | null
     /**
-     * Filter which WalkSignal to delete.
+     * Filter which RespondedSignal to delete.
      */
-    where: WalkSignalWhereUniqueInput
+    where: RespondedSignalWhereUniqueInput
   }
 
   /**
-   * WalkSignal deleteMany
+   * RespondedSignal deleteMany
    */
-  export type WalkSignalDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RespondedSignalDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which WalkSignals to delete
+     * Filter which RespondedSignals to delete
      */
-    where?: WalkSignalWhereInput
+    where?: RespondedSignalWhereInput
     /**
-     * Limit how many WalkSignals to delete.
+     * Limit how many RespondedSignals to delete.
      */
     limit?: number
   }
 
   /**
-   * WalkSignal without action
+   * RespondedSignal without action
    */
-  export type WalkSignalDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type RespondedSignalDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the WalkSignal
+     * Select specific fields to fetch from the RespondedSignal
      */
-    select?: WalkSignalSelect<ExtArgs> | null
+    select?: RespondedSignalSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the WalkSignal
+     * Omit specific fields from the RespondedSignal
      */
-    omit?: WalkSignalOmit<ExtArgs> | null
+    omit?: RespondedSignalOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: WalkSignalInclude<ExtArgs> | null
+    include?: RespondedSignalInclude<ExtArgs> | null
   }
 
 
@@ -13517,7 +13517,7 @@ export namespace Prisma {
   export type WalkLogScalarFieldEnum = (typeof WalkLogScalarFieldEnum)[keyof typeof WalkLogScalarFieldEnum]
 
 
-  export const WalkSignalScalarFieldEnum: {
+  export const RespondedSignalScalarFieldEnum: {
     id: 'id',
     walkLogId: 'walkLogId',
     signalId: 'signalId',
@@ -13525,7 +13525,7 @@ export namespace Prisma {
     respondedAt: 'respondedAt'
   };
 
-  export type WalkSignalScalarFieldEnum = (typeof WalkSignalScalarFieldEnum)[keyof typeof WalkSignalScalarFieldEnum]
+  export type RespondedSignalScalarFieldEnum = (typeof RespondedSignalScalarFieldEnum)[keyof typeof RespondedSignalScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -13806,7 +13806,7 @@ export namespace Prisma {
     selectedUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     category?: XOR<SignalCategoryScalarRelationFilter, SignalCategoryWhereInput>
     responses?: ResponseListRelationFilter
-    walkSignals?: WalkSignalListRelationFilter
+    respondedSignals?: RespondedSignalListRelationFilter
   }
 
   export type SignalOrderByWithRelationInput = {
@@ -13825,7 +13825,7 @@ export namespace Prisma {
     selectedUser?: UserOrderByWithRelationInput
     category?: SignalCategoryOrderByWithRelationInput
     responses?: ResponseOrderByRelationAggregateInput
-    walkSignals?: WalkSignalOrderByRelationAggregateInput
+    respondedSignals?: RespondedSignalOrderByRelationAggregateInput
   }
 
   export type SignalWhereUniqueInput = Prisma.AtLeast<{
@@ -13847,7 +13847,7 @@ export namespace Prisma {
     selectedUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     category?: XOR<SignalCategoryScalarRelationFilter, SignalCategoryWhereInput>
     responses?: ResponseListRelationFilter
-    walkSignals?: WalkSignalListRelationFilter
+    respondedSignals?: RespondedSignalListRelationFilter
   }, "id">
 
   export type SignalOrderByWithAggregationInput = {
@@ -13897,7 +13897,7 @@ export namespace Prisma {
     respondedAt?: DateTimeFilter<"Response"> | Date | string
     signal?: XOR<SignalScalarRelationFilter, SignalWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    walkSignals?: WalkSignalListRelationFilter
+    respondedSignals?: RespondedSignalListRelationFilter
   }
 
   export type ResponseOrderByWithRelationInput = {
@@ -13908,7 +13908,7 @@ export namespace Prisma {
     respondedAt?: SortOrder
     signal?: SignalOrderByWithRelationInput
     user?: UserOrderByWithRelationInput
-    walkSignals?: WalkSignalOrderByRelationAggregateInput
+    respondedSignals?: RespondedSignalOrderByRelationAggregateInput
   }
 
   export type ResponseWhereUniqueInput = Prisma.AtLeast<{
@@ -13922,7 +13922,7 @@ export namespace Prisma {
     respondedAt?: DateTimeFilter<"Response"> | Date | string
     signal?: XOR<SignalScalarRelationFilter, SignalWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
-    walkSignals?: WalkSignalListRelationFilter
+    respondedSignals?: RespondedSignalListRelationFilter
   }, "id">
 
   export type ResponseOrderByWithAggregationInput = {
@@ -14154,7 +14154,7 @@ export namespace Prisma {
     distance?: FloatFilter<"WalkLog"> | number
     walkedAt?: DateTimeFilter<"WalkLog"> | Date | string
     session?: XOR<WalkSessionScalarRelationFilter, WalkSessionWhereInput>
-    signals?: WalkSignalListRelationFilter
+    respondedSignals?: RespondedSignalListRelationFilter
   }
 
   export type WalkLogOrderByWithRelationInput = {
@@ -14163,7 +14163,7 @@ export namespace Prisma {
     distance?: SortOrder
     walkedAt?: SortOrder
     session?: WalkSessionOrderByWithRelationInput
-    signals?: WalkSignalOrderByRelationAggregateInput
+    respondedSignals?: RespondedSignalOrderByRelationAggregateInput
   }
 
   export type WalkLogWhereUniqueInput = Prisma.AtLeast<{
@@ -14175,7 +14175,7 @@ export namespace Prisma {
     distance?: FloatFilter<"WalkLog"> | number
     walkedAt?: DateTimeFilter<"WalkLog"> | Date | string
     session?: XOR<WalkSessionScalarRelationFilter, WalkSessionWhereInput>
-    signals?: WalkSignalListRelationFilter
+    respondedSignals?: RespondedSignalListRelationFilter
   }, "id" | "sessionId">
 
   export type WalkLogOrderByWithAggregationInput = {
@@ -14200,21 +14200,21 @@ export namespace Prisma {
     walkedAt?: DateTimeWithAggregatesFilter<"WalkLog"> | Date | string
   }
 
-  export type WalkSignalWhereInput = {
-    AND?: WalkSignalWhereInput | WalkSignalWhereInput[]
-    OR?: WalkSignalWhereInput[]
-    NOT?: WalkSignalWhereInput | WalkSignalWhereInput[]
-    id?: IntFilter<"WalkSignal"> | number
-    walkLogId?: IntFilter<"WalkSignal"> | number
-    signalId?: IntFilter<"WalkSignal"> | number
-    responseId?: IntFilter<"WalkSignal"> | number
-    respondedAt?: DateTimeFilter<"WalkSignal"> | Date | string
+  export type RespondedSignalWhereInput = {
+    AND?: RespondedSignalWhereInput | RespondedSignalWhereInput[]
+    OR?: RespondedSignalWhereInput[]
+    NOT?: RespondedSignalWhereInput | RespondedSignalWhereInput[]
+    id?: IntFilter<"RespondedSignal"> | number
+    walkLogId?: IntFilter<"RespondedSignal"> | number
+    signalId?: IntFilter<"RespondedSignal"> | number
+    responseId?: IntFilter<"RespondedSignal"> | number
+    respondedAt?: DateTimeFilter<"RespondedSignal"> | Date | string
     walkLog?: XOR<WalkLogScalarRelationFilter, WalkLogWhereInput>
     signal?: XOR<SignalScalarRelationFilter, SignalWhereInput>
     response?: XOR<ResponseScalarRelationFilter, ResponseWhereInput>
   }
 
-  export type WalkSignalOrderByWithRelationInput = {
+  export type RespondedSignalOrderByWithRelationInput = {
     id?: SortOrder
     walkLogId?: SortOrder
     signalId?: SortOrder
@@ -14225,42 +14225,42 @@ export namespace Prisma {
     response?: ResponseOrderByWithRelationInput
   }
 
-  export type WalkSignalWhereUniqueInput = Prisma.AtLeast<{
+  export type RespondedSignalWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    AND?: WalkSignalWhereInput | WalkSignalWhereInput[]
-    OR?: WalkSignalWhereInput[]
-    NOT?: WalkSignalWhereInput | WalkSignalWhereInput[]
-    walkLogId?: IntFilter<"WalkSignal"> | number
-    signalId?: IntFilter<"WalkSignal"> | number
-    responseId?: IntFilter<"WalkSignal"> | number
-    respondedAt?: DateTimeFilter<"WalkSignal"> | Date | string
+    AND?: RespondedSignalWhereInput | RespondedSignalWhereInput[]
+    OR?: RespondedSignalWhereInput[]
+    NOT?: RespondedSignalWhereInput | RespondedSignalWhereInput[]
+    walkLogId?: IntFilter<"RespondedSignal"> | number
+    signalId?: IntFilter<"RespondedSignal"> | number
+    responseId?: IntFilter<"RespondedSignal"> | number
+    respondedAt?: DateTimeFilter<"RespondedSignal"> | Date | string
     walkLog?: XOR<WalkLogScalarRelationFilter, WalkLogWhereInput>
     signal?: XOR<SignalScalarRelationFilter, SignalWhereInput>
     response?: XOR<ResponseScalarRelationFilter, ResponseWhereInput>
   }, "id">
 
-  export type WalkSignalOrderByWithAggregationInput = {
+  export type RespondedSignalOrderByWithAggregationInput = {
     id?: SortOrder
     walkLogId?: SortOrder
     signalId?: SortOrder
     responseId?: SortOrder
     respondedAt?: SortOrder
-    _count?: WalkSignalCountOrderByAggregateInput
-    _avg?: WalkSignalAvgOrderByAggregateInput
-    _max?: WalkSignalMaxOrderByAggregateInput
-    _min?: WalkSignalMinOrderByAggregateInput
-    _sum?: WalkSignalSumOrderByAggregateInput
+    _count?: RespondedSignalCountOrderByAggregateInput
+    _avg?: RespondedSignalAvgOrderByAggregateInput
+    _max?: RespondedSignalMaxOrderByAggregateInput
+    _min?: RespondedSignalMinOrderByAggregateInput
+    _sum?: RespondedSignalSumOrderByAggregateInput
   }
 
-  export type WalkSignalScalarWhereWithAggregatesInput = {
-    AND?: WalkSignalScalarWhereWithAggregatesInput | WalkSignalScalarWhereWithAggregatesInput[]
-    OR?: WalkSignalScalarWhereWithAggregatesInput[]
-    NOT?: WalkSignalScalarWhereWithAggregatesInput | WalkSignalScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"WalkSignal"> | number
-    walkLogId?: IntWithAggregatesFilter<"WalkSignal"> | number
-    signalId?: IntWithAggregatesFilter<"WalkSignal"> | number
-    responseId?: IntWithAggregatesFilter<"WalkSignal"> | number
-    respondedAt?: DateTimeWithAggregatesFilter<"WalkSignal"> | Date | string
+  export type RespondedSignalScalarWhereWithAggregatesInput = {
+    AND?: RespondedSignalScalarWhereWithAggregatesInput | RespondedSignalScalarWhereWithAggregatesInput[]
+    OR?: RespondedSignalScalarWhereWithAggregatesInput[]
+    NOT?: RespondedSignalScalarWhereWithAggregatesInput | RespondedSignalScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"RespondedSignal"> | number
+    walkLogId?: IntWithAggregatesFilter<"RespondedSignal"> | number
+    signalId?: IntWithAggregatesFilter<"RespondedSignal"> | number
+    responseId?: IntWithAggregatesFilter<"RespondedSignal"> | number
+    respondedAt?: DateTimeWithAggregatesFilter<"RespondedSignal"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -14406,7 +14406,7 @@ export namespace Prisma {
     selectedUser?: UserCreateNestedOneWithoutSelectedSignalsInput
     category: SignalCategoryCreateNestedOneWithoutSignalsInput
     responses?: ResponseCreateNestedManyWithoutSignalInput
-    walkSignals?: WalkSignalCreateNestedManyWithoutSignalInput
+    respondedSignals?: RespondedSignalCreateNestedManyWithoutSignalInput
   }
 
   export type SignalUncheckedCreateInput = {
@@ -14422,7 +14422,7 @@ export namespace Prisma {
     status?: $Enums.SignalStatus
     selectedUserId?: number | null
     responses?: ResponseUncheckedCreateNestedManyWithoutSignalInput
-    walkSignals?: WalkSignalUncheckedCreateNestedManyWithoutSignalInput
+    respondedSignals?: RespondedSignalUncheckedCreateNestedManyWithoutSignalInput
   }
 
   export type SignalUpdateInput = {
@@ -14437,7 +14437,7 @@ export namespace Prisma {
     selectedUser?: UserUpdateOneWithoutSelectedSignalsNestedInput
     category?: SignalCategoryUpdateOneRequiredWithoutSignalsNestedInput
     responses?: ResponseUpdateManyWithoutSignalNestedInput
-    walkSignals?: WalkSignalUpdateManyWithoutSignalNestedInput
+    respondedSignals?: RespondedSignalUpdateManyWithoutSignalNestedInput
   }
 
   export type SignalUncheckedUpdateInput = {
@@ -14453,7 +14453,7 @@ export namespace Prisma {
     status?: EnumSignalStatusFieldUpdateOperationsInput | $Enums.SignalStatus
     selectedUserId?: NullableIntFieldUpdateOperationsInput | number | null
     responses?: ResponseUncheckedUpdateManyWithoutSignalNestedInput
-    walkSignals?: WalkSignalUncheckedUpdateManyWithoutSignalNestedInput
+    respondedSignals?: RespondedSignalUncheckedUpdateManyWithoutSignalNestedInput
   }
 
   export type SignalCreateManyInput = {
@@ -14499,7 +14499,7 @@ export namespace Prisma {
     respondedAt?: Date | string
     signal: SignalCreateNestedOneWithoutResponsesInput
     user: UserCreateNestedOneWithoutResponsesInput
-    walkSignals?: WalkSignalCreateNestedManyWithoutResponseInput
+    respondedSignals?: RespondedSignalCreateNestedManyWithoutResponseInput
   }
 
   export type ResponseUncheckedCreateInput = {
@@ -14508,7 +14508,7 @@ export namespace Prisma {
     userId: number
     message: string
     respondedAt?: Date | string
-    walkSignals?: WalkSignalUncheckedCreateNestedManyWithoutResponseInput
+    respondedSignals?: RespondedSignalUncheckedCreateNestedManyWithoutResponseInput
   }
 
   export type ResponseUpdateInput = {
@@ -14516,7 +14516,7 @@ export namespace Prisma {
     respondedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     signal?: SignalUpdateOneRequiredWithoutResponsesNestedInput
     user?: UserUpdateOneRequiredWithoutResponsesNestedInput
-    walkSignals?: WalkSignalUpdateManyWithoutResponseNestedInput
+    respondedSignals?: RespondedSignalUpdateManyWithoutResponseNestedInput
   }
 
   export type ResponseUncheckedUpdateInput = {
@@ -14525,7 +14525,7 @@ export namespace Prisma {
     userId?: IntFieldUpdateOperationsInput | number
     message?: StringFieldUpdateOperationsInput | string
     respondedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    walkSignals?: WalkSignalUncheckedUpdateManyWithoutResponseNestedInput
+    respondedSignals?: RespondedSignalUncheckedUpdateManyWithoutResponseNestedInput
   }
 
   export type ResponseCreateManyInput = {
@@ -14733,7 +14733,7 @@ export namespace Prisma {
     distance: number
     walkedAt?: Date | string
     session: WalkSessionCreateNestedOneWithoutWalkLogInput
-    signals?: WalkSignalCreateNestedManyWithoutWalkLogInput
+    respondedSignals?: RespondedSignalCreateNestedManyWithoutWalkLogInput
   }
 
   export type WalkLogUncheckedCreateInput = {
@@ -14741,14 +14741,14 @@ export namespace Prisma {
     sessionId: number
     distance: number
     walkedAt?: Date | string
-    signals?: WalkSignalUncheckedCreateNestedManyWithoutWalkLogInput
+    respondedSignals?: RespondedSignalUncheckedCreateNestedManyWithoutWalkLogInput
   }
 
   export type WalkLogUpdateInput = {
     distance?: FloatFieldUpdateOperationsInput | number
     walkedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     session?: WalkSessionUpdateOneRequiredWithoutWalkLogNestedInput
-    signals?: WalkSignalUpdateManyWithoutWalkLogNestedInput
+    respondedSignals?: RespondedSignalUpdateManyWithoutWalkLogNestedInput
   }
 
   export type WalkLogUncheckedUpdateInput = {
@@ -14756,7 +14756,7 @@ export namespace Prisma {
     sessionId?: IntFieldUpdateOperationsInput | number
     distance?: FloatFieldUpdateOperationsInput | number
     walkedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    signals?: WalkSignalUncheckedUpdateManyWithoutWalkLogNestedInput
+    respondedSignals?: RespondedSignalUncheckedUpdateManyWithoutWalkLogNestedInput
   }
 
   export type WalkLogCreateManyInput = {
@@ -14778,14 +14778,14 @@ export namespace Prisma {
     walkedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type WalkSignalCreateInput = {
+  export type RespondedSignalCreateInput = {
     respondedAt?: Date | string
-    walkLog: WalkLogCreateNestedOneWithoutSignalsInput
-    signal: SignalCreateNestedOneWithoutWalkSignalsInput
-    response: ResponseCreateNestedOneWithoutWalkSignalsInput
+    walkLog: WalkLogCreateNestedOneWithoutRespondedSignalsInput
+    signal: SignalCreateNestedOneWithoutRespondedSignalsInput
+    response: ResponseCreateNestedOneWithoutRespondedSignalsInput
   }
 
-  export type WalkSignalUncheckedCreateInput = {
+  export type RespondedSignalUncheckedCreateInput = {
     id?: number
     walkLogId: number
     signalId: number
@@ -14793,14 +14793,14 @@ export namespace Prisma {
     respondedAt?: Date | string
   }
 
-  export type WalkSignalUpdateInput = {
+  export type RespondedSignalUpdateInput = {
     respondedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    walkLog?: WalkLogUpdateOneRequiredWithoutSignalsNestedInput
-    signal?: SignalUpdateOneRequiredWithoutWalkSignalsNestedInput
-    response?: ResponseUpdateOneRequiredWithoutWalkSignalsNestedInput
+    walkLog?: WalkLogUpdateOneRequiredWithoutRespondedSignalsNestedInput
+    signal?: SignalUpdateOneRequiredWithoutRespondedSignalsNestedInput
+    response?: ResponseUpdateOneRequiredWithoutRespondedSignalsNestedInput
   }
 
-  export type WalkSignalUncheckedUpdateInput = {
+  export type RespondedSignalUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     walkLogId?: IntFieldUpdateOperationsInput | number
     signalId?: IntFieldUpdateOperationsInput | number
@@ -14808,7 +14808,7 @@ export namespace Prisma {
     respondedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type WalkSignalCreateManyInput = {
+  export type RespondedSignalCreateManyInput = {
     id?: number
     walkLogId: number
     signalId: number
@@ -14816,11 +14816,11 @@ export namespace Prisma {
     respondedAt?: Date | string
   }
 
-  export type WalkSignalUpdateManyMutationInput = {
+  export type RespondedSignalUpdateManyMutationInput = {
     respondedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type WalkSignalUncheckedUpdateManyInput = {
+  export type RespondedSignalUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     walkLogId?: IntFieldUpdateOperationsInput | number
     signalId?: IntFieldUpdateOperationsInput | number
@@ -15069,10 +15069,10 @@ export namespace Prisma {
     isNot?: SignalCategoryWhereInput
   }
 
-  export type WalkSignalListRelationFilter = {
-    every?: WalkSignalWhereInput
-    some?: WalkSignalWhereInput
-    none?: WalkSignalWhereInput
+  export type RespondedSignalListRelationFilter = {
+    every?: RespondedSignalWhereInput
+    some?: RespondedSignalWhereInput
+    none?: RespondedSignalWhereInput
   }
 
   export type SortOrderInput = {
@@ -15080,7 +15080,7 @@ export namespace Prisma {
     nulls?: NullsOrder
   }
 
-  export type WalkSignalOrderByRelationAggregateInput = {
+  export type RespondedSignalOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -15464,7 +15464,7 @@ export namespace Prisma {
     isNot?: ResponseWhereInput
   }
 
-  export type WalkSignalCountOrderByAggregateInput = {
+  export type RespondedSignalCountOrderByAggregateInput = {
     id?: SortOrder
     walkLogId?: SortOrder
     signalId?: SortOrder
@@ -15472,22 +15472,14 @@ export namespace Prisma {
     respondedAt?: SortOrder
   }
 
-  export type WalkSignalAvgOrderByAggregateInput = {
+  export type RespondedSignalAvgOrderByAggregateInput = {
     id?: SortOrder
     walkLogId?: SortOrder
     signalId?: SortOrder
     responseId?: SortOrder
   }
 
-  export type WalkSignalMaxOrderByAggregateInput = {
-    id?: SortOrder
-    walkLogId?: SortOrder
-    signalId?: SortOrder
-    responseId?: SortOrder
-    respondedAt?: SortOrder
-  }
-
-  export type WalkSignalMinOrderByAggregateInput = {
+  export type RespondedSignalMaxOrderByAggregateInput = {
     id?: SortOrder
     walkLogId?: SortOrder
     signalId?: SortOrder
@@ -15495,7 +15487,15 @@ export namespace Prisma {
     respondedAt?: SortOrder
   }
 
-  export type WalkSignalSumOrderByAggregateInput = {
+  export type RespondedSignalMinOrderByAggregateInput = {
+    id?: SortOrder
+    walkLogId?: SortOrder
+    signalId?: SortOrder
+    responseId?: SortOrder
+    respondedAt?: SortOrder
+  }
+
+  export type RespondedSignalSumOrderByAggregateInput = {
     id?: SortOrder
     walkLogId?: SortOrder
     signalId?: SortOrder
@@ -15837,11 +15837,11 @@ export namespace Prisma {
     connect?: ResponseWhereUniqueInput | ResponseWhereUniqueInput[]
   }
 
-  export type WalkSignalCreateNestedManyWithoutSignalInput = {
-    create?: XOR<WalkSignalCreateWithoutSignalInput, WalkSignalUncheckedCreateWithoutSignalInput> | WalkSignalCreateWithoutSignalInput[] | WalkSignalUncheckedCreateWithoutSignalInput[]
-    connectOrCreate?: WalkSignalCreateOrConnectWithoutSignalInput | WalkSignalCreateOrConnectWithoutSignalInput[]
-    createMany?: WalkSignalCreateManySignalInputEnvelope
-    connect?: WalkSignalWhereUniqueInput | WalkSignalWhereUniqueInput[]
+  export type RespondedSignalCreateNestedManyWithoutSignalInput = {
+    create?: XOR<RespondedSignalCreateWithoutSignalInput, RespondedSignalUncheckedCreateWithoutSignalInput> | RespondedSignalCreateWithoutSignalInput[] | RespondedSignalUncheckedCreateWithoutSignalInput[]
+    connectOrCreate?: RespondedSignalCreateOrConnectWithoutSignalInput | RespondedSignalCreateOrConnectWithoutSignalInput[]
+    createMany?: RespondedSignalCreateManySignalInputEnvelope
+    connect?: RespondedSignalWhereUniqueInput | RespondedSignalWhereUniqueInput[]
   }
 
   export type ResponseUncheckedCreateNestedManyWithoutSignalInput = {
@@ -15851,11 +15851,11 @@ export namespace Prisma {
     connect?: ResponseWhereUniqueInput | ResponseWhereUniqueInput[]
   }
 
-  export type WalkSignalUncheckedCreateNestedManyWithoutSignalInput = {
-    create?: XOR<WalkSignalCreateWithoutSignalInput, WalkSignalUncheckedCreateWithoutSignalInput> | WalkSignalCreateWithoutSignalInput[] | WalkSignalUncheckedCreateWithoutSignalInput[]
-    connectOrCreate?: WalkSignalCreateOrConnectWithoutSignalInput | WalkSignalCreateOrConnectWithoutSignalInput[]
-    createMany?: WalkSignalCreateManySignalInputEnvelope
-    connect?: WalkSignalWhereUniqueInput | WalkSignalWhereUniqueInput[]
+  export type RespondedSignalUncheckedCreateNestedManyWithoutSignalInput = {
+    create?: XOR<RespondedSignalCreateWithoutSignalInput, RespondedSignalUncheckedCreateWithoutSignalInput> | RespondedSignalCreateWithoutSignalInput[] | RespondedSignalUncheckedCreateWithoutSignalInput[]
+    connectOrCreate?: RespondedSignalCreateOrConnectWithoutSignalInput | RespondedSignalCreateOrConnectWithoutSignalInput[]
+    createMany?: RespondedSignalCreateManySignalInputEnvelope
+    connect?: RespondedSignalWhereUniqueInput | RespondedSignalWhereUniqueInput[]
   }
 
   export type FloatFieldUpdateOperationsInput = {
@@ -15910,18 +15910,18 @@ export namespace Prisma {
     deleteMany?: ResponseScalarWhereInput | ResponseScalarWhereInput[]
   }
 
-  export type WalkSignalUpdateManyWithoutSignalNestedInput = {
-    create?: XOR<WalkSignalCreateWithoutSignalInput, WalkSignalUncheckedCreateWithoutSignalInput> | WalkSignalCreateWithoutSignalInput[] | WalkSignalUncheckedCreateWithoutSignalInput[]
-    connectOrCreate?: WalkSignalCreateOrConnectWithoutSignalInput | WalkSignalCreateOrConnectWithoutSignalInput[]
-    upsert?: WalkSignalUpsertWithWhereUniqueWithoutSignalInput | WalkSignalUpsertWithWhereUniqueWithoutSignalInput[]
-    createMany?: WalkSignalCreateManySignalInputEnvelope
-    set?: WalkSignalWhereUniqueInput | WalkSignalWhereUniqueInput[]
-    disconnect?: WalkSignalWhereUniqueInput | WalkSignalWhereUniqueInput[]
-    delete?: WalkSignalWhereUniqueInput | WalkSignalWhereUniqueInput[]
-    connect?: WalkSignalWhereUniqueInput | WalkSignalWhereUniqueInput[]
-    update?: WalkSignalUpdateWithWhereUniqueWithoutSignalInput | WalkSignalUpdateWithWhereUniqueWithoutSignalInput[]
-    updateMany?: WalkSignalUpdateManyWithWhereWithoutSignalInput | WalkSignalUpdateManyWithWhereWithoutSignalInput[]
-    deleteMany?: WalkSignalScalarWhereInput | WalkSignalScalarWhereInput[]
+  export type RespondedSignalUpdateManyWithoutSignalNestedInput = {
+    create?: XOR<RespondedSignalCreateWithoutSignalInput, RespondedSignalUncheckedCreateWithoutSignalInput> | RespondedSignalCreateWithoutSignalInput[] | RespondedSignalUncheckedCreateWithoutSignalInput[]
+    connectOrCreate?: RespondedSignalCreateOrConnectWithoutSignalInput | RespondedSignalCreateOrConnectWithoutSignalInput[]
+    upsert?: RespondedSignalUpsertWithWhereUniqueWithoutSignalInput | RespondedSignalUpsertWithWhereUniqueWithoutSignalInput[]
+    createMany?: RespondedSignalCreateManySignalInputEnvelope
+    set?: RespondedSignalWhereUniqueInput | RespondedSignalWhereUniqueInput[]
+    disconnect?: RespondedSignalWhereUniqueInput | RespondedSignalWhereUniqueInput[]
+    delete?: RespondedSignalWhereUniqueInput | RespondedSignalWhereUniqueInput[]
+    connect?: RespondedSignalWhereUniqueInput | RespondedSignalWhereUniqueInput[]
+    update?: RespondedSignalUpdateWithWhereUniqueWithoutSignalInput | RespondedSignalUpdateWithWhereUniqueWithoutSignalInput[]
+    updateMany?: RespondedSignalUpdateManyWithWhereWithoutSignalInput | RespondedSignalUpdateManyWithWhereWithoutSignalInput[]
+    deleteMany?: RespondedSignalScalarWhereInput | RespondedSignalScalarWhereInput[]
   }
 
   export type NullableIntFieldUpdateOperationsInput = {
@@ -15946,18 +15946,18 @@ export namespace Prisma {
     deleteMany?: ResponseScalarWhereInput | ResponseScalarWhereInput[]
   }
 
-  export type WalkSignalUncheckedUpdateManyWithoutSignalNestedInput = {
-    create?: XOR<WalkSignalCreateWithoutSignalInput, WalkSignalUncheckedCreateWithoutSignalInput> | WalkSignalCreateWithoutSignalInput[] | WalkSignalUncheckedCreateWithoutSignalInput[]
-    connectOrCreate?: WalkSignalCreateOrConnectWithoutSignalInput | WalkSignalCreateOrConnectWithoutSignalInput[]
-    upsert?: WalkSignalUpsertWithWhereUniqueWithoutSignalInput | WalkSignalUpsertWithWhereUniqueWithoutSignalInput[]
-    createMany?: WalkSignalCreateManySignalInputEnvelope
-    set?: WalkSignalWhereUniqueInput | WalkSignalWhereUniqueInput[]
-    disconnect?: WalkSignalWhereUniqueInput | WalkSignalWhereUniqueInput[]
-    delete?: WalkSignalWhereUniqueInput | WalkSignalWhereUniqueInput[]
-    connect?: WalkSignalWhereUniqueInput | WalkSignalWhereUniqueInput[]
-    update?: WalkSignalUpdateWithWhereUniqueWithoutSignalInput | WalkSignalUpdateWithWhereUniqueWithoutSignalInput[]
-    updateMany?: WalkSignalUpdateManyWithWhereWithoutSignalInput | WalkSignalUpdateManyWithWhereWithoutSignalInput[]
-    deleteMany?: WalkSignalScalarWhereInput | WalkSignalScalarWhereInput[]
+  export type RespondedSignalUncheckedUpdateManyWithoutSignalNestedInput = {
+    create?: XOR<RespondedSignalCreateWithoutSignalInput, RespondedSignalUncheckedCreateWithoutSignalInput> | RespondedSignalCreateWithoutSignalInput[] | RespondedSignalUncheckedCreateWithoutSignalInput[]
+    connectOrCreate?: RespondedSignalCreateOrConnectWithoutSignalInput | RespondedSignalCreateOrConnectWithoutSignalInput[]
+    upsert?: RespondedSignalUpsertWithWhereUniqueWithoutSignalInput | RespondedSignalUpsertWithWhereUniqueWithoutSignalInput[]
+    createMany?: RespondedSignalCreateManySignalInputEnvelope
+    set?: RespondedSignalWhereUniqueInput | RespondedSignalWhereUniqueInput[]
+    disconnect?: RespondedSignalWhereUniqueInput | RespondedSignalWhereUniqueInput[]
+    delete?: RespondedSignalWhereUniqueInput | RespondedSignalWhereUniqueInput[]
+    connect?: RespondedSignalWhereUniqueInput | RespondedSignalWhereUniqueInput[]
+    update?: RespondedSignalUpdateWithWhereUniqueWithoutSignalInput | RespondedSignalUpdateWithWhereUniqueWithoutSignalInput[]
+    updateMany?: RespondedSignalUpdateManyWithWhereWithoutSignalInput | RespondedSignalUpdateManyWithWhereWithoutSignalInput[]
+    deleteMany?: RespondedSignalScalarWhereInput | RespondedSignalScalarWhereInput[]
   }
 
   export type SignalCreateNestedOneWithoutResponsesInput = {
@@ -15972,18 +15972,18 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
-  export type WalkSignalCreateNestedManyWithoutResponseInput = {
-    create?: XOR<WalkSignalCreateWithoutResponseInput, WalkSignalUncheckedCreateWithoutResponseInput> | WalkSignalCreateWithoutResponseInput[] | WalkSignalUncheckedCreateWithoutResponseInput[]
-    connectOrCreate?: WalkSignalCreateOrConnectWithoutResponseInput | WalkSignalCreateOrConnectWithoutResponseInput[]
-    createMany?: WalkSignalCreateManyResponseInputEnvelope
-    connect?: WalkSignalWhereUniqueInput | WalkSignalWhereUniqueInput[]
+  export type RespondedSignalCreateNestedManyWithoutResponseInput = {
+    create?: XOR<RespondedSignalCreateWithoutResponseInput, RespondedSignalUncheckedCreateWithoutResponseInput> | RespondedSignalCreateWithoutResponseInput[] | RespondedSignalUncheckedCreateWithoutResponseInput[]
+    connectOrCreate?: RespondedSignalCreateOrConnectWithoutResponseInput | RespondedSignalCreateOrConnectWithoutResponseInput[]
+    createMany?: RespondedSignalCreateManyResponseInputEnvelope
+    connect?: RespondedSignalWhereUniqueInput | RespondedSignalWhereUniqueInput[]
   }
 
-  export type WalkSignalUncheckedCreateNestedManyWithoutResponseInput = {
-    create?: XOR<WalkSignalCreateWithoutResponseInput, WalkSignalUncheckedCreateWithoutResponseInput> | WalkSignalCreateWithoutResponseInput[] | WalkSignalUncheckedCreateWithoutResponseInput[]
-    connectOrCreate?: WalkSignalCreateOrConnectWithoutResponseInput | WalkSignalCreateOrConnectWithoutResponseInput[]
-    createMany?: WalkSignalCreateManyResponseInputEnvelope
-    connect?: WalkSignalWhereUniqueInput | WalkSignalWhereUniqueInput[]
+  export type RespondedSignalUncheckedCreateNestedManyWithoutResponseInput = {
+    create?: XOR<RespondedSignalCreateWithoutResponseInput, RespondedSignalUncheckedCreateWithoutResponseInput> | RespondedSignalCreateWithoutResponseInput[] | RespondedSignalUncheckedCreateWithoutResponseInput[]
+    connectOrCreate?: RespondedSignalCreateOrConnectWithoutResponseInput | RespondedSignalCreateOrConnectWithoutResponseInput[]
+    createMany?: RespondedSignalCreateManyResponseInputEnvelope
+    connect?: RespondedSignalWhereUniqueInput | RespondedSignalWhereUniqueInput[]
   }
 
   export type SignalUpdateOneRequiredWithoutResponsesNestedInput = {
@@ -16002,32 +16002,32 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutResponsesInput, UserUpdateWithoutResponsesInput>, UserUncheckedUpdateWithoutResponsesInput>
   }
 
-  export type WalkSignalUpdateManyWithoutResponseNestedInput = {
-    create?: XOR<WalkSignalCreateWithoutResponseInput, WalkSignalUncheckedCreateWithoutResponseInput> | WalkSignalCreateWithoutResponseInput[] | WalkSignalUncheckedCreateWithoutResponseInput[]
-    connectOrCreate?: WalkSignalCreateOrConnectWithoutResponseInput | WalkSignalCreateOrConnectWithoutResponseInput[]
-    upsert?: WalkSignalUpsertWithWhereUniqueWithoutResponseInput | WalkSignalUpsertWithWhereUniqueWithoutResponseInput[]
-    createMany?: WalkSignalCreateManyResponseInputEnvelope
-    set?: WalkSignalWhereUniqueInput | WalkSignalWhereUniqueInput[]
-    disconnect?: WalkSignalWhereUniqueInput | WalkSignalWhereUniqueInput[]
-    delete?: WalkSignalWhereUniqueInput | WalkSignalWhereUniqueInput[]
-    connect?: WalkSignalWhereUniqueInput | WalkSignalWhereUniqueInput[]
-    update?: WalkSignalUpdateWithWhereUniqueWithoutResponseInput | WalkSignalUpdateWithWhereUniqueWithoutResponseInput[]
-    updateMany?: WalkSignalUpdateManyWithWhereWithoutResponseInput | WalkSignalUpdateManyWithWhereWithoutResponseInput[]
-    deleteMany?: WalkSignalScalarWhereInput | WalkSignalScalarWhereInput[]
+  export type RespondedSignalUpdateManyWithoutResponseNestedInput = {
+    create?: XOR<RespondedSignalCreateWithoutResponseInput, RespondedSignalUncheckedCreateWithoutResponseInput> | RespondedSignalCreateWithoutResponseInput[] | RespondedSignalUncheckedCreateWithoutResponseInput[]
+    connectOrCreate?: RespondedSignalCreateOrConnectWithoutResponseInput | RespondedSignalCreateOrConnectWithoutResponseInput[]
+    upsert?: RespondedSignalUpsertWithWhereUniqueWithoutResponseInput | RespondedSignalUpsertWithWhereUniqueWithoutResponseInput[]
+    createMany?: RespondedSignalCreateManyResponseInputEnvelope
+    set?: RespondedSignalWhereUniqueInput | RespondedSignalWhereUniqueInput[]
+    disconnect?: RespondedSignalWhereUniqueInput | RespondedSignalWhereUniqueInput[]
+    delete?: RespondedSignalWhereUniqueInput | RespondedSignalWhereUniqueInput[]
+    connect?: RespondedSignalWhereUniqueInput | RespondedSignalWhereUniqueInput[]
+    update?: RespondedSignalUpdateWithWhereUniqueWithoutResponseInput | RespondedSignalUpdateWithWhereUniqueWithoutResponseInput[]
+    updateMany?: RespondedSignalUpdateManyWithWhereWithoutResponseInput | RespondedSignalUpdateManyWithWhereWithoutResponseInput[]
+    deleteMany?: RespondedSignalScalarWhereInput | RespondedSignalScalarWhereInput[]
   }
 
-  export type WalkSignalUncheckedUpdateManyWithoutResponseNestedInput = {
-    create?: XOR<WalkSignalCreateWithoutResponseInput, WalkSignalUncheckedCreateWithoutResponseInput> | WalkSignalCreateWithoutResponseInput[] | WalkSignalUncheckedCreateWithoutResponseInput[]
-    connectOrCreate?: WalkSignalCreateOrConnectWithoutResponseInput | WalkSignalCreateOrConnectWithoutResponseInput[]
-    upsert?: WalkSignalUpsertWithWhereUniqueWithoutResponseInput | WalkSignalUpsertWithWhereUniqueWithoutResponseInput[]
-    createMany?: WalkSignalCreateManyResponseInputEnvelope
-    set?: WalkSignalWhereUniqueInput | WalkSignalWhereUniqueInput[]
-    disconnect?: WalkSignalWhereUniqueInput | WalkSignalWhereUniqueInput[]
-    delete?: WalkSignalWhereUniqueInput | WalkSignalWhereUniqueInput[]
-    connect?: WalkSignalWhereUniqueInput | WalkSignalWhereUniqueInput[]
-    update?: WalkSignalUpdateWithWhereUniqueWithoutResponseInput | WalkSignalUpdateWithWhereUniqueWithoutResponseInput[]
-    updateMany?: WalkSignalUpdateManyWithWhereWithoutResponseInput | WalkSignalUpdateManyWithWhereWithoutResponseInput[]
-    deleteMany?: WalkSignalScalarWhereInput | WalkSignalScalarWhereInput[]
+  export type RespondedSignalUncheckedUpdateManyWithoutResponseNestedInput = {
+    create?: XOR<RespondedSignalCreateWithoutResponseInput, RespondedSignalUncheckedCreateWithoutResponseInput> | RespondedSignalCreateWithoutResponseInput[] | RespondedSignalUncheckedCreateWithoutResponseInput[]
+    connectOrCreate?: RespondedSignalCreateOrConnectWithoutResponseInput | RespondedSignalCreateOrConnectWithoutResponseInput[]
+    upsert?: RespondedSignalUpsertWithWhereUniqueWithoutResponseInput | RespondedSignalUpsertWithWhereUniqueWithoutResponseInput[]
+    createMany?: RespondedSignalCreateManyResponseInputEnvelope
+    set?: RespondedSignalWhereUniqueInput | RespondedSignalWhereUniqueInput[]
+    disconnect?: RespondedSignalWhereUniqueInput | RespondedSignalWhereUniqueInput[]
+    delete?: RespondedSignalWhereUniqueInput | RespondedSignalWhereUniqueInput[]
+    connect?: RespondedSignalWhereUniqueInput | RespondedSignalWhereUniqueInput[]
+    update?: RespondedSignalUpdateWithWhereUniqueWithoutResponseInput | RespondedSignalUpdateWithWhereUniqueWithoutResponseInput[]
+    updateMany?: RespondedSignalUpdateManyWithWhereWithoutResponseInput | RespondedSignalUpdateManyWithWhereWithoutResponseInput[]
+    deleteMany?: RespondedSignalScalarWhereInput | RespondedSignalScalarWhereInput[]
   }
 
   export type UserCreateNestedOneWithoutRoutesInput = {
@@ -16230,18 +16230,18 @@ export namespace Prisma {
     connect?: WalkSessionWhereUniqueInput
   }
 
-  export type WalkSignalCreateNestedManyWithoutWalkLogInput = {
-    create?: XOR<WalkSignalCreateWithoutWalkLogInput, WalkSignalUncheckedCreateWithoutWalkLogInput> | WalkSignalCreateWithoutWalkLogInput[] | WalkSignalUncheckedCreateWithoutWalkLogInput[]
-    connectOrCreate?: WalkSignalCreateOrConnectWithoutWalkLogInput | WalkSignalCreateOrConnectWithoutWalkLogInput[]
-    createMany?: WalkSignalCreateManyWalkLogInputEnvelope
-    connect?: WalkSignalWhereUniqueInput | WalkSignalWhereUniqueInput[]
+  export type RespondedSignalCreateNestedManyWithoutWalkLogInput = {
+    create?: XOR<RespondedSignalCreateWithoutWalkLogInput, RespondedSignalUncheckedCreateWithoutWalkLogInput> | RespondedSignalCreateWithoutWalkLogInput[] | RespondedSignalUncheckedCreateWithoutWalkLogInput[]
+    connectOrCreate?: RespondedSignalCreateOrConnectWithoutWalkLogInput | RespondedSignalCreateOrConnectWithoutWalkLogInput[]
+    createMany?: RespondedSignalCreateManyWalkLogInputEnvelope
+    connect?: RespondedSignalWhereUniqueInput | RespondedSignalWhereUniqueInput[]
   }
 
-  export type WalkSignalUncheckedCreateNestedManyWithoutWalkLogInput = {
-    create?: XOR<WalkSignalCreateWithoutWalkLogInput, WalkSignalUncheckedCreateWithoutWalkLogInput> | WalkSignalCreateWithoutWalkLogInput[] | WalkSignalUncheckedCreateWithoutWalkLogInput[]
-    connectOrCreate?: WalkSignalCreateOrConnectWithoutWalkLogInput | WalkSignalCreateOrConnectWithoutWalkLogInput[]
-    createMany?: WalkSignalCreateManyWalkLogInputEnvelope
-    connect?: WalkSignalWhereUniqueInput | WalkSignalWhereUniqueInput[]
+  export type RespondedSignalUncheckedCreateNestedManyWithoutWalkLogInput = {
+    create?: XOR<RespondedSignalCreateWithoutWalkLogInput, RespondedSignalUncheckedCreateWithoutWalkLogInput> | RespondedSignalCreateWithoutWalkLogInput[] | RespondedSignalUncheckedCreateWithoutWalkLogInput[]
+    connectOrCreate?: RespondedSignalCreateOrConnectWithoutWalkLogInput | RespondedSignalCreateOrConnectWithoutWalkLogInput[]
+    createMany?: RespondedSignalCreateManyWalkLogInputEnvelope
+    connect?: RespondedSignalWhereUniqueInput | RespondedSignalWhereUniqueInput[]
   }
 
   export type WalkSessionUpdateOneRequiredWithoutWalkLogNestedInput = {
@@ -16252,74 +16252,74 @@ export namespace Prisma {
     update?: XOR<XOR<WalkSessionUpdateToOneWithWhereWithoutWalkLogInput, WalkSessionUpdateWithoutWalkLogInput>, WalkSessionUncheckedUpdateWithoutWalkLogInput>
   }
 
-  export type WalkSignalUpdateManyWithoutWalkLogNestedInput = {
-    create?: XOR<WalkSignalCreateWithoutWalkLogInput, WalkSignalUncheckedCreateWithoutWalkLogInput> | WalkSignalCreateWithoutWalkLogInput[] | WalkSignalUncheckedCreateWithoutWalkLogInput[]
-    connectOrCreate?: WalkSignalCreateOrConnectWithoutWalkLogInput | WalkSignalCreateOrConnectWithoutWalkLogInput[]
-    upsert?: WalkSignalUpsertWithWhereUniqueWithoutWalkLogInput | WalkSignalUpsertWithWhereUniqueWithoutWalkLogInput[]
-    createMany?: WalkSignalCreateManyWalkLogInputEnvelope
-    set?: WalkSignalWhereUniqueInput | WalkSignalWhereUniqueInput[]
-    disconnect?: WalkSignalWhereUniqueInput | WalkSignalWhereUniqueInput[]
-    delete?: WalkSignalWhereUniqueInput | WalkSignalWhereUniqueInput[]
-    connect?: WalkSignalWhereUniqueInput | WalkSignalWhereUniqueInput[]
-    update?: WalkSignalUpdateWithWhereUniqueWithoutWalkLogInput | WalkSignalUpdateWithWhereUniqueWithoutWalkLogInput[]
-    updateMany?: WalkSignalUpdateManyWithWhereWithoutWalkLogInput | WalkSignalUpdateManyWithWhereWithoutWalkLogInput[]
-    deleteMany?: WalkSignalScalarWhereInput | WalkSignalScalarWhereInput[]
+  export type RespondedSignalUpdateManyWithoutWalkLogNestedInput = {
+    create?: XOR<RespondedSignalCreateWithoutWalkLogInput, RespondedSignalUncheckedCreateWithoutWalkLogInput> | RespondedSignalCreateWithoutWalkLogInput[] | RespondedSignalUncheckedCreateWithoutWalkLogInput[]
+    connectOrCreate?: RespondedSignalCreateOrConnectWithoutWalkLogInput | RespondedSignalCreateOrConnectWithoutWalkLogInput[]
+    upsert?: RespondedSignalUpsertWithWhereUniqueWithoutWalkLogInput | RespondedSignalUpsertWithWhereUniqueWithoutWalkLogInput[]
+    createMany?: RespondedSignalCreateManyWalkLogInputEnvelope
+    set?: RespondedSignalWhereUniqueInput | RespondedSignalWhereUniqueInput[]
+    disconnect?: RespondedSignalWhereUniqueInput | RespondedSignalWhereUniqueInput[]
+    delete?: RespondedSignalWhereUniqueInput | RespondedSignalWhereUniqueInput[]
+    connect?: RespondedSignalWhereUniqueInput | RespondedSignalWhereUniqueInput[]
+    update?: RespondedSignalUpdateWithWhereUniqueWithoutWalkLogInput | RespondedSignalUpdateWithWhereUniqueWithoutWalkLogInput[]
+    updateMany?: RespondedSignalUpdateManyWithWhereWithoutWalkLogInput | RespondedSignalUpdateManyWithWhereWithoutWalkLogInput[]
+    deleteMany?: RespondedSignalScalarWhereInput | RespondedSignalScalarWhereInput[]
   }
 
-  export type WalkSignalUncheckedUpdateManyWithoutWalkLogNestedInput = {
-    create?: XOR<WalkSignalCreateWithoutWalkLogInput, WalkSignalUncheckedCreateWithoutWalkLogInput> | WalkSignalCreateWithoutWalkLogInput[] | WalkSignalUncheckedCreateWithoutWalkLogInput[]
-    connectOrCreate?: WalkSignalCreateOrConnectWithoutWalkLogInput | WalkSignalCreateOrConnectWithoutWalkLogInput[]
-    upsert?: WalkSignalUpsertWithWhereUniqueWithoutWalkLogInput | WalkSignalUpsertWithWhereUniqueWithoutWalkLogInput[]
-    createMany?: WalkSignalCreateManyWalkLogInputEnvelope
-    set?: WalkSignalWhereUniqueInput | WalkSignalWhereUniqueInput[]
-    disconnect?: WalkSignalWhereUniqueInput | WalkSignalWhereUniqueInput[]
-    delete?: WalkSignalWhereUniqueInput | WalkSignalWhereUniqueInput[]
-    connect?: WalkSignalWhereUniqueInput | WalkSignalWhereUniqueInput[]
-    update?: WalkSignalUpdateWithWhereUniqueWithoutWalkLogInput | WalkSignalUpdateWithWhereUniqueWithoutWalkLogInput[]
-    updateMany?: WalkSignalUpdateManyWithWhereWithoutWalkLogInput | WalkSignalUpdateManyWithWhereWithoutWalkLogInput[]
-    deleteMany?: WalkSignalScalarWhereInput | WalkSignalScalarWhereInput[]
+  export type RespondedSignalUncheckedUpdateManyWithoutWalkLogNestedInput = {
+    create?: XOR<RespondedSignalCreateWithoutWalkLogInput, RespondedSignalUncheckedCreateWithoutWalkLogInput> | RespondedSignalCreateWithoutWalkLogInput[] | RespondedSignalUncheckedCreateWithoutWalkLogInput[]
+    connectOrCreate?: RespondedSignalCreateOrConnectWithoutWalkLogInput | RespondedSignalCreateOrConnectWithoutWalkLogInput[]
+    upsert?: RespondedSignalUpsertWithWhereUniqueWithoutWalkLogInput | RespondedSignalUpsertWithWhereUniqueWithoutWalkLogInput[]
+    createMany?: RespondedSignalCreateManyWalkLogInputEnvelope
+    set?: RespondedSignalWhereUniqueInput | RespondedSignalWhereUniqueInput[]
+    disconnect?: RespondedSignalWhereUniqueInput | RespondedSignalWhereUniqueInput[]
+    delete?: RespondedSignalWhereUniqueInput | RespondedSignalWhereUniqueInput[]
+    connect?: RespondedSignalWhereUniqueInput | RespondedSignalWhereUniqueInput[]
+    update?: RespondedSignalUpdateWithWhereUniqueWithoutWalkLogInput | RespondedSignalUpdateWithWhereUniqueWithoutWalkLogInput[]
+    updateMany?: RespondedSignalUpdateManyWithWhereWithoutWalkLogInput | RespondedSignalUpdateManyWithWhereWithoutWalkLogInput[]
+    deleteMany?: RespondedSignalScalarWhereInput | RespondedSignalScalarWhereInput[]
   }
 
-  export type WalkLogCreateNestedOneWithoutSignalsInput = {
-    create?: XOR<WalkLogCreateWithoutSignalsInput, WalkLogUncheckedCreateWithoutSignalsInput>
-    connectOrCreate?: WalkLogCreateOrConnectWithoutSignalsInput
+  export type WalkLogCreateNestedOneWithoutRespondedSignalsInput = {
+    create?: XOR<WalkLogCreateWithoutRespondedSignalsInput, WalkLogUncheckedCreateWithoutRespondedSignalsInput>
+    connectOrCreate?: WalkLogCreateOrConnectWithoutRespondedSignalsInput
     connect?: WalkLogWhereUniqueInput
   }
 
-  export type SignalCreateNestedOneWithoutWalkSignalsInput = {
-    create?: XOR<SignalCreateWithoutWalkSignalsInput, SignalUncheckedCreateWithoutWalkSignalsInput>
-    connectOrCreate?: SignalCreateOrConnectWithoutWalkSignalsInput
+  export type SignalCreateNestedOneWithoutRespondedSignalsInput = {
+    create?: XOR<SignalCreateWithoutRespondedSignalsInput, SignalUncheckedCreateWithoutRespondedSignalsInput>
+    connectOrCreate?: SignalCreateOrConnectWithoutRespondedSignalsInput
     connect?: SignalWhereUniqueInput
   }
 
-  export type ResponseCreateNestedOneWithoutWalkSignalsInput = {
-    create?: XOR<ResponseCreateWithoutWalkSignalsInput, ResponseUncheckedCreateWithoutWalkSignalsInput>
-    connectOrCreate?: ResponseCreateOrConnectWithoutWalkSignalsInput
+  export type ResponseCreateNestedOneWithoutRespondedSignalsInput = {
+    create?: XOR<ResponseCreateWithoutRespondedSignalsInput, ResponseUncheckedCreateWithoutRespondedSignalsInput>
+    connectOrCreate?: ResponseCreateOrConnectWithoutRespondedSignalsInput
     connect?: ResponseWhereUniqueInput
   }
 
-  export type WalkLogUpdateOneRequiredWithoutSignalsNestedInput = {
-    create?: XOR<WalkLogCreateWithoutSignalsInput, WalkLogUncheckedCreateWithoutSignalsInput>
-    connectOrCreate?: WalkLogCreateOrConnectWithoutSignalsInput
-    upsert?: WalkLogUpsertWithoutSignalsInput
+  export type WalkLogUpdateOneRequiredWithoutRespondedSignalsNestedInput = {
+    create?: XOR<WalkLogCreateWithoutRespondedSignalsInput, WalkLogUncheckedCreateWithoutRespondedSignalsInput>
+    connectOrCreate?: WalkLogCreateOrConnectWithoutRespondedSignalsInput
+    upsert?: WalkLogUpsertWithoutRespondedSignalsInput
     connect?: WalkLogWhereUniqueInput
-    update?: XOR<XOR<WalkLogUpdateToOneWithWhereWithoutSignalsInput, WalkLogUpdateWithoutSignalsInput>, WalkLogUncheckedUpdateWithoutSignalsInput>
+    update?: XOR<XOR<WalkLogUpdateToOneWithWhereWithoutRespondedSignalsInput, WalkLogUpdateWithoutRespondedSignalsInput>, WalkLogUncheckedUpdateWithoutRespondedSignalsInput>
   }
 
-  export type SignalUpdateOneRequiredWithoutWalkSignalsNestedInput = {
-    create?: XOR<SignalCreateWithoutWalkSignalsInput, SignalUncheckedCreateWithoutWalkSignalsInput>
-    connectOrCreate?: SignalCreateOrConnectWithoutWalkSignalsInput
-    upsert?: SignalUpsertWithoutWalkSignalsInput
+  export type SignalUpdateOneRequiredWithoutRespondedSignalsNestedInput = {
+    create?: XOR<SignalCreateWithoutRespondedSignalsInput, SignalUncheckedCreateWithoutRespondedSignalsInput>
+    connectOrCreate?: SignalCreateOrConnectWithoutRespondedSignalsInput
+    upsert?: SignalUpsertWithoutRespondedSignalsInput
     connect?: SignalWhereUniqueInput
-    update?: XOR<XOR<SignalUpdateToOneWithWhereWithoutWalkSignalsInput, SignalUpdateWithoutWalkSignalsInput>, SignalUncheckedUpdateWithoutWalkSignalsInput>
+    update?: XOR<XOR<SignalUpdateToOneWithWhereWithoutRespondedSignalsInput, SignalUpdateWithoutRespondedSignalsInput>, SignalUncheckedUpdateWithoutRespondedSignalsInput>
   }
 
-  export type ResponseUpdateOneRequiredWithoutWalkSignalsNestedInput = {
-    create?: XOR<ResponseCreateWithoutWalkSignalsInput, ResponseUncheckedCreateWithoutWalkSignalsInput>
-    connectOrCreate?: ResponseCreateOrConnectWithoutWalkSignalsInput
-    upsert?: ResponseUpsertWithoutWalkSignalsInput
+  export type ResponseUpdateOneRequiredWithoutRespondedSignalsNestedInput = {
+    create?: XOR<ResponseCreateWithoutRespondedSignalsInput, ResponseUncheckedCreateWithoutRespondedSignalsInput>
+    connectOrCreate?: ResponseCreateOrConnectWithoutRespondedSignalsInput
+    upsert?: ResponseUpsertWithoutRespondedSignalsInput
     connect?: ResponseWhereUniqueInput
-    update?: XOR<XOR<ResponseUpdateToOneWithWhereWithoutWalkSignalsInput, ResponseUpdateWithoutWalkSignalsInput>, ResponseUncheckedUpdateWithoutWalkSignalsInput>
+    update?: XOR<XOR<ResponseUpdateToOneWithWhereWithoutRespondedSignalsInput, ResponseUpdateWithoutRespondedSignalsInput>, ResponseUncheckedUpdateWithoutRespondedSignalsInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -16569,7 +16569,7 @@ export namespace Prisma {
     selectedUser?: UserCreateNestedOneWithoutSelectedSignalsInput
     category: SignalCategoryCreateNestedOneWithoutSignalsInput
     responses?: ResponseCreateNestedManyWithoutSignalInput
-    walkSignals?: WalkSignalCreateNestedManyWithoutSignalInput
+    respondedSignals?: RespondedSignalCreateNestedManyWithoutSignalInput
   }
 
   export type SignalUncheckedCreateWithoutUserInput = {
@@ -16584,7 +16584,7 @@ export namespace Prisma {
     status?: $Enums.SignalStatus
     selectedUserId?: number | null
     responses?: ResponseUncheckedCreateNestedManyWithoutSignalInput
-    walkSignals?: WalkSignalUncheckedCreateNestedManyWithoutSignalInput
+    respondedSignals?: RespondedSignalUncheckedCreateNestedManyWithoutSignalInput
   }
 
   export type SignalCreateOrConnectWithoutUserInput = {
@@ -16608,7 +16608,7 @@ export namespace Prisma {
     user: UserCreateNestedOneWithoutSignalsInput
     category: SignalCategoryCreateNestedOneWithoutSignalsInput
     responses?: ResponseCreateNestedManyWithoutSignalInput
-    walkSignals?: WalkSignalCreateNestedManyWithoutSignalInput
+    respondedSignals?: RespondedSignalCreateNestedManyWithoutSignalInput
   }
 
   export type SignalUncheckedCreateWithoutSelectedUserInput = {
@@ -16623,7 +16623,7 @@ export namespace Prisma {
     timeLimit: number
     status?: $Enums.SignalStatus
     responses?: ResponseUncheckedCreateNestedManyWithoutSignalInput
-    walkSignals?: WalkSignalUncheckedCreateNestedManyWithoutSignalInput
+    respondedSignals?: RespondedSignalUncheckedCreateNestedManyWithoutSignalInput
   }
 
   export type SignalCreateOrConnectWithoutSelectedUserInput = {
@@ -16640,7 +16640,7 @@ export namespace Prisma {
     message: string
     respondedAt?: Date | string
     signal: SignalCreateNestedOneWithoutResponsesInput
-    walkSignals?: WalkSignalCreateNestedManyWithoutResponseInput
+    respondedSignals?: RespondedSignalCreateNestedManyWithoutResponseInput
   }
 
   export type ResponseUncheckedCreateWithoutUserInput = {
@@ -16648,7 +16648,7 @@ export namespace Prisma {
     signalId: number
     message: string
     respondedAt?: Date | string
-    walkSignals?: WalkSignalUncheckedCreateNestedManyWithoutResponseInput
+    respondedSignals?: RespondedSignalUncheckedCreateNestedManyWithoutResponseInput
   }
 
   export type ResponseCreateOrConnectWithoutUserInput = {
@@ -16876,7 +16876,7 @@ export namespace Prisma {
     user: UserCreateNestedOneWithoutSignalsInput
     selectedUser?: UserCreateNestedOneWithoutSelectedSignalsInput
     responses?: ResponseCreateNestedManyWithoutSignalInput
-    walkSignals?: WalkSignalCreateNestedManyWithoutSignalInput
+    respondedSignals?: RespondedSignalCreateNestedManyWithoutSignalInput
   }
 
   export type SignalUncheckedCreateWithoutCategoryInput = {
@@ -16891,7 +16891,7 @@ export namespace Prisma {
     status?: $Enums.SignalStatus
     selectedUserId?: number | null
     responses?: ResponseUncheckedCreateNestedManyWithoutSignalInput
-    walkSignals?: WalkSignalUncheckedCreateNestedManyWithoutSignalInput
+    respondedSignals?: RespondedSignalUncheckedCreateNestedManyWithoutSignalInput
   }
 
   export type SignalCreateOrConnectWithoutCategoryInput = {
@@ -16986,7 +16986,7 @@ export namespace Prisma {
     message: string
     respondedAt?: Date | string
     user: UserCreateNestedOneWithoutResponsesInput
-    walkSignals?: WalkSignalCreateNestedManyWithoutResponseInput
+    respondedSignals?: RespondedSignalCreateNestedManyWithoutResponseInput
   }
 
   export type ResponseUncheckedCreateWithoutSignalInput = {
@@ -16994,7 +16994,7 @@ export namespace Prisma {
     userId: number
     message: string
     respondedAt?: Date | string
-    walkSignals?: WalkSignalUncheckedCreateNestedManyWithoutResponseInput
+    respondedSignals?: RespondedSignalUncheckedCreateNestedManyWithoutResponseInput
   }
 
   export type ResponseCreateOrConnectWithoutSignalInput = {
@@ -17007,26 +17007,26 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type WalkSignalCreateWithoutSignalInput = {
+  export type RespondedSignalCreateWithoutSignalInput = {
     respondedAt?: Date | string
-    walkLog: WalkLogCreateNestedOneWithoutSignalsInput
-    response: ResponseCreateNestedOneWithoutWalkSignalsInput
+    walkLog: WalkLogCreateNestedOneWithoutRespondedSignalsInput
+    response: ResponseCreateNestedOneWithoutRespondedSignalsInput
   }
 
-  export type WalkSignalUncheckedCreateWithoutSignalInput = {
+  export type RespondedSignalUncheckedCreateWithoutSignalInput = {
     id?: number
     walkLogId: number
     responseId: number
     respondedAt?: Date | string
   }
 
-  export type WalkSignalCreateOrConnectWithoutSignalInput = {
-    where: WalkSignalWhereUniqueInput
-    create: XOR<WalkSignalCreateWithoutSignalInput, WalkSignalUncheckedCreateWithoutSignalInput>
+  export type RespondedSignalCreateOrConnectWithoutSignalInput = {
+    where: RespondedSignalWhereUniqueInput
+    create: XOR<RespondedSignalCreateWithoutSignalInput, RespondedSignalUncheckedCreateWithoutSignalInput>
   }
 
-  export type WalkSignalCreateManySignalInputEnvelope = {
-    data: WalkSignalCreateManySignalInput | WalkSignalCreateManySignalInput[]
+  export type RespondedSignalCreateManySignalInputEnvelope = {
+    data: RespondedSignalCreateManySignalInput | RespondedSignalCreateManySignalInput[]
     skipDuplicates?: boolean
   }
 
@@ -17126,31 +17126,31 @@ export namespace Prisma {
     data: XOR<ResponseUpdateManyMutationInput, ResponseUncheckedUpdateManyWithoutSignalInput>
   }
 
-  export type WalkSignalUpsertWithWhereUniqueWithoutSignalInput = {
-    where: WalkSignalWhereUniqueInput
-    update: XOR<WalkSignalUpdateWithoutSignalInput, WalkSignalUncheckedUpdateWithoutSignalInput>
-    create: XOR<WalkSignalCreateWithoutSignalInput, WalkSignalUncheckedCreateWithoutSignalInput>
+  export type RespondedSignalUpsertWithWhereUniqueWithoutSignalInput = {
+    where: RespondedSignalWhereUniqueInput
+    update: XOR<RespondedSignalUpdateWithoutSignalInput, RespondedSignalUncheckedUpdateWithoutSignalInput>
+    create: XOR<RespondedSignalCreateWithoutSignalInput, RespondedSignalUncheckedCreateWithoutSignalInput>
   }
 
-  export type WalkSignalUpdateWithWhereUniqueWithoutSignalInput = {
-    where: WalkSignalWhereUniqueInput
-    data: XOR<WalkSignalUpdateWithoutSignalInput, WalkSignalUncheckedUpdateWithoutSignalInput>
+  export type RespondedSignalUpdateWithWhereUniqueWithoutSignalInput = {
+    where: RespondedSignalWhereUniqueInput
+    data: XOR<RespondedSignalUpdateWithoutSignalInput, RespondedSignalUncheckedUpdateWithoutSignalInput>
   }
 
-  export type WalkSignalUpdateManyWithWhereWithoutSignalInput = {
-    where: WalkSignalScalarWhereInput
-    data: XOR<WalkSignalUpdateManyMutationInput, WalkSignalUncheckedUpdateManyWithoutSignalInput>
+  export type RespondedSignalUpdateManyWithWhereWithoutSignalInput = {
+    where: RespondedSignalScalarWhereInput
+    data: XOR<RespondedSignalUpdateManyMutationInput, RespondedSignalUncheckedUpdateManyWithoutSignalInput>
   }
 
-  export type WalkSignalScalarWhereInput = {
-    AND?: WalkSignalScalarWhereInput | WalkSignalScalarWhereInput[]
-    OR?: WalkSignalScalarWhereInput[]
-    NOT?: WalkSignalScalarWhereInput | WalkSignalScalarWhereInput[]
-    id?: IntFilter<"WalkSignal"> | number
-    walkLogId?: IntFilter<"WalkSignal"> | number
-    signalId?: IntFilter<"WalkSignal"> | number
-    responseId?: IntFilter<"WalkSignal"> | number
-    respondedAt?: DateTimeFilter<"WalkSignal"> | Date | string
+  export type RespondedSignalScalarWhereInput = {
+    AND?: RespondedSignalScalarWhereInput | RespondedSignalScalarWhereInput[]
+    OR?: RespondedSignalScalarWhereInput[]
+    NOT?: RespondedSignalScalarWhereInput | RespondedSignalScalarWhereInput[]
+    id?: IntFilter<"RespondedSignal"> | number
+    walkLogId?: IntFilter<"RespondedSignal"> | number
+    signalId?: IntFilter<"RespondedSignal"> | number
+    responseId?: IntFilter<"RespondedSignal"> | number
+    respondedAt?: DateTimeFilter<"RespondedSignal"> | Date | string
   }
 
   export type SignalCreateWithoutResponsesInput = {
@@ -17164,7 +17164,7 @@ export namespace Prisma {
     user: UserCreateNestedOneWithoutSignalsInput
     selectedUser?: UserCreateNestedOneWithoutSelectedSignalsInput
     category: SignalCategoryCreateNestedOneWithoutSignalsInput
-    walkSignals?: WalkSignalCreateNestedManyWithoutSignalInput
+    respondedSignals?: RespondedSignalCreateNestedManyWithoutSignalInput
   }
 
   export type SignalUncheckedCreateWithoutResponsesInput = {
@@ -17179,7 +17179,7 @@ export namespace Prisma {
     timeLimit: number
     status?: $Enums.SignalStatus
     selectedUserId?: number | null
-    walkSignals?: WalkSignalUncheckedCreateNestedManyWithoutSignalInput
+    respondedSignals?: RespondedSignalUncheckedCreateNestedManyWithoutSignalInput
   }
 
   export type SignalCreateOrConnectWithoutResponsesInput = {
@@ -17211,26 +17211,26 @@ export namespace Prisma {
     create: XOR<UserCreateWithoutResponsesInput, UserUncheckedCreateWithoutResponsesInput>
   }
 
-  export type WalkSignalCreateWithoutResponseInput = {
+  export type RespondedSignalCreateWithoutResponseInput = {
     respondedAt?: Date | string
-    walkLog: WalkLogCreateNestedOneWithoutSignalsInput
-    signal: SignalCreateNestedOneWithoutWalkSignalsInput
+    walkLog: WalkLogCreateNestedOneWithoutRespondedSignalsInput
+    signal: SignalCreateNestedOneWithoutRespondedSignalsInput
   }
 
-  export type WalkSignalUncheckedCreateWithoutResponseInput = {
+  export type RespondedSignalUncheckedCreateWithoutResponseInput = {
     id?: number
     walkLogId: number
     signalId: number
     respondedAt?: Date | string
   }
 
-  export type WalkSignalCreateOrConnectWithoutResponseInput = {
-    where: WalkSignalWhereUniqueInput
-    create: XOR<WalkSignalCreateWithoutResponseInput, WalkSignalUncheckedCreateWithoutResponseInput>
+  export type RespondedSignalCreateOrConnectWithoutResponseInput = {
+    where: RespondedSignalWhereUniqueInput
+    create: XOR<RespondedSignalCreateWithoutResponseInput, RespondedSignalUncheckedCreateWithoutResponseInput>
   }
 
-  export type WalkSignalCreateManyResponseInputEnvelope = {
-    data: WalkSignalCreateManyResponseInput | WalkSignalCreateManyResponseInput[]
+  export type RespondedSignalCreateManyResponseInputEnvelope = {
+    data: RespondedSignalCreateManyResponseInput | RespondedSignalCreateManyResponseInput[]
     skipDuplicates?: boolean
   }
 
@@ -17256,7 +17256,7 @@ export namespace Prisma {
     user?: UserUpdateOneRequiredWithoutSignalsNestedInput
     selectedUser?: UserUpdateOneWithoutSelectedSignalsNestedInput
     category?: SignalCategoryUpdateOneRequiredWithoutSignalsNestedInput
-    walkSignals?: WalkSignalUpdateManyWithoutSignalNestedInput
+    respondedSignals?: RespondedSignalUpdateManyWithoutSignalNestedInput
   }
 
   export type SignalUncheckedUpdateWithoutResponsesInput = {
@@ -17271,7 +17271,7 @@ export namespace Prisma {
     timeLimit?: IntFieldUpdateOperationsInput | number
     status?: EnumSignalStatusFieldUpdateOperationsInput | $Enums.SignalStatus
     selectedUserId?: NullableIntFieldUpdateOperationsInput | number | null
-    walkSignals?: WalkSignalUncheckedUpdateManyWithoutSignalNestedInput
+    respondedSignals?: RespondedSignalUncheckedUpdateManyWithoutSignalNestedInput
   }
 
   export type UserUpsertWithoutResponsesInput = {
@@ -17304,20 +17304,20 @@ export namespace Prisma {
     sessions?: WalkSessionUncheckedUpdateManyWithoutUserNestedInput
   }
 
-  export type WalkSignalUpsertWithWhereUniqueWithoutResponseInput = {
-    where: WalkSignalWhereUniqueInput
-    update: XOR<WalkSignalUpdateWithoutResponseInput, WalkSignalUncheckedUpdateWithoutResponseInput>
-    create: XOR<WalkSignalCreateWithoutResponseInput, WalkSignalUncheckedCreateWithoutResponseInput>
+  export type RespondedSignalUpsertWithWhereUniqueWithoutResponseInput = {
+    where: RespondedSignalWhereUniqueInput
+    update: XOR<RespondedSignalUpdateWithoutResponseInput, RespondedSignalUncheckedUpdateWithoutResponseInput>
+    create: XOR<RespondedSignalCreateWithoutResponseInput, RespondedSignalUncheckedCreateWithoutResponseInput>
   }
 
-  export type WalkSignalUpdateWithWhereUniqueWithoutResponseInput = {
-    where: WalkSignalWhereUniqueInput
-    data: XOR<WalkSignalUpdateWithoutResponseInput, WalkSignalUncheckedUpdateWithoutResponseInput>
+  export type RespondedSignalUpdateWithWhereUniqueWithoutResponseInput = {
+    where: RespondedSignalWhereUniqueInput
+    data: XOR<RespondedSignalUpdateWithoutResponseInput, RespondedSignalUncheckedUpdateWithoutResponseInput>
   }
 
-  export type WalkSignalUpdateManyWithWhereWithoutResponseInput = {
-    where: WalkSignalScalarWhereInput
-    data: XOR<WalkSignalUpdateManyMutationInput, WalkSignalUncheckedUpdateManyWithoutResponseInput>
+  export type RespondedSignalUpdateManyWithWhereWithoutResponseInput = {
+    where: RespondedSignalScalarWhereInput
+    data: XOR<RespondedSignalUpdateManyMutationInput, RespondedSignalUncheckedUpdateManyWithoutResponseInput>
   }
 
   export type UserCreateWithoutRoutesInput = {
@@ -17606,14 +17606,14 @@ export namespace Prisma {
   export type WalkLogCreateWithoutSessionInput = {
     distance: number
     walkedAt?: Date | string
-    signals?: WalkSignalCreateNestedManyWithoutWalkLogInput
+    respondedSignals?: RespondedSignalCreateNestedManyWithoutWalkLogInput
   }
 
   export type WalkLogUncheckedCreateWithoutSessionInput = {
     id?: number
     distance: number
     walkedAt?: Date | string
-    signals?: WalkSignalUncheckedCreateNestedManyWithoutWalkLogInput
+    respondedSignals?: RespondedSignalUncheckedCreateNestedManyWithoutWalkLogInput
   }
 
   export type WalkLogCreateOrConnectWithoutSessionInput = {
@@ -17695,14 +17695,14 @@ export namespace Prisma {
   export type WalkLogUpdateWithoutSessionInput = {
     distance?: FloatFieldUpdateOperationsInput | number
     walkedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    signals?: WalkSignalUpdateManyWithoutWalkLogNestedInput
+    respondedSignals?: RespondedSignalUpdateManyWithoutWalkLogNestedInput
   }
 
   export type WalkLogUncheckedUpdateWithoutSessionInput = {
     id?: IntFieldUpdateOperationsInput | number
     distance?: FloatFieldUpdateOperationsInput | number
     walkedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    signals?: WalkSignalUncheckedUpdateManyWithoutWalkLogNestedInput
+    respondedSignals?: RespondedSignalUncheckedUpdateManyWithoutWalkLogNestedInput
   }
 
   export type WalkSessionCreateWithoutWalkLogInput = {
@@ -17727,26 +17727,26 @@ export namespace Prisma {
     create: XOR<WalkSessionCreateWithoutWalkLogInput, WalkSessionUncheckedCreateWithoutWalkLogInput>
   }
 
-  export type WalkSignalCreateWithoutWalkLogInput = {
+  export type RespondedSignalCreateWithoutWalkLogInput = {
     respondedAt?: Date | string
-    signal: SignalCreateNestedOneWithoutWalkSignalsInput
-    response: ResponseCreateNestedOneWithoutWalkSignalsInput
+    signal: SignalCreateNestedOneWithoutRespondedSignalsInput
+    response: ResponseCreateNestedOneWithoutRespondedSignalsInput
   }
 
-  export type WalkSignalUncheckedCreateWithoutWalkLogInput = {
+  export type RespondedSignalUncheckedCreateWithoutWalkLogInput = {
     id?: number
     signalId: number
     responseId: number
     respondedAt?: Date | string
   }
 
-  export type WalkSignalCreateOrConnectWithoutWalkLogInput = {
-    where: WalkSignalWhereUniqueInput
-    create: XOR<WalkSignalCreateWithoutWalkLogInput, WalkSignalUncheckedCreateWithoutWalkLogInput>
+  export type RespondedSignalCreateOrConnectWithoutWalkLogInput = {
+    where: RespondedSignalWhereUniqueInput
+    create: XOR<RespondedSignalCreateWithoutWalkLogInput, RespondedSignalUncheckedCreateWithoutWalkLogInput>
   }
 
-  export type WalkSignalCreateManyWalkLogInputEnvelope = {
-    data: WalkSignalCreateManyWalkLogInput | WalkSignalCreateManyWalkLogInput[]
+  export type RespondedSignalCreateManyWalkLogInputEnvelope = {
+    data: RespondedSignalCreateManyWalkLogInput | RespondedSignalCreateManyWalkLogInput[]
     skipDuplicates?: boolean
   }
 
@@ -17778,41 +17778,41 @@ export namespace Prisma {
     status?: EnumSessionStatusFieldUpdateOperationsInput | $Enums.SessionStatus
   }
 
-  export type WalkSignalUpsertWithWhereUniqueWithoutWalkLogInput = {
-    where: WalkSignalWhereUniqueInput
-    update: XOR<WalkSignalUpdateWithoutWalkLogInput, WalkSignalUncheckedUpdateWithoutWalkLogInput>
-    create: XOR<WalkSignalCreateWithoutWalkLogInput, WalkSignalUncheckedCreateWithoutWalkLogInput>
+  export type RespondedSignalUpsertWithWhereUniqueWithoutWalkLogInput = {
+    where: RespondedSignalWhereUniqueInput
+    update: XOR<RespondedSignalUpdateWithoutWalkLogInput, RespondedSignalUncheckedUpdateWithoutWalkLogInput>
+    create: XOR<RespondedSignalCreateWithoutWalkLogInput, RespondedSignalUncheckedCreateWithoutWalkLogInput>
   }
 
-  export type WalkSignalUpdateWithWhereUniqueWithoutWalkLogInput = {
-    where: WalkSignalWhereUniqueInput
-    data: XOR<WalkSignalUpdateWithoutWalkLogInput, WalkSignalUncheckedUpdateWithoutWalkLogInput>
+  export type RespondedSignalUpdateWithWhereUniqueWithoutWalkLogInput = {
+    where: RespondedSignalWhereUniqueInput
+    data: XOR<RespondedSignalUpdateWithoutWalkLogInput, RespondedSignalUncheckedUpdateWithoutWalkLogInput>
   }
 
-  export type WalkSignalUpdateManyWithWhereWithoutWalkLogInput = {
-    where: WalkSignalScalarWhereInput
-    data: XOR<WalkSignalUpdateManyMutationInput, WalkSignalUncheckedUpdateManyWithoutWalkLogInput>
+  export type RespondedSignalUpdateManyWithWhereWithoutWalkLogInput = {
+    where: RespondedSignalScalarWhereInput
+    data: XOR<RespondedSignalUpdateManyMutationInput, RespondedSignalUncheckedUpdateManyWithoutWalkLogInput>
   }
 
-  export type WalkLogCreateWithoutSignalsInput = {
+  export type WalkLogCreateWithoutRespondedSignalsInput = {
     distance: number
     walkedAt?: Date | string
     session: WalkSessionCreateNestedOneWithoutWalkLogInput
   }
 
-  export type WalkLogUncheckedCreateWithoutSignalsInput = {
+  export type WalkLogUncheckedCreateWithoutRespondedSignalsInput = {
     id?: number
     sessionId: number
     distance: number
     walkedAt?: Date | string
   }
 
-  export type WalkLogCreateOrConnectWithoutSignalsInput = {
+  export type WalkLogCreateOrConnectWithoutRespondedSignalsInput = {
     where: WalkLogWhereUniqueInput
-    create: XOR<WalkLogCreateWithoutSignalsInput, WalkLogUncheckedCreateWithoutSignalsInput>
+    create: XOR<WalkLogCreateWithoutRespondedSignalsInput, WalkLogUncheckedCreateWithoutRespondedSignalsInput>
   }
 
-  export type SignalCreateWithoutWalkSignalsInput = {
+  export type SignalCreateWithoutRespondedSignalsInput = {
     title: string
     description: string
     lat: number
@@ -17826,7 +17826,7 @@ export namespace Prisma {
     responses?: ResponseCreateNestedManyWithoutSignalInput
   }
 
-  export type SignalUncheckedCreateWithoutWalkSignalsInput = {
+  export type SignalUncheckedCreateWithoutRespondedSignalsInput = {
     id?: number
     userId: number
     categoryId: number
@@ -17841,19 +17841,19 @@ export namespace Prisma {
     responses?: ResponseUncheckedCreateNestedManyWithoutSignalInput
   }
 
-  export type SignalCreateOrConnectWithoutWalkSignalsInput = {
+  export type SignalCreateOrConnectWithoutRespondedSignalsInput = {
     where: SignalWhereUniqueInput
-    create: XOR<SignalCreateWithoutWalkSignalsInput, SignalUncheckedCreateWithoutWalkSignalsInput>
+    create: XOR<SignalCreateWithoutRespondedSignalsInput, SignalUncheckedCreateWithoutRespondedSignalsInput>
   }
 
-  export type ResponseCreateWithoutWalkSignalsInput = {
+  export type ResponseCreateWithoutRespondedSignalsInput = {
     message: string
     respondedAt?: Date | string
     signal: SignalCreateNestedOneWithoutResponsesInput
     user: UserCreateNestedOneWithoutResponsesInput
   }
 
-  export type ResponseUncheckedCreateWithoutWalkSignalsInput = {
+  export type ResponseUncheckedCreateWithoutRespondedSignalsInput = {
     id?: number
     signalId: number
     userId: number
@@ -17861,47 +17861,47 @@ export namespace Prisma {
     respondedAt?: Date | string
   }
 
-  export type ResponseCreateOrConnectWithoutWalkSignalsInput = {
+  export type ResponseCreateOrConnectWithoutRespondedSignalsInput = {
     where: ResponseWhereUniqueInput
-    create: XOR<ResponseCreateWithoutWalkSignalsInput, ResponseUncheckedCreateWithoutWalkSignalsInput>
+    create: XOR<ResponseCreateWithoutRespondedSignalsInput, ResponseUncheckedCreateWithoutRespondedSignalsInput>
   }
 
-  export type WalkLogUpsertWithoutSignalsInput = {
-    update: XOR<WalkLogUpdateWithoutSignalsInput, WalkLogUncheckedUpdateWithoutSignalsInput>
-    create: XOR<WalkLogCreateWithoutSignalsInput, WalkLogUncheckedCreateWithoutSignalsInput>
+  export type WalkLogUpsertWithoutRespondedSignalsInput = {
+    update: XOR<WalkLogUpdateWithoutRespondedSignalsInput, WalkLogUncheckedUpdateWithoutRespondedSignalsInput>
+    create: XOR<WalkLogCreateWithoutRespondedSignalsInput, WalkLogUncheckedCreateWithoutRespondedSignalsInput>
     where?: WalkLogWhereInput
   }
 
-  export type WalkLogUpdateToOneWithWhereWithoutSignalsInput = {
+  export type WalkLogUpdateToOneWithWhereWithoutRespondedSignalsInput = {
     where?: WalkLogWhereInput
-    data: XOR<WalkLogUpdateWithoutSignalsInput, WalkLogUncheckedUpdateWithoutSignalsInput>
+    data: XOR<WalkLogUpdateWithoutRespondedSignalsInput, WalkLogUncheckedUpdateWithoutRespondedSignalsInput>
   }
 
-  export type WalkLogUpdateWithoutSignalsInput = {
+  export type WalkLogUpdateWithoutRespondedSignalsInput = {
     distance?: FloatFieldUpdateOperationsInput | number
     walkedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     session?: WalkSessionUpdateOneRequiredWithoutWalkLogNestedInput
   }
 
-  export type WalkLogUncheckedUpdateWithoutSignalsInput = {
+  export type WalkLogUncheckedUpdateWithoutRespondedSignalsInput = {
     id?: IntFieldUpdateOperationsInput | number
     sessionId?: IntFieldUpdateOperationsInput | number
     distance?: FloatFieldUpdateOperationsInput | number
     walkedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type SignalUpsertWithoutWalkSignalsInput = {
-    update: XOR<SignalUpdateWithoutWalkSignalsInput, SignalUncheckedUpdateWithoutWalkSignalsInput>
-    create: XOR<SignalCreateWithoutWalkSignalsInput, SignalUncheckedCreateWithoutWalkSignalsInput>
+  export type SignalUpsertWithoutRespondedSignalsInput = {
+    update: XOR<SignalUpdateWithoutRespondedSignalsInput, SignalUncheckedUpdateWithoutRespondedSignalsInput>
+    create: XOR<SignalCreateWithoutRespondedSignalsInput, SignalUncheckedCreateWithoutRespondedSignalsInput>
     where?: SignalWhereInput
   }
 
-  export type SignalUpdateToOneWithWhereWithoutWalkSignalsInput = {
+  export type SignalUpdateToOneWithWhereWithoutRespondedSignalsInput = {
     where?: SignalWhereInput
-    data: XOR<SignalUpdateWithoutWalkSignalsInput, SignalUncheckedUpdateWithoutWalkSignalsInput>
+    data: XOR<SignalUpdateWithoutRespondedSignalsInput, SignalUncheckedUpdateWithoutRespondedSignalsInput>
   }
 
-  export type SignalUpdateWithoutWalkSignalsInput = {
+  export type SignalUpdateWithoutRespondedSignalsInput = {
     title?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     lat?: FloatFieldUpdateOperationsInput | number
@@ -17915,7 +17915,7 @@ export namespace Prisma {
     responses?: ResponseUpdateManyWithoutSignalNestedInput
   }
 
-  export type SignalUncheckedUpdateWithoutWalkSignalsInput = {
+  export type SignalUncheckedUpdateWithoutRespondedSignalsInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
     categoryId?: IntFieldUpdateOperationsInput | number
@@ -17930,25 +17930,25 @@ export namespace Prisma {
     responses?: ResponseUncheckedUpdateManyWithoutSignalNestedInput
   }
 
-  export type ResponseUpsertWithoutWalkSignalsInput = {
-    update: XOR<ResponseUpdateWithoutWalkSignalsInput, ResponseUncheckedUpdateWithoutWalkSignalsInput>
-    create: XOR<ResponseCreateWithoutWalkSignalsInput, ResponseUncheckedCreateWithoutWalkSignalsInput>
+  export type ResponseUpsertWithoutRespondedSignalsInput = {
+    update: XOR<ResponseUpdateWithoutRespondedSignalsInput, ResponseUncheckedUpdateWithoutRespondedSignalsInput>
+    create: XOR<ResponseCreateWithoutRespondedSignalsInput, ResponseUncheckedCreateWithoutRespondedSignalsInput>
     where?: ResponseWhereInput
   }
 
-  export type ResponseUpdateToOneWithWhereWithoutWalkSignalsInput = {
+  export type ResponseUpdateToOneWithWhereWithoutRespondedSignalsInput = {
     where?: ResponseWhereInput
-    data: XOR<ResponseUpdateWithoutWalkSignalsInput, ResponseUncheckedUpdateWithoutWalkSignalsInput>
+    data: XOR<ResponseUpdateWithoutRespondedSignalsInput, ResponseUncheckedUpdateWithoutRespondedSignalsInput>
   }
 
-  export type ResponseUpdateWithoutWalkSignalsInput = {
+  export type ResponseUpdateWithoutRespondedSignalsInput = {
     message?: StringFieldUpdateOperationsInput | string
     respondedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     signal?: SignalUpdateOneRequiredWithoutResponsesNestedInput
     user?: UserUpdateOneRequiredWithoutResponsesNestedInput
   }
 
-  export type ResponseUncheckedUpdateWithoutWalkSignalsInput = {
+  export type ResponseUncheckedUpdateWithoutRespondedSignalsInput = {
     id?: IntFieldUpdateOperationsInput | number
     signalId?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
@@ -18043,7 +18043,7 @@ export namespace Prisma {
     selectedUser?: UserUpdateOneWithoutSelectedSignalsNestedInput
     category?: SignalCategoryUpdateOneRequiredWithoutSignalsNestedInput
     responses?: ResponseUpdateManyWithoutSignalNestedInput
-    walkSignals?: WalkSignalUpdateManyWithoutSignalNestedInput
+    respondedSignals?: RespondedSignalUpdateManyWithoutSignalNestedInput
   }
 
   export type SignalUncheckedUpdateWithoutUserInput = {
@@ -18058,7 +18058,7 @@ export namespace Prisma {
     status?: EnumSignalStatusFieldUpdateOperationsInput | $Enums.SignalStatus
     selectedUserId?: NullableIntFieldUpdateOperationsInput | number | null
     responses?: ResponseUncheckedUpdateManyWithoutSignalNestedInput
-    walkSignals?: WalkSignalUncheckedUpdateManyWithoutSignalNestedInput
+    respondedSignals?: RespondedSignalUncheckedUpdateManyWithoutSignalNestedInput
   }
 
   export type SignalUncheckedUpdateManyWithoutUserInput = {
@@ -18085,7 +18085,7 @@ export namespace Prisma {
     user?: UserUpdateOneRequiredWithoutSignalsNestedInput
     category?: SignalCategoryUpdateOneRequiredWithoutSignalsNestedInput
     responses?: ResponseUpdateManyWithoutSignalNestedInput
-    walkSignals?: WalkSignalUpdateManyWithoutSignalNestedInput
+    respondedSignals?: RespondedSignalUpdateManyWithoutSignalNestedInput
   }
 
   export type SignalUncheckedUpdateWithoutSelectedUserInput = {
@@ -18100,7 +18100,7 @@ export namespace Prisma {
     timeLimit?: IntFieldUpdateOperationsInput | number
     status?: EnumSignalStatusFieldUpdateOperationsInput | $Enums.SignalStatus
     responses?: ResponseUncheckedUpdateManyWithoutSignalNestedInput
-    walkSignals?: WalkSignalUncheckedUpdateManyWithoutSignalNestedInput
+    respondedSignals?: RespondedSignalUncheckedUpdateManyWithoutSignalNestedInput
   }
 
   export type SignalUncheckedUpdateManyWithoutSelectedUserInput = {
@@ -18120,7 +18120,7 @@ export namespace Prisma {
     message?: StringFieldUpdateOperationsInput | string
     respondedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     signal?: SignalUpdateOneRequiredWithoutResponsesNestedInput
-    walkSignals?: WalkSignalUpdateManyWithoutResponseNestedInput
+    respondedSignals?: RespondedSignalUpdateManyWithoutResponseNestedInput
   }
 
   export type ResponseUncheckedUpdateWithoutUserInput = {
@@ -18128,7 +18128,7 @@ export namespace Prisma {
     signalId?: IntFieldUpdateOperationsInput | number
     message?: StringFieldUpdateOperationsInput | string
     respondedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    walkSignals?: WalkSignalUncheckedUpdateManyWithoutResponseNestedInput
+    respondedSignals?: RespondedSignalUncheckedUpdateManyWithoutResponseNestedInput
   }
 
   export type ResponseUncheckedUpdateManyWithoutUserInput = {
@@ -18222,7 +18222,7 @@ export namespace Prisma {
     user?: UserUpdateOneRequiredWithoutSignalsNestedInput
     selectedUser?: UserUpdateOneWithoutSelectedSignalsNestedInput
     responses?: ResponseUpdateManyWithoutSignalNestedInput
-    walkSignals?: WalkSignalUpdateManyWithoutSignalNestedInput
+    respondedSignals?: RespondedSignalUpdateManyWithoutSignalNestedInput
   }
 
   export type SignalUncheckedUpdateWithoutCategoryInput = {
@@ -18237,7 +18237,7 @@ export namespace Prisma {
     status?: EnumSignalStatusFieldUpdateOperationsInput | $Enums.SignalStatus
     selectedUserId?: NullableIntFieldUpdateOperationsInput | number | null
     responses?: ResponseUncheckedUpdateManyWithoutSignalNestedInput
-    walkSignals?: WalkSignalUncheckedUpdateManyWithoutSignalNestedInput
+    respondedSignals?: RespondedSignalUncheckedUpdateManyWithoutSignalNestedInput
   }
 
   export type SignalUncheckedUpdateManyWithoutCategoryInput = {
@@ -18260,7 +18260,7 @@ export namespace Prisma {
     respondedAt?: Date | string
   }
 
-  export type WalkSignalCreateManySignalInput = {
+  export type RespondedSignalCreateManySignalInput = {
     id?: number
     walkLogId: number
     responseId: number
@@ -18271,7 +18271,7 @@ export namespace Prisma {
     message?: StringFieldUpdateOperationsInput | string
     respondedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutResponsesNestedInput
-    walkSignals?: WalkSignalUpdateManyWithoutResponseNestedInput
+    respondedSignals?: RespondedSignalUpdateManyWithoutResponseNestedInput
   }
 
   export type ResponseUncheckedUpdateWithoutSignalInput = {
@@ -18279,7 +18279,7 @@ export namespace Prisma {
     userId?: IntFieldUpdateOperationsInput | number
     message?: StringFieldUpdateOperationsInput | string
     respondedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    walkSignals?: WalkSignalUncheckedUpdateManyWithoutResponseNestedInput
+    respondedSignals?: RespondedSignalUncheckedUpdateManyWithoutResponseNestedInput
   }
 
   export type ResponseUncheckedUpdateManyWithoutSignalInput = {
@@ -18289,47 +18289,47 @@ export namespace Prisma {
     respondedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type WalkSignalUpdateWithoutSignalInput = {
+  export type RespondedSignalUpdateWithoutSignalInput = {
     respondedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    walkLog?: WalkLogUpdateOneRequiredWithoutSignalsNestedInput
-    response?: ResponseUpdateOneRequiredWithoutWalkSignalsNestedInput
+    walkLog?: WalkLogUpdateOneRequiredWithoutRespondedSignalsNestedInput
+    response?: ResponseUpdateOneRequiredWithoutRespondedSignalsNestedInput
   }
 
-  export type WalkSignalUncheckedUpdateWithoutSignalInput = {
+  export type RespondedSignalUncheckedUpdateWithoutSignalInput = {
     id?: IntFieldUpdateOperationsInput | number
     walkLogId?: IntFieldUpdateOperationsInput | number
     responseId?: IntFieldUpdateOperationsInput | number
     respondedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type WalkSignalUncheckedUpdateManyWithoutSignalInput = {
+  export type RespondedSignalUncheckedUpdateManyWithoutSignalInput = {
     id?: IntFieldUpdateOperationsInput | number
     walkLogId?: IntFieldUpdateOperationsInput | number
     responseId?: IntFieldUpdateOperationsInput | number
     respondedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type WalkSignalCreateManyResponseInput = {
+  export type RespondedSignalCreateManyResponseInput = {
     id?: number
     walkLogId: number
     signalId: number
     respondedAt?: Date | string
   }
 
-  export type WalkSignalUpdateWithoutResponseInput = {
+  export type RespondedSignalUpdateWithoutResponseInput = {
     respondedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    walkLog?: WalkLogUpdateOneRequiredWithoutSignalsNestedInput
-    signal?: SignalUpdateOneRequiredWithoutWalkSignalsNestedInput
+    walkLog?: WalkLogUpdateOneRequiredWithoutRespondedSignalsNestedInput
+    signal?: SignalUpdateOneRequiredWithoutRespondedSignalsNestedInput
   }
 
-  export type WalkSignalUncheckedUpdateWithoutResponseInput = {
+  export type RespondedSignalUncheckedUpdateWithoutResponseInput = {
     id?: IntFieldUpdateOperationsInput | number
     walkLogId?: IntFieldUpdateOperationsInput | number
     signalId?: IntFieldUpdateOperationsInput | number
     respondedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type WalkSignalUncheckedUpdateManyWithoutResponseInput = {
+  export type RespondedSignalUncheckedUpdateManyWithoutResponseInput = {
     id?: IntFieldUpdateOperationsInput | number
     walkLogId?: IntFieldUpdateOperationsInput | number
     signalId?: IntFieldUpdateOperationsInput | number
@@ -18396,27 +18396,27 @@ export namespace Prisma {
     status?: EnumSessionStatusFieldUpdateOperationsInput | $Enums.SessionStatus
   }
 
-  export type WalkSignalCreateManyWalkLogInput = {
+  export type RespondedSignalCreateManyWalkLogInput = {
     id?: number
     signalId: number
     responseId: number
     respondedAt?: Date | string
   }
 
-  export type WalkSignalUpdateWithoutWalkLogInput = {
+  export type RespondedSignalUpdateWithoutWalkLogInput = {
     respondedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    signal?: SignalUpdateOneRequiredWithoutWalkSignalsNestedInput
-    response?: ResponseUpdateOneRequiredWithoutWalkSignalsNestedInput
+    signal?: SignalUpdateOneRequiredWithoutRespondedSignalsNestedInput
+    response?: ResponseUpdateOneRequiredWithoutRespondedSignalsNestedInput
   }
 
-  export type WalkSignalUncheckedUpdateWithoutWalkLogInput = {
+  export type RespondedSignalUncheckedUpdateWithoutWalkLogInput = {
     id?: IntFieldUpdateOperationsInput | number
     signalId?: IntFieldUpdateOperationsInput | number
     responseId?: IntFieldUpdateOperationsInput | number
     respondedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type WalkSignalUncheckedUpdateManyWithoutWalkLogInput = {
+  export type RespondedSignalUncheckedUpdateManyWithoutWalkLogInput = {
     id?: IntFieldUpdateOperationsInput | number
     signalId?: IntFieldUpdateOperationsInput | number
     responseId?: IntFieldUpdateOperationsInput | number

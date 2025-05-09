@@ -8,6 +8,7 @@ import { SignalModule } from '../signal/signal.module';
 import { ResponseModule } from '../response/response.module';
 import { RouteModule } from '../route/route.module';
 import { WalkSessionModule } from '../walk-session/walk-session.module';
+import { WalkLogModule } from 'src/walk-log/walk-log.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { WalkSessionModule } from '../walk-session/walk-session.module';
     ResponseModule,
     RouteModule,
     WalkSessionModule,
+    WalkLogModule
   ],
   controllers: [AppController],
   providers: [AppService],

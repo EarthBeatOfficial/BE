@@ -10,17 +10,6 @@ async function bootstrap() {
     .setTitle('EarthBeat API')
     .setDescription('The EarthBeat API description')
     .setVersion('1.0')
-    // .addBearerAuth(
-    //   {
-    //     type: 'http',
-    //     scheme: 'bearer',
-    //     bearerFormat: 'JWT',
-    //     name: 'JWT',
-    //     description: 'Enter JWT token',
-    //     in: 'header',
-    //   },
-    //   'token',
-    // )
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

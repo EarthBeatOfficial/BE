@@ -44,35 +44,35 @@ model SignalCategory {
 }
 
 model Signal {
-  id             Int            @id @default(autoincrement())
-  userId         Int            @map("user_id")
-  categoryId     Int            @map("category_id")
-  title          String
-  description    String
-  lat            Float
-  lng            Float
-  createdAt      DateTime       @default(now()) @map("created_at")
-  timeLimit      Int            @map("time_limit")
-  status         SignalStatus   @default(PENDING)
-  selectedUserId Int?           @map("selected_user_id")
-  user           User           @relation(fields: [userId], references: [id])
-  selectedUser   User?          @relation("SelectedSignals", fields: [selectedUserId], references: [id])
-  category       SignalCategory @relation(fields: [categoryId], references: [id])
-  responses      Response[]
-  walkSignals    WalkSignal[]
+  id               Int               @id @default(autoincrement())
+  userId           Int               @map("user_id")
+  categoryId       Int               @map("category_id")
+  title            String
+  description      String
+  lat              Float
+  lng              Float
+  createdAt        DateTime          @default(now()) @map("created_at")
+  timeLimit        Int               @map("time_limit")
+  status           SignalStatus      @default(PENDING)
+  selectedUserId   Int?              @map("selected_user_id")
+  user             User              @relation(fields: [userId], references: [id])
+  selectedUser     User?             @relation("SelectedSignals", fields: [selectedUserId], references: [id])
+  category         SignalCategory    @relation(fields: [categoryId], references: [id])
+  responses        Response[]
+  respondedSignals RespondedSignal[]
 
   @@map("signal")
 }
 
 model Response {
-  id          Int          @id @default(autoincrement())
-  signalId    Int          @map("signal_id")
-  userId      Int          @map("user_id")
-  message     String
-  respondedAt DateTime     @default(now()) @map("responded_at")
-  signal      Signal       @relation(fields: [signalId], references: [id])
-  user        User         @relation(fields: [userId], references: [id])
-  walkSignals WalkSignal[]
+  id               Int               @id @default(autoincrement())
+  signalId         Int               @map("signal_id")
+  userId           Int               @map("user_id")
+  message          String
+  respondedAt      DateTime          @default(now()) @map("responded_at")
+  signal           Signal            @relation(fields: [signalId], references: [id])
+  user             User              @relation(fields: [userId], references: [id])
+  respondedSignals RespondedSignal[]
 
   @@map("response")
 }
@@ -118,17 +118,17 @@ model WalkSession {
 }
 
 model WalkLog {
-  id        Int          @id @default(autoincrement())
-  sessionId Int          @unique @map("session_id")
-  distance  Float
-  walkedAt  DateTime     @default(now()) @map("walked_at")
-  session   WalkSession  @relation(fields: [sessionId], references: [id])
-  signals   WalkSignal[]
+  id               Int               @id @default(autoincrement())
+  sessionId        Int               @unique @map("session_id")
+  distance         Float
+  walkedAt         DateTime          @default(now()) @map("walked_at")
+  session          WalkSession       @relation(fields: [sessionId], references: [id])
+  respondedSignals RespondedSignal[]
 
   @@map("walk_log")
 }
 
-model WalkSignal {
+model RespondedSignal {
   id          Int      @id @default(autoincrement())
   walkLogId   Int      @map("walklog_id")
   signalId    Int      @map("signal_id")
@@ -138,7 +138,7 @@ model WalkSignal {
   signal      Signal   @relation(fields: [signalId], references: [id])
   response    Response @relation(fields: [responseId], references: [id])
 
-  @@map("walk_signal")
+  @@map("responded_signal")
 }
 
 enum SignalStatus {

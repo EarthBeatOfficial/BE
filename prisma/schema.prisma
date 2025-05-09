@@ -59,7 +59,7 @@ model Signal {
   selectedUser   User?          @relation("SelectedSignals", fields: [selectedUserId], references: [id])
   category       SignalCategory @relation(fields: [categoryId], references: [id])
   responses      Response[]
-  walkSignals    WalkSignal[]
+  respondedSignals RespondedSignal[]
 
   @@map("signal")
 }
@@ -72,7 +72,7 @@ model Response {
   respondedAt DateTime @default(now()) @map("responded_at")
   signal     Signal   @relation(fields: [signalId], references: [id])
   user       User     @relation(fields: [userId], references: [id])
-  walkSignals WalkSignal[]
+  respondedSignals RespondedSignal[]
 
   @@map("response")
 }
@@ -118,27 +118,27 @@ model WalkSession {
 }
 
 model WalkLog {
-  id        Int         @id @default(autoincrement())
-  sessionId Int         @unique @map("session_id")
-  distance  Float
-  walkedAt  DateTime    @default(now()) @map("walked_at")
-  session   WalkSession @relation(fields: [sessionId], references: [id])
-  signals   WalkSignal[]
+  id          Int      @id @default(autoincrement())
+  sessionId   Int      @unique @map("session_id")
+  distance    Float
+  walkedAt    DateTime @default(now()) @map("walked_at")
+  session     WalkSession @relation(fields: [sessionId], references: [id])
+  respondedSignals RespondedSignal[]
 
   @@map("walk_log")
 }
 
-model WalkSignal {
-  id         Int      @id @default(autoincrement())
-  walkLogId  Int      @map("walklog_id")
-  signalId   Int      @map("signal_id")
-  responseId Int      @map("response_id")
+model RespondedSignal {
+  id          Int      @id @default(autoincrement())
+  walkLogId   Int      @map("walklog_id")
+  signalId    Int      @map("signal_id")
+  responseId  Int      @map("response_id")
   respondedAt DateTime @default(now()) @map("responded_at")
-  walkLog    WalkLog  @relation(fields: [walkLogId], references: [id])
-  signal     Signal   @relation(fields: [signalId], references: [id])
-  response   Response @relation(fields: [responseId], references: [id])
+  walkLog     WalkLog  @relation(fields: [walkLogId], references: [id])
+  signal      Signal   @relation(fields: [signalId], references: [id])
+  response    Response @relation(fields: [responseId], references: [id])
 
-  @@map("walk_signal")
+  @@map("responded_signal")
 }
 
 enum SignalStatus {

@@ -191,7 +191,7 @@ exports.Prisma.WalkLogScalarFieldEnum = {
   walkedAt: 'walkedAt'
 };
 
-exports.Prisma.WalkSignalScalarFieldEnum = {
+exports.Prisma.RespondedSignalScalarFieldEnum = {
   id: 'id',
   walkLogId: 'walkLogId',
   signalId: 'signalId',
@@ -234,7 +234,7 @@ exports.Prisma.ModelName = {
   RoutePoint: 'RoutePoint',
   WalkSession: 'WalkSession',
   WalkLog: 'WalkLog',
-  WalkSignal: 'WalkSignal'
+  RespondedSignal: 'RespondedSignal'
 };
 
 /**

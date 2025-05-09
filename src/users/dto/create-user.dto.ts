@@ -12,3 +12,19 @@ export class CreateUserDto {
   @Length(1, 20)
   username: string;
 } 
+
+export class UserResponseDto {
+  @ApiProperty({ example: 1, description: 'Auto-generated database ID' })
+  id: number;
+
+  @ApiProperty({ example: 'jeffkim', description: 'The username of the user' })
+  username: string;
+
+  @ApiProperty({
+    example: '2025-05-08T04:53:01.812Z',
+    description: 'Timestamp when the user was created',
+    type: String,
+    format: 'date-time',
+  })
+  createdAt: string;
+}
