@@ -29,7 +29,7 @@ export class UsersController {
   })
   @ApiResponse({ 
     status: 409, 
-    description: 'Bad Request - Invalid input data' 
+    description: 'Conflict - nickname already exists' 
   })
   createUser(@Body() dto: CreateUserDto) {
     return this.usersService.createUser(dto);
