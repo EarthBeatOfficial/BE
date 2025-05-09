@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
+import { Injectable, NotFoundException, BadRequestException, UnauthorizedException, ForbiddenException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateSignalDto } from './dto/create-signal.dto';
 import { Cron, CronExpression } from '@nestjs/schedule';
@@ -133,6 +133,28 @@ export class SignalService {
       include: {
         category: true,
       },
+    });
+  }
+
+  async deleteSignal(id: number, userId: number) {
+    const signal = await this.prisma.signal.findUnique({
+      where: { id },
+    });
+
+    if (!signal) {
+      throw new NotFoundException(`Signal with ID ${id} not found`);
+    }
+
+    if (signal.status !== SignalStatus.PENDING) {
+      throw new BadRequestException('Signal is not available for deletion');
+    }
+
+    if (signal.userId !== userId) {
+      throw new ForbiddenException('Only the creator can delete this signal');
+    }
+
+    return this.prisma.signal.delete({
+      where: { id },
     });
   }
 } 

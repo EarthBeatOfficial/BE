@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Patch, Body, Param, NotFoundException, ParseIntPipe } from '@nestjs/common';
+import { Controller, Get, Post, Patch, Delete, Body, Param, NotFoundException, ParseIntPipe } from '@nestjs/common';
 import { SignalService } from './signal.service';
 import { CreateSignalDto } from './dto/create-signal.dto';
 import { SignalResponseDto } from './dto/signal-response.dto';
@@ -8,7 +8,7 @@ import { ApiTags, ApiOperation, ApiResponse, ApiParam, ApiBody } from '@nestjs/s
 @Controller('signals')
 export class SignalController {
   constructor(private readonly signalService: SignalService) {}
-
+  
   @Post()
   @ApiOperation({ summary: 'Create a new signal' })
   @ApiBody({ 
@@ -71,7 +71,6 @@ export class SignalController {
     status: 200, 
     description: 'Signal successfully selected',
     example:{
-      value: {
         id: 3,
         userId: 1,
         categoryId: 5,
@@ -84,7 +83,6 @@ export class SignalController {
         status: "IN_PROGRESS",
         selectedUserId: 5,
         expiresAt: "2025-05-09T14:02:04.140Z"
-      }
     }
   })
   @ApiResponse({ 
@@ -110,7 +108,6 @@ export class SignalController {
     status: 200, 
     description: 'Signal successfully canceled', 
     example:{
-      value: {
         id: 3,
         userId: 1,
         categoryId: 5,
@@ -123,7 +120,6 @@ export class SignalController {
         status: "PENDING",
         selectedUserId: null,
         expiresAt: "2025-05-09T14:02:04.140Z"
-      }
     }
   })
   @ApiResponse({ 
@@ -149,7 +145,6 @@ export class SignalController {
     status: 200, 
     description: 'Signal successfully completed',
     example:{
-      value: {
         id: 3,
         userId: 1,
         categoryId: 5,
@@ -162,7 +157,6 @@ export class SignalController {
         status: "COMPLETED",
         selectedUserId: 1,
         expiresAt: "2025-05-09T14:02:04.140Z"
-      }
     } 
   })
   @ApiResponse({ 
@@ -171,6 +165,59 @@ export class SignalController {
   })
   completeSignal(@Param('id', ParseIntPipe) id: number, @Body('userId') userId: number) {
     return this.signalService.completeSignal(id, userId);
+  }
+
+  @Delete(':id')
+  @ApiOperation({ summary: 'Delete a signal' })
+  @ApiParam({ name: 'id', description: 'Signal ID' })
+  @ApiBody({ 
+    schema: {
+      type: 'object',
+      properties: {
+        userId: { type: 'number', description: 'ID of the user deleting the signal' }
+      }
+    }
+  })
+  @ApiResponse({ 
+    status: 200, 
+    description: 'Signal successfully deleted', 
+    example: {
+        id: 3,
+        userId: 1,
+        categoryId: 5,
+        title: "Help needed with recycling",
+        description: "Need help sorting recyclables at the community center",
+        lat: 37.5665,
+        lng: 126.978,
+        createdAt: "2025-05-09T13:32:04.142Z",
+        timeLimit: 30,
+        status: "PENDING",
+        selectedUserId: null,
+        expiresAt: "2025-05-09T14:02:04.140Z"
+    } 
+  })
+  @ApiResponse({ 
+    status: 400, 
+    description: 'Signal is not available for deletion since it is not pending', 
+  })
+  @ApiResponse({ 
+    status: 403, 
+    description: 'Not authorized to delete this signal', 
+    example:{
+        message: "Only the creator can delete this signal",
+        error: "Forbidden",
+        statusCode: 403,
+    }
+  })
+  @ApiResponse({ 
+    status: 404, 
+    description: 'Signal not found' 
+  })
+  deleteSignal(
+    @Param('id', ParseIntPipe) id: number,
+    @Body('userId') userId: number
+  ) {
+    return this.signalService.deleteSignal(id, userId);
   }
 
   @Get('active')
