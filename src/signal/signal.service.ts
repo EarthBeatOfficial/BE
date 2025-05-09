@@ -1,6 +1,7 @@
 import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateSignalDto } from './dto/create-signal.dto';
+import { Cron, CronExpression } from '@nestjs/schedule';
 
 enum SignalStatus {
   PENDING = 'PENDING',
@@ -12,22 +13,42 @@ enum SignalStatus {
 export class SignalService {
   constructor(private prisma: PrismaService) {}
 
-  async createSignal(userId: number, dto: CreateSignalDto) {
-    return this.prisma.signal.create({
+  async createSignal(userId: number, createSignalDto: CreateSignalDto) {
+    const signal = await this.prisma.signal.create({
       data: {
+        ...createSignalDto,
         userId,
-        categoryId: dto.categoryId,
-        title: dto.title,
-        description: dto.description,
-        lat: dto.lat,
-        lng: dto.lng,
-        timeLimit: dto.timeLimit,
-        status: SignalStatus.PENDING,
+        status: 'PENDING',
+        expiresAt: new Date(Date.now() + createSignalDto.timeLimit * 60 * 1000), // Convert minutes to milliseconds
+      },
+      include: {
+        category: {
+          select: {
+            id: true,
+            name: true,
+          },
+        },
+      },
+    });
+    return signal;
+  }
+
+  @Cron(CronExpression.EVERY_MINUTE)
+  async deleteExpiredSignals() {
+    const now = new Date();
+    await this.prisma.signal.deleteMany({
+      where: {
+        expiresAt: {
+          lte: now,
+        },
+        status: {
+          not: SignalStatus.COMPLETED,
+        },
       },
     });
   }
 
-  async selectSignal(signalId: number, userId: number) {
+  async acceptSignal(signalId: number, userId: number) {
     const signal = await this.prisma.signal.findUnique({
       where: { id: signalId },
     });
@@ -111,25 +132,6 @@ export class SignalService {
       },
       include: {
         category: true,
-      },
-    });
-  }
-
-  async getUserSignals(userId: number) {
-    return this.prisma.signal.findMany({
-      where: {
-        OR: [
-          { userId },
-          { selectedUserId: userId },
-        ],
-      },
-      include: {
-        category: true,
-        responses: {
-          include: {
-            user: true,
-          },
-        },
       },
     });
   }

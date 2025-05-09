@@ -3,7 +3,7 @@ import { WalkLogService } from './walk-log.service';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { WalkLogDto } from './dto/walk-log.dto';
 
-@ApiTags('walk-logs')
+@ApiTags('Walk-logs')
 @Controller('walk-logs')
 export class WalkLogController {
   constructor(private readonly walkLogService: WalkLogService) {}

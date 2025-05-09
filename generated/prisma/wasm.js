@@ -147,7 +147,8 @@ exports.Prisma.SignalScalarFieldEnum = {
   createdAt: 'createdAt',
   timeLimit: 'timeLimit',
   status: 'status',
-  selectedUserId: 'selectedUserId'
+  selectedUserId: 'selectedUserId',
+  expiresAt: 'expiresAt'
 };
 
 exports.Prisma.ResponseScalarFieldEnum = {

@@ -60,6 +60,7 @@ model Signal {
   category       SignalCategory @relation(fields: [categoryId], references: [id])
   responses      Response[]
   respondedSignals RespondedSignal[]
+  expiresAt      DateTime       @default(now()) @map("expires_at")
 
   @@map("signal")
 }

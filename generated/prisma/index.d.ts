@@ -5352,6 +5352,7 @@ export namespace Prisma {
     timeLimit: number | null
     status: $Enums.SignalStatus | null
     selectedUserId: number | null
+    expiresAt: Date | null
   }
 
   export type SignalMaxAggregateOutputType = {
@@ -5366,6 +5367,7 @@ export namespace Prisma {
     timeLimit: number | null
     status: $Enums.SignalStatus | null
     selectedUserId: number | null
+    expiresAt: Date | null
   }
 
   export type SignalCountAggregateOutputType = {
@@ -5380,6 +5382,7 @@ export namespace Prisma {
     timeLimit: number
     status: number
     selectedUserId: number
+    expiresAt: number
     _all: number
   }
 
@@ -5416,6 +5419,7 @@ export namespace Prisma {
     timeLimit?: true
     status?: true
     selectedUserId?: true
+    expiresAt?: true
   }
 
   export type SignalMaxAggregateInputType = {
@@ -5430,6 +5434,7 @@ export namespace Prisma {
     timeLimit?: true
     status?: true
     selectedUserId?: true
+    expiresAt?: true
   }
 
   export type SignalCountAggregateInputType = {
@@ -5444,6 +5449,7 @@ export namespace Prisma {
     timeLimit?: true
     status?: true
     selectedUserId?: true
+    expiresAt?: true
     _all?: true
   }
 
@@ -5545,6 +5551,7 @@ export namespace Prisma {
     timeLimit: number
     status: $Enums.SignalStatus
     selectedUserId: number | null
+    expiresAt: Date
     _count: SignalCountAggregateOutputType | null
     _avg: SignalAvgAggregateOutputType | null
     _sum: SignalSumAggregateOutputType | null
@@ -5578,6 +5585,7 @@ export namespace Prisma {
     timeLimit?: boolean
     status?: boolean
     selectedUserId?: boolean
+    expiresAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     selectedUser?: boolean | Signal$selectedUserArgs<ExtArgs>
     category?: boolean | SignalCategoryDefaultArgs<ExtArgs>
@@ -5598,6 +5606,7 @@ export namespace Prisma {
     timeLimit?: boolean
     status?: boolean
     selectedUserId?: boolean
+    expiresAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     selectedUser?: boolean | Signal$selectedUserArgs<ExtArgs>
     category?: boolean | SignalCategoryDefaultArgs<ExtArgs>
@@ -5615,6 +5624,7 @@ export namespace Prisma {
     timeLimit?: boolean
     status?: boolean
     selectedUserId?: boolean
+    expiresAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     selectedUser?: boolean | Signal$selectedUserArgs<ExtArgs>
     category?: boolean | SignalCategoryDefaultArgs<ExtArgs>
@@ -5632,9 +5642,10 @@ export namespace Prisma {
     timeLimit?: boolean
     status?: boolean
     selectedUserId?: boolean
+    expiresAt?: boolean
   }
 
-  export type SignalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "categoryId" | "title" | "description" | "lat" | "lng" | "createdAt" | "timeLimit" | "status" | "selectedUserId", ExtArgs["result"]["signal"]>
+  export type SignalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "categoryId" | "title" | "description" | "lat" | "lng" | "createdAt" | "timeLimit" | "status" | "selectedUserId" | "expiresAt", ExtArgs["result"]["signal"]>
   export type SignalInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     selectedUser?: boolean | Signal$selectedUserArgs<ExtArgs>
@@ -5675,6 +5686,7 @@ export namespace Prisma {
       timeLimit: number
       status: $Enums.SignalStatus
       selectedUserId: number | null
+      expiresAt: Date
     }, ExtArgs["result"]["signal"]>
     composites: {}
   }
@@ -6114,6 +6126,7 @@ export namespace Prisma {
     readonly timeLimit: FieldRef<"Signal", 'Int'>
     readonly status: FieldRef<"Signal", 'SignalStatus'>
     readonly selectedUserId: FieldRef<"Signal", 'Int'>
+    readonly expiresAt: FieldRef<"Signal", 'DateTime'>
   }
     
 
@@ -13455,7 +13468,8 @@ export namespace Prisma {
     createdAt: 'createdAt',
     timeLimit: 'timeLimit',
     status: 'status',
-    selectedUserId: 'selectedUserId'
+    selectedUserId: 'selectedUserId',
+    expiresAt: 'expiresAt'
   };
 
   export type SignalScalarFieldEnum = (typeof SignalScalarFieldEnum)[keyof typeof SignalScalarFieldEnum]
@@ -13802,6 +13816,7 @@ export namespace Prisma {
     timeLimit?: IntFilter<"Signal"> | number
     status?: EnumSignalStatusFilter<"Signal"> | $Enums.SignalStatus
     selectedUserId?: IntNullableFilter<"Signal"> | number | null
+    expiresAt?: DateTimeFilter<"Signal"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     selectedUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     category?: XOR<SignalCategoryScalarRelationFilter, SignalCategoryWhereInput>
@@ -13821,6 +13836,7 @@ export namespace Prisma {
     timeLimit?: SortOrder
     status?: SortOrder
     selectedUserId?: SortOrderInput | SortOrder
+    expiresAt?: SortOrder
     user?: UserOrderByWithRelationInput
     selectedUser?: UserOrderByWithRelationInput
     category?: SignalCategoryOrderByWithRelationInput
@@ -13843,6 +13859,7 @@ export namespace Prisma {
     timeLimit?: IntFilter<"Signal"> | number
     status?: EnumSignalStatusFilter<"Signal"> | $Enums.SignalStatus
     selectedUserId?: IntNullableFilter<"Signal"> | number | null
+    expiresAt?: DateTimeFilter<"Signal"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     selectedUser?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     category?: XOR<SignalCategoryScalarRelationFilter, SignalCategoryWhereInput>
@@ -13862,6 +13879,7 @@ export namespace Prisma {
     timeLimit?: SortOrder
     status?: SortOrder
     selectedUserId?: SortOrderInput | SortOrder
+    expiresAt?: SortOrder
     _count?: SignalCountOrderByAggregateInput
     _avg?: SignalAvgOrderByAggregateInput
     _max?: SignalMaxOrderByAggregateInput
@@ -13884,6 +13902,7 @@ export namespace Prisma {
     timeLimit?: IntWithAggregatesFilter<"Signal"> | number
     status?: EnumSignalStatusWithAggregatesFilter<"Signal"> | $Enums.SignalStatus
     selectedUserId?: IntNullableWithAggregatesFilter<"Signal"> | number | null
+    expiresAt?: DateTimeWithAggregatesFilter<"Signal"> | Date | string
   }
 
   export type ResponseWhereInput = {
@@ -14402,6 +14421,7 @@ export namespace Prisma {
     createdAt?: Date | string
     timeLimit: number
     status?: $Enums.SignalStatus
+    expiresAt?: Date | string
     user: UserCreateNestedOneWithoutSignalsInput
     selectedUser?: UserCreateNestedOneWithoutSelectedSignalsInput
     category: SignalCategoryCreateNestedOneWithoutSignalsInput
@@ -14421,6 +14441,7 @@ export namespace Prisma {
     timeLimit: number
     status?: $Enums.SignalStatus
     selectedUserId?: number | null
+    expiresAt?: Date | string
     responses?: ResponseUncheckedCreateNestedManyWithoutSignalInput
     respondedSignals?: RespondedSignalUncheckedCreateNestedManyWithoutSignalInput
   }
@@ -14433,6 +14454,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     timeLimit?: IntFieldUpdateOperationsInput | number
     status?: EnumSignalStatusFieldUpdateOperationsInput | $Enums.SignalStatus
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutSignalsNestedInput
     selectedUser?: UserUpdateOneWithoutSelectedSignalsNestedInput
     category?: SignalCategoryUpdateOneRequiredWithoutSignalsNestedInput
@@ -14452,6 +14474,7 @@ export namespace Prisma {
     timeLimit?: IntFieldUpdateOperationsInput | number
     status?: EnumSignalStatusFieldUpdateOperationsInput | $Enums.SignalStatus
     selectedUserId?: NullableIntFieldUpdateOperationsInput | number | null
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     responses?: ResponseUncheckedUpdateManyWithoutSignalNestedInput
     respondedSignals?: RespondedSignalUncheckedUpdateManyWithoutSignalNestedInput
   }
@@ -14468,6 +14491,7 @@ export namespace Prisma {
     timeLimit: number
     status?: $Enums.SignalStatus
     selectedUserId?: number | null
+    expiresAt?: Date | string
   }
 
   export type SignalUpdateManyMutationInput = {
@@ -14478,6 +14502,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     timeLimit?: IntFieldUpdateOperationsInput | number
     status?: EnumSignalStatusFieldUpdateOperationsInput | $Enums.SignalStatus
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type SignalUncheckedUpdateManyInput = {
@@ -14492,6 +14517,7 @@ export namespace Prisma {
     timeLimit?: IntFieldUpdateOperationsInput | number
     status?: EnumSignalStatusFieldUpdateOperationsInput | $Enums.SignalStatus
     selectedUserId?: NullableIntFieldUpdateOperationsInput | number | null
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ResponseCreateInput = {
@@ -15096,6 +15122,7 @@ export namespace Prisma {
     timeLimit?: SortOrder
     status?: SortOrder
     selectedUserId?: SortOrder
+    expiresAt?: SortOrder
   }
 
   export type SignalAvgOrderByAggregateInput = {
@@ -15120,6 +15147,7 @@ export namespace Prisma {
     timeLimit?: SortOrder
     status?: SortOrder
     selectedUserId?: SortOrder
+    expiresAt?: SortOrder
   }
 
   export type SignalMinOrderByAggregateInput = {
@@ -15134,6 +15162,7 @@ export namespace Prisma {
     timeLimit?: SortOrder
     status?: SortOrder
     selectedUserId?: SortOrder
+    expiresAt?: SortOrder
   }
 
   export type SignalSumOrderByAggregateInput = {
@@ -16566,6 +16595,7 @@ export namespace Prisma {
     createdAt?: Date | string
     timeLimit: number
     status?: $Enums.SignalStatus
+    expiresAt?: Date | string
     selectedUser?: UserCreateNestedOneWithoutSelectedSignalsInput
     category: SignalCategoryCreateNestedOneWithoutSignalsInput
     responses?: ResponseCreateNestedManyWithoutSignalInput
@@ -16583,6 +16613,7 @@ export namespace Prisma {
     timeLimit: number
     status?: $Enums.SignalStatus
     selectedUserId?: number | null
+    expiresAt?: Date | string
     responses?: ResponseUncheckedCreateNestedManyWithoutSignalInput
     respondedSignals?: RespondedSignalUncheckedCreateNestedManyWithoutSignalInput
   }
@@ -16605,6 +16636,7 @@ export namespace Prisma {
     createdAt?: Date | string
     timeLimit: number
     status?: $Enums.SignalStatus
+    expiresAt?: Date | string
     user: UserCreateNestedOneWithoutSignalsInput
     category: SignalCategoryCreateNestedOneWithoutSignalsInput
     responses?: ResponseCreateNestedManyWithoutSignalInput
@@ -16622,6 +16654,7 @@ export namespace Prisma {
     createdAt?: Date | string
     timeLimit: number
     status?: $Enums.SignalStatus
+    expiresAt?: Date | string
     responses?: ResponseUncheckedCreateNestedManyWithoutSignalInput
     respondedSignals?: RespondedSignalUncheckedCreateNestedManyWithoutSignalInput
   }
@@ -16747,6 +16780,7 @@ export namespace Prisma {
     timeLimit?: IntFilter<"Signal"> | number
     status?: EnumSignalStatusFilter<"Signal"> | $Enums.SignalStatus
     selectedUserId?: IntNullableFilter<"Signal"> | number | null
+    expiresAt?: DateTimeFilter<"Signal"> | Date | string
   }
 
   export type SignalUpsertWithWhereUniqueWithoutSelectedUserInput = {
@@ -16873,6 +16907,7 @@ export namespace Prisma {
     createdAt?: Date | string
     timeLimit: number
     status?: $Enums.SignalStatus
+    expiresAt?: Date | string
     user: UserCreateNestedOneWithoutSignalsInput
     selectedUser?: UserCreateNestedOneWithoutSelectedSignalsInput
     responses?: ResponseCreateNestedManyWithoutSignalInput
@@ -16890,6 +16925,7 @@ export namespace Prisma {
     timeLimit: number
     status?: $Enums.SignalStatus
     selectedUserId?: number | null
+    expiresAt?: Date | string
     responses?: ResponseUncheckedCreateNestedManyWithoutSignalInput
     respondedSignals?: RespondedSignalUncheckedCreateNestedManyWithoutSignalInput
   }
@@ -17161,6 +17197,7 @@ export namespace Prisma {
     createdAt?: Date | string
     timeLimit: number
     status?: $Enums.SignalStatus
+    expiresAt?: Date | string
     user: UserCreateNestedOneWithoutSignalsInput
     selectedUser?: UserCreateNestedOneWithoutSelectedSignalsInput
     category: SignalCategoryCreateNestedOneWithoutSignalsInput
@@ -17179,6 +17216,7 @@ export namespace Prisma {
     timeLimit: number
     status?: $Enums.SignalStatus
     selectedUserId?: number | null
+    expiresAt?: Date | string
     respondedSignals?: RespondedSignalUncheckedCreateNestedManyWithoutSignalInput
   }
 
@@ -17253,6 +17291,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     timeLimit?: IntFieldUpdateOperationsInput | number
     status?: EnumSignalStatusFieldUpdateOperationsInput | $Enums.SignalStatus
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutSignalsNestedInput
     selectedUser?: UserUpdateOneWithoutSelectedSignalsNestedInput
     category?: SignalCategoryUpdateOneRequiredWithoutSignalsNestedInput
@@ -17271,6 +17310,7 @@ export namespace Prisma {
     timeLimit?: IntFieldUpdateOperationsInput | number
     status?: EnumSignalStatusFieldUpdateOperationsInput | $Enums.SignalStatus
     selectedUserId?: NullableIntFieldUpdateOperationsInput | number | null
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     respondedSignals?: RespondedSignalUncheckedUpdateManyWithoutSignalNestedInput
   }
 
@@ -17820,6 +17860,7 @@ export namespace Prisma {
     createdAt?: Date | string
     timeLimit: number
     status?: $Enums.SignalStatus
+    expiresAt?: Date | string
     user: UserCreateNestedOneWithoutSignalsInput
     selectedUser?: UserCreateNestedOneWithoutSelectedSignalsInput
     category: SignalCategoryCreateNestedOneWithoutSignalsInput
@@ -17838,6 +17879,7 @@ export namespace Prisma {
     timeLimit: number
     status?: $Enums.SignalStatus
     selectedUserId?: number | null
+    expiresAt?: Date | string
     responses?: ResponseUncheckedCreateNestedManyWithoutSignalInput
   }
 
@@ -17909,6 +17951,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     timeLimit?: IntFieldUpdateOperationsInput | number
     status?: EnumSignalStatusFieldUpdateOperationsInput | $Enums.SignalStatus
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutSignalsNestedInput
     selectedUser?: UserUpdateOneWithoutSelectedSignalsNestedInput
     category?: SignalCategoryUpdateOneRequiredWithoutSignalsNestedInput
@@ -17927,6 +17970,7 @@ export namespace Prisma {
     timeLimit?: IntFieldUpdateOperationsInput | number
     status?: EnumSignalStatusFieldUpdateOperationsInput | $Enums.SignalStatus
     selectedUserId?: NullableIntFieldUpdateOperationsInput | number | null
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     responses?: ResponseUncheckedUpdateManyWithoutSignalNestedInput
   }
 
@@ -17975,6 +18019,7 @@ export namespace Prisma {
     timeLimit: number
     status?: $Enums.SignalStatus
     selectedUserId?: number | null
+    expiresAt?: Date | string
   }
 
   export type SignalCreateManySelectedUserInput = {
@@ -17988,6 +18033,7 @@ export namespace Prisma {
     createdAt?: Date | string
     timeLimit: number
     status?: $Enums.SignalStatus
+    expiresAt?: Date | string
   }
 
   export type ResponseCreateManyUserInput = {
@@ -18040,6 +18086,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     timeLimit?: IntFieldUpdateOperationsInput | number
     status?: EnumSignalStatusFieldUpdateOperationsInput | $Enums.SignalStatus
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     selectedUser?: UserUpdateOneWithoutSelectedSignalsNestedInput
     category?: SignalCategoryUpdateOneRequiredWithoutSignalsNestedInput
     responses?: ResponseUpdateManyWithoutSignalNestedInput
@@ -18057,6 +18104,7 @@ export namespace Prisma {
     timeLimit?: IntFieldUpdateOperationsInput | number
     status?: EnumSignalStatusFieldUpdateOperationsInput | $Enums.SignalStatus
     selectedUserId?: NullableIntFieldUpdateOperationsInput | number | null
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     responses?: ResponseUncheckedUpdateManyWithoutSignalNestedInput
     respondedSignals?: RespondedSignalUncheckedUpdateManyWithoutSignalNestedInput
   }
@@ -18072,6 +18120,7 @@ export namespace Prisma {
     timeLimit?: IntFieldUpdateOperationsInput | number
     status?: EnumSignalStatusFieldUpdateOperationsInput | $Enums.SignalStatus
     selectedUserId?: NullableIntFieldUpdateOperationsInput | number | null
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type SignalUpdateWithoutSelectedUserInput = {
@@ -18082,6 +18131,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     timeLimit?: IntFieldUpdateOperationsInput | number
     status?: EnumSignalStatusFieldUpdateOperationsInput | $Enums.SignalStatus
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutSignalsNestedInput
     category?: SignalCategoryUpdateOneRequiredWithoutSignalsNestedInput
     responses?: ResponseUpdateManyWithoutSignalNestedInput
@@ -18099,6 +18149,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     timeLimit?: IntFieldUpdateOperationsInput | number
     status?: EnumSignalStatusFieldUpdateOperationsInput | $Enums.SignalStatus
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     responses?: ResponseUncheckedUpdateManyWithoutSignalNestedInput
     respondedSignals?: RespondedSignalUncheckedUpdateManyWithoutSignalNestedInput
   }
@@ -18114,6 +18165,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     timeLimit?: IntFieldUpdateOperationsInput | number
     status?: EnumSignalStatusFieldUpdateOperationsInput | $Enums.SignalStatus
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ResponseUpdateWithoutUserInput = {
@@ -18209,6 +18261,7 @@ export namespace Prisma {
     timeLimit: number
     status?: $Enums.SignalStatus
     selectedUserId?: number | null
+    expiresAt?: Date | string
   }
 
   export type SignalUpdateWithoutCategoryInput = {
@@ -18219,6 +18272,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     timeLimit?: IntFieldUpdateOperationsInput | number
     status?: EnumSignalStatusFieldUpdateOperationsInput | $Enums.SignalStatus
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutSignalsNestedInput
     selectedUser?: UserUpdateOneWithoutSelectedSignalsNestedInput
     responses?: ResponseUpdateManyWithoutSignalNestedInput
@@ -18236,6 +18290,7 @@ export namespace Prisma {
     timeLimit?: IntFieldUpdateOperationsInput | number
     status?: EnumSignalStatusFieldUpdateOperationsInput | $Enums.SignalStatus
     selectedUserId?: NullableIntFieldUpdateOperationsInput | number | null
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
     responses?: ResponseUncheckedUpdateManyWithoutSignalNestedInput
     respondedSignals?: RespondedSignalUncheckedUpdateManyWithoutSignalNestedInput
   }
@@ -18251,6 +18306,7 @@ export namespace Prisma {
     timeLimit?: IntFieldUpdateOperationsInput | number
     status?: EnumSignalStatusFieldUpdateOperationsInput | $Enums.SignalStatus
     selectedUserId?: NullableIntFieldUpdateOperationsInput | number | null
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ResponseCreateManySignalInput = {
