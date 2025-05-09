@@ -91,7 +91,7 @@ export class SignalController {
   })
   @ApiResponse({
     status: 200,
-    description: 'Signal successfully selected',
+    description: 'Signal successfully accepted',
     example: {
       id: 3,
       userId: 1,
@@ -108,8 +108,22 @@ export class SignalController {
     },
   })
   @ApiResponse({
+    status: 403,
+    description: 'Cannot accept your own signal',
+    example: {
+      message: 'Cannot accept your own signal',
+      error: 'Forbidden',
+      statusCode: 403,
+    },
+  })
+  @ApiResponse({
     status: 404,
     description: 'Signal not found',
+    example: {
+      message: 'Signal with id 0 not found',
+      error: 'Not Found',
+      statusCode: 404,
+    },
   })
   acceptSignal(
     @Param('id', ParseIntPipe) id: number,
@@ -120,7 +134,7 @@ export class SignalController {
 
   @Patch(':id/cancel')
   @ApiOperation({ summary: 'Cancel a accepted signal' })
-  @ApiParam({ name: 'id', description: 'Signal ID' })
+  @ApiParam({ name: 'id', description: 'Signal id' })
   @ApiBody({
     schema: {
       type: 'object',
@@ -151,8 +165,22 @@ export class SignalController {
     },
   })
   @ApiResponse({
+    status: 403,
+    description: 'You are not the user who selected this signal',
+    example: {
+      message: 'You are not the user who selected this signal',
+      error: 'Forbidden',
+      statusCode: 403,
+    },
+  })
+  @ApiResponse({
     status: 404,
     description: 'Signal not found',
+    example: {
+      message: 'Signal with id 0 not found',
+      error: 'Not Found',
+      statusCode: 404,
+    },
   })
   cancelSignal(
     @Param('id', ParseIntPipe) id: number,
@@ -194,8 +222,22 @@ export class SignalController {
     },
   })
   @ApiResponse({
+    status: 403,
+    description: 'Only the selected user can complete this signal',
+    example: {
+      message: 'Only the selected user can complete this signal',
+      error: 'Forbidden',
+      statusCode: 403,
+    },
+  })
+  @ApiResponse({
     status: 404,
     description: 'Signal not found',
+    example:{
+      message: "User with id 0 not found",
+      error: "Not Found",
+      statusCode: 404,
+    }
   })
   completeSignal(
     @Param('id', ParseIntPipe) id: number,
@@ -238,7 +280,12 @@ export class SignalController {
   })
   @ApiResponse({
     status: 400,
-    description: 'Signal is not available for deletion since it is not pending',
+    description: 'Signal is not available for deletion',
+    example: {
+      message: 'Signal is not available for deletion since it is not pending',
+      error: 'Bad Request',
+      statusCode: 400,
+    },
   })
   @ApiResponse({
     status: 403,
@@ -252,6 +299,11 @@ export class SignalController {
   @ApiResponse({
     status: 404,
     description: 'Signal not found',
+    example: {
+      message: 'Signal with id 0 not found',
+      error: 'Not Found',
+      statusCode: 404,
+    },
   })
   deleteSignal(
     @Param('id', ParseIntPipe) id: number,

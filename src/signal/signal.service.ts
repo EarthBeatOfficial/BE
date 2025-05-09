@@ -60,15 +60,15 @@ export class SignalService {
     });
 
     if (!signal) {
-      throw new NotFoundException(`Signal with ID ${signalId} not found`);
+      throw new NotFoundException(`Signal with id ${signalId} not found`);
     }
 
     if (signal.status !== SignalStatus.PENDING) {
-      throw new BadRequestException('Signal is not available for selection');
+      throw new BadRequestException('Signal is not available for acception');
     }
 
     if (signal.userId === userId) {
-      throw new BadRequestException('Cannot select your own signal');
+      throw new ForbiddenException('Cannot accept your own signal');
     }
 
     return this.prisma.signal.update({
@@ -86,11 +86,11 @@ export class SignalService {
     });
 
     if (!signal) {
-      throw new NotFoundException(`Signal with ID ${signalId} not found`);
+      throw new NotFoundException(`Signal with id ${signalId} not found`);
     }
 
     if (signal.selectedUserId !== userId) {
-      throw new BadRequestException(
+      throw new ForbiddenException(
         'You are not the user who selected this signal',
       );
     }
@@ -114,11 +114,11 @@ export class SignalService {
     });
 
     if (!signal) {
-      throw new NotFoundException(`Signal with ID ${signalId} not found`);
+      throw new NotFoundException(`Signal with id ${signalId} not found`);
     }
 
     if (signal.selectedUserId !== userId) {
-      throw new BadRequestException(
+      throw new ForbiddenException(
         'Only the selected user can complete this signal',
       );
     }
@@ -156,7 +156,7 @@ export class SignalService {
     }
 
     if (signal.status !== SignalStatus.PENDING) {
-      throw new BadRequestException('Signal is not available for deletion');
+      throw new BadRequestException('Signal is not available for deletion since it is not pending');
     }
 
     if (signal.userId !== userId) {
