@@ -1,6 +1,8 @@
 import { Controller, Get, Post, Body, Param } from '@nestjs/common';
 import { WalkSessionService } from './walk-session.service';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Walk-Sessions')
 @Controller('walk-sessions')
 export class WalkSessionController {
   constructor(private readonly walkSessionService: WalkSessionService) {}
