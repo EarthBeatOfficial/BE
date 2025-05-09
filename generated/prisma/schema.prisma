@@ -1,0 +1,153 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id              Int           @id @default(autoincrement())
+  username        String        @unique
+  createdAt       DateTime      @default(now()) @map("created_at")
+  routes          Route[]
+  signals         Signal[]
+  selectedSignals Signal[]      @relation("SelectedSignals")
+  responses       Response[]
+  sessions        WalkSession[]
+
+  @@map("user")
+}
+
+model Theme {
+  id     Int     @id @default(autoincrement())
+  name   String
+  routes Route[]
+
+  @@map("theme")
+}
+
+model SignalCategory {
+  id      Int      @id @default(autoincrement())
+  name    String
+  signals Signal[]
+
+  @@map("signal_category")
+}
+
+model Signal {
+  id             Int            @id @default(autoincrement())
+  userId         Int            @map("user_id")
+  categoryId     Int            @map("category_id")
+  title          String
+  description    String
+  lat            Float
+  lng            Float
+  createdAt      DateTime       @default(now()) @map("created_at")
+  timeLimit      Int            @map("time_limit")
+  status         SignalStatus   @default(PENDING)
+  selectedUserId Int?           @map("selected_user_id")
+  user           User           @relation(fields: [userId], references: [id])
+  selectedUser   User?          @relation("SelectedSignals", fields: [selectedUserId], references: [id])
+  category       SignalCategory @relation(fields: [categoryId], references: [id])
+  responses      Response[]
+  walkSignals    WalkSignal[]
+
+  @@map("signal")
+}
+
+model Response {
+  id          Int          @id @default(autoincrement())
+  signalId    Int          @map("signal_id")
+  userId      Int          @map("user_id")
+  message     String
+  respondedAt DateTime     @default(now()) @map("responded_at")
+  signal      Signal       @relation(fields: [signalId], references: [id])
+  user        User         @relation(fields: [userId], references: [id])
+  walkSignals WalkSignal[]
+
+  @@map("response")
+}
+
+model Route {
+  id          Int           @id @default(autoincrement())
+  userId      Int           @map("user_id")
+  distance    Float
+  themeId     Int           @map("theme_id")
+  createdAt   DateTime      @default(now()) @map("created_at")
+  completedAt DateTime?     @map("completed_at")
+  user        User          @relation(fields: [userId], references: [id])
+  theme       Theme         @relation(fields: [themeId], references: [id])
+  points      RoutePoint[]
+  sessions    WalkSession[]
+
+  @@map("route")
+}
+
+model RoutePoint {
+  id      Int   @id @default(autoincrement())
+  routeId Int   @map("route_id")
+  lat     Float
+  lng     Float
+  order   Int
+  route   Route @relation(fields: [routeId], references: [id])
+
+  @@map("route_point")
+}
+
+model WalkSession {
+  id         Int           @id @default(autoincrement())
+  userId     Int           @map("user_id")
+  routeId    Int           @map("route_id")
+  startedAt  DateTime      @default(now()) @map("started_at")
+  finishedAt DateTime?     @map("finished_at")
+  status     SessionStatus @default(IN_PROGRESS)
+  user       User          @relation(fields: [userId], references: [id])
+  route      Route         @relation(fields: [routeId], references: [id])
+  walkLog    WalkLog?
+
+  @@map("walk_session")
+}
+
+model WalkLog {
+  id        Int          @id @default(autoincrement())
+  sessionId Int          @unique @map("session_id")
+  distance  Float
+  walkedAt  DateTime     @default(now()) @map("walked_at")
+  session   WalkSession  @relation(fields: [sessionId], references: [id])
+  signals   WalkSignal[]
+
+  @@map("walk_log")
+}
+
+model WalkSignal {
+  id          Int      @id @default(autoincrement())
+  walkLogId   Int      @map("walklog_id")
+  signalId    Int      @map("signal_id")
+  responseId  Int      @map("response_id")
+  respondedAt DateTime @default(now()) @map("responded_at")
+  walkLog     WalkLog  @relation(fields: [walkLogId], references: [id])
+  signal      Signal   @relation(fields: [signalId], references: [id])
+  response    Response @relation(fields: [responseId], references: [id])
+
+  @@map("walk_signal")
+}
+
+enum SignalStatus {
+  PENDING
+  IN_PROGRESS
+  COMPLETED
+}
+
+enum SessionStatus {
+  IN_PROGRESS
+  COMPLETED
+}
