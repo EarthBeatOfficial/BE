@@ -29,7 +29,12 @@ export class UsersController {
   })
   @ApiResponse({ 
     status: 409, 
-    description: 'Conflict - nickname already exists' 
+    description: 'Conflict - nickname already exists',
+    example:{
+      message: "This nickname 'jeffkim' already exists",
+      error: "Conflict",
+      statusCode: 409,
+    } 
   })
   createUser(@Body() dto: CreateUserDto) {
     return this.usersService.createUser(dto);
@@ -44,7 +49,12 @@ export class UsersController {
   })
   @ApiResponse({ 
     status: 404, 
-    description: 'User not found' 
+    description: 'User not found',
+    example:{
+      message: "User with Id 0 not found",
+      error: "Not Found",
+      statusCode: 404,
+    }
   })
   getUserById(@Param('id', ParseIntPipe) id: number) {
     return this.usersService.getUserById(id);
