@@ -28,15 +28,15 @@ export class UsersController {
     type: UserResponseDto,
   })
   @ApiResponse({ 
-    status: 400, 
+    status: 409, 
     description: 'Bad Request - Invalid input data' 
   })
   createUser(@Body() dto: CreateUserDto) {
     return this.usersService.createUser(dto);
   }
 
-  @Get(':username')
-  @ApiOperation({ summary: 'Get user by their username' })
+  @Get(':nickname')
+  @ApiOperation({ summary: 'Get user by their nickname' })
   @ApiResponse({ 
     status: 200, 
     description: 'User found',
@@ -46,7 +46,7 @@ export class UsersController {
     status: 404, 
     description: 'User not found' 
   })
-  getUserByUsername(@Param('username') username: string) {
-    return this.usersService.getUserByUsername(username);
+  getUserByNickname(@Param('nickname') nickname: string) {
+    return this.usersService.getUserByNickname(nickname);
   }
 } 

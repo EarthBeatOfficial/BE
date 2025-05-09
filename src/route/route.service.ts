@@ -1,7 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { HttpService } from '@nestjs/axios';
-import { RecommendRouteDto } from './dto/recommend-route.dto';
+import { RecommendRouteDto, LocationDto } from './dto/recommend-route.dto';
+import { DirectionsResponseDto } from './dto/directions-response.dto';
 import { firstValueFrom } from 'rxjs';
 
 interface AIResponse {
@@ -16,7 +17,15 @@ export class RouteService {
     private httpService: HttpService,
   ) {}
 
-  async recommendRoute(userId: number, dto: RecommendRouteDto) {
+  async recommendRoute(userId: number, dto: RecommendRouteDto): Promise<DirectionsResponseDto> {
+    // Parse the location JSON string
+    let location: LocationDto;
+    try {
+      location = JSON.parse(dto.location);
+    } catch (error) {
+      throw new BadRequestException('Invalid location format. Expected JSON string with latitude and longitude.');
+    }
+
     const theme = await this.prisma.theme.findUnique({
       where: { id: dto.themeId },
     });
@@ -26,14 +35,12 @@ export class RouteService {
     }
 
     // Send request to AI server
-    const response = await firstValueFrom(
+    const request = await firstValueFrom(
       this.httpService.post<AIResponse>(process.env.AI_SERVER_URL + '/recommend', {
-        startLocation: {
-          lat: dto.lat,
-          lng: dto.lng,
-        },
+        distance: dto.distance.toString(),
         theme: theme.name,
-        distance: dto.distance,
+        latitude: location.latitude,
+        longitude: location.longitude,
       }),
     );
 
@@ -44,7 +51,7 @@ export class RouteService {
         distance: dto.distance,
         themeId: dto.themeId,
         points: {
-          create: response.data.coordinates.map(([lng, lat], index) => ({
+          create: request.data.coordinates.map(([lat, lng], index) => ({
             lat,
             lng,
             order: index,
@@ -57,19 +64,17 @@ export class RouteService {
       },
     });
 
-    return {
-      route,
-      coordinates: response.data.coordinates,
+    // Format response for Google Maps Directions
+    const coordinates = request.data.coordinates;
+    const directionsResponse: DirectionsResponseDto = {
+      origin: { lat: location.latitude, lng: location.longitude },
+      destination: { lat: location.latitude, lng: location.longitude },
+      waypoints: coordinates.slice(1, -1).map(([lng, lat]) => ({
+        location: { lat, lng },
+      })),
+      travelMode: 'google.maps.TravelMode.WALKING',
     };
-  }
 
-  async findRoutesByUser(userId: number) {
-    return this.prisma.route.findMany({
-      where: { userId },
-      include: {
-        points: true,
-        theme: true,
-      },
-    });
+    return directionsResponse;
   }
 } 

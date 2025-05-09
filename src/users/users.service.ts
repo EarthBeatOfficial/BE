@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
+import { Injectable, NotFoundException, ConflictException } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
 
@@ -13,7 +13,7 @@ export class UsersService {
     });
 
     if (existingUser) {
-      throw new BadRequestException(`This nickname '${dto.username}' already exists`);
+      throw new ConflictException(`This nickname '${dto.username}' already exists`);
     }
 
     return this.prisma.user.create({
@@ -23,13 +23,13 @@ export class UsersService {
     });
   }
 
-  async getUserByUsername(username: string) {
+  async getUserByNickname(nickname: string) {
     const user = await this.prisma.user.findUnique({
-      where: { username },
+      where: { username: nickname },
     });
 
     if (!user) {
-      throw new NotFoundException(`User with nickname ${username} not found`);
+      throw new NotFoundException(`User with nickname ${nickname} not found`);
     }
 
     return user;

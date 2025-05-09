@@ -13,9 +13,4 @@ export class RouteController {
   ) {
     return this.routeService.recommendRoute(userId, dto);
   }
-
-  @Get('users/:userId/routes')
-  findRoutesByUser(@Param('userId', ParseIntPipe) userId: number) {
-    return this.routeService.findRoutesByUser(userId);
-  }
 } 
