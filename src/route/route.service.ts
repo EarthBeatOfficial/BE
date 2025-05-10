@@ -65,7 +65,11 @@ export class RouteService {
     }
 
     // Validate AI response
-    if (!aiResponse || !aiResponse.coordinates || !Array.isArray(aiResponse.coordinates)) {
+    if (
+      !aiResponse ||
+      !aiResponse.coordinates ||
+      !Array.isArray(aiResponse.coordinates)
+    ) {
       throw new BadRequestException(
         'Invalid response from AI server: missing or invalid coordinates',
       );

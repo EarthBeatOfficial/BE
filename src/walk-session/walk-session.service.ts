@@ -24,7 +24,9 @@ export class WalkSessionService {
     });
 
     if (activeSession) {
-      throw new BadRequestException('You already have an active walking session');
+      throw new BadRequestException(
+        'You already have an active walking session',
+      );
     }
 
     // Check if route exists
@@ -90,7 +92,7 @@ export class WalkSessionService {
           walkedAt: new Date(),
           sessionId: sessionId,
           respondedSignals: {
-            create: responses.map(response => ({
+            create: responses.map((response) => ({
               signalId: response.signalId,
               responseId: response.id,
             })),

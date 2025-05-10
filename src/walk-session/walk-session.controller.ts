@@ -1,6 +1,19 @@
-import { Controller, Get, Post, Body, Param, ParseIntPipe } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  ParseIntPipe,
+} from '@nestjs/common';
 import { WalkSessionService } from './walk-session.service';
-import { ApiOperation, ApiTags, ApiBody, ApiResponse, ApiParam } from '@nestjs/swagger';
+import {
+  ApiOperation,
+  ApiTags,
+  ApiBody,
+  ApiResponse,
+  ApiParam,
+} from '@nestjs/swagger';
 
 @ApiTags('Walk Sessions')
 @Controller('walk-sessions')
@@ -118,4 +131,3 @@ export class WalkSessionController {
     return this.walkSessionService.getActiveSession(userId);
   }
 }
-  

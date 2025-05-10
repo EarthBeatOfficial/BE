@@ -54,10 +54,7 @@ export class RouteController {
     status: 404,
     description: 'Theme not found',
   })
-  recommendRoute(
-    @Body('userId', ParseIntPipe) userId: number,
-    @Body() dto: RecommendRouteDto,
-  ) {
-    return this.routeService.recommendRoute(userId, dto);
+  recommendRoute(@Body() dto: RecommendRouteDto) {
+    return this.routeService.recommendRoute(dto.userId, dto);
   }
 }

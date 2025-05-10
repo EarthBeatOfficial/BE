@@ -194,7 +194,7 @@ export class SignalController {
   }
 
   // Response Controller will replace this part
-  
+
   // @Patch(':id/complete')
   // @ApiOperation({ summary: 'Mark a signal as completed' })
   // @ApiParam({ name: 'id', description: 'Signal ID' })

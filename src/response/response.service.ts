@@ -1,4 +1,9 @@
-import { Injectable, NotFoundException, ForbiddenException, BadRequestException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  ForbiddenException,
+  BadRequestException,
+} from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateResponseDto } from './dto/create-response.dto';
 
@@ -30,11 +35,15 @@ export class ResponseService {
     }
 
     if (signal.status !== SignalStatus.IN_PROGRESS) {
-      throw new BadRequestException('Signal must be accepted before responding');
+      throw new BadRequestException(
+        'Signal must be accepted before responding',
+      );
     }
 
     if (signal.selectedUserId !== dto.userId) {
-      throw new ForbiddenException('Only the user who accepted the signal can respond to it');
+      throw new ForbiddenException(
+        'Only the user who accepted the signal can respond to it',
+      );
     }
 
     // Create response and update signal status in a transaction

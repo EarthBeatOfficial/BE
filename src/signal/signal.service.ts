@@ -39,20 +39,20 @@ export class SignalService {
     return signal;
   }
 
-  @Cron(CronExpression.EVERY_MINUTE)
-  async deleteExpiredSignals() {
-    const now = new Date();
-    await this.prisma.signal.deleteMany({
-      where: {
-        expiresAt: {
-          lte: now,
-        },
-        status: {
-          not: SignalStatus.COMPLETED,
-        },
-      },
-    });
-  }
+  // @Cron(CronExpression.EVERY_MINUTE)
+  // async deleteExpiredSignals() {
+  //   const now = new Date();
+  //   await this.prisma.signal.deleteMany({
+  //     where: {
+  //       expiresAt: {
+  //         lte: now,
+  //       },
+  //       status: {
+  //         not: SignalStatus.COMPLETED,
+  //       },
+  //     },
+  //   });
+  // }
 
   async acceptSignal(signalId: number, userId: number) {
     const signal = await this.prisma.signal.findUnique({
@@ -156,7 +156,9 @@ export class SignalService {
     }
 
     if (signal.status !== SignalStatus.PENDING) {
-      throw new BadRequestException('Signal is not available for deletion since it is not pending');
+      throw new BadRequestException(
+        'Signal is not available for deletion since it is not pending',
+      );
     }
 
     if (signal.userId !== userId) {

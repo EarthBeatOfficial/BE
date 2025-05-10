@@ -15,6 +15,11 @@ export class LocationDto {
 }
 
 export class RecommendRouteDto {
+  @ApiProperty({ description: 'User ID', example: 1 })
+  @IsNumber()
+  @Type(() => Number)
+  userId: number;
+
   @ApiProperty({
     description: 'Starting location as JSON string',
     example: '{"latitude": 37.544582, "longitude": 127.037589}',
