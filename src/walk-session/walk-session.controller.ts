@@ -75,20 +75,20 @@ export class WalkSessionController {
   @ApiBody({
     schema: {
       type: 'object',
-      required: ['userId', 'distance', 'duration'],
+      required: ['userId'],
       properties: {
         userId: {
           type: 'number',
           description: 'ID of the user ending the walk',
         },
-        distance: {
-          type: 'number',
-          description: 'Distance walked in kilometers',
+      },
+    },
+    examples: {
+      example1: {
+        value: {
+          userId: 1,
         },
-        duration: {
-          type: 'number',
-          description: 'Duration of the walk in minutes',
-        },
+        summary: 'Example of ending a walk session',
       },
     },
   })
@@ -103,13 +103,8 @@ export class WalkSessionController {
   endWalking(
     @Param('id', ParseIntPipe) id: number,
     @Body('userId', ParseIntPipe) userId: number,
-    @Body('distance') distance: number,
-    @Body('duration') duration: number,
   ) {
-    return this.walkSessionService.endWalking(userId, id, {
-      distance,
-      duration,
-    });
+    return this.walkSessionService.endWalking(userId, id);
   }
 
   @Get('active/:userId')
@@ -123,3 +118,4 @@ export class WalkSessionController {
     return this.walkSessionService.getActiveSession(userId);
   }
 }
+  

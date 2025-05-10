@@ -96,7 +96,7 @@ export class RouteService {
     const directionsResponse: DirectionsResponseDto = {
       origin: { lat: location.latitude, lng: location.longitude },
       destination: { lat: location.latitude, lng: location.longitude },
-      waypoints: coordinates.slice(1, -1).map(([lng, lat]) => ({
+      waypoints: coordinates.slice(1, -1).map(([lat, lng]) => ({
         location: { lat, lng },
       })),
       travelMode: 'google.maps.TravelMode.WALKING',
