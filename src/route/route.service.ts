@@ -44,17 +44,32 @@ export class RouteService {
     }
 
     // Send request to AI server
-    const request = await firstValueFrom(
-      this.httpService.post<AIResponse>(
-        process.env.AI_SERVER_URL + '/recommend',
-        {
-          distance: dto.distance.toString(),
-          theme: theme.name,
-          latitude: location.latitude,
-          longitude: location.longitude,
-        },
-      ),
-    );
+    let aiResponse: AIResponse;
+    try {
+      const response = await firstValueFrom(
+        this.httpService.post<AIResponse>(
+          process.env.AI_SERVER_URL + '/recommend',
+          {
+            distance: dto.distance.toString(),
+            theme: theme.name,
+            latitude: location.latitude,
+            longitude: location.longitude,
+          },
+        ),
+      );
+      aiResponse = response.data;
+    } catch (error) {
+      throw new BadRequestException(
+        'Failed to get route recommendation from AI server',
+      );
+    }
+
+    // Validate AI response
+    if (!aiResponse || !aiResponse.coordinates || !Array.isArray(aiResponse.coordinates)) {
+      throw new BadRequestException(
+        'Invalid response from AI server: missing or invalid coordinates',
+      );
+    }
 
     // Create route in database
     const route = await this.prisma.route.create({
@@ -63,7 +78,7 @@ export class RouteService {
         distance: dto.distance,
         themeId: dto.themeId,
         points: {
-          create: request.data.coordinates.map(([lat, lng], index) => ({
+          create: aiResponse.coordinates.map(([lat, lng], index) => ({
             lat,
             lng,
             order: index,
@@ -77,7 +92,7 @@ export class RouteService {
     });
 
     // Format response for Google Maps Directions
-    const coordinates = request.data.coordinates;
+    const coordinates = aiResponse.coordinates;
     const directionsResponse: DirectionsResponseDto = {
       origin: { lat: location.latitude, lng: location.longitude },
       destination: { lat: location.latitude, lng: location.longitude },

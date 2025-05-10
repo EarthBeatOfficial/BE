@@ -15,6 +15,15 @@ export class WalkSessionService {
   constructor(private prisma: PrismaService) {}
 
   async startWalking(userId: number, routeId: number) {
+    // Check if route exists
+    const route = await this.prisma.route.findUnique({
+      where: { id: routeId },
+    });
+
+    if (!route) {
+      throw new NotFoundException(`Route with id ${routeId} not found`);
+    }
+
     // Check if user already has an active session
     const activeSession = await this.prisma.walkSession.findFirst({
       where: {
@@ -40,7 +49,6 @@ export class WalkSessionService {
       include: {
         route: {
           include: {
-            points: true,
             theme: true,
           },
         },
@@ -65,7 +73,25 @@ export class WalkSessionService {
       throw new NotFoundException('Active walking session not found');
     }
 
-    // Update session status and create walk log
+    // Get all responses made during this walk session
+    const responses = await this.prisma.response.findMany({
+      where: {
+        userId,
+        respondedAt: {
+          gte: session.startedAt,
+          lte: new Date(),
+        },
+      },
+      include: {
+        signal: {
+          include: {
+            category: true,
+          },
+        },
+      },
+    });
+
+    // Update session status and create walk log with responded signals
     return this.prisma.walkSession.update({
       where: { id: sessionId },
       data: {
@@ -75,11 +101,31 @@ export class WalkSessionService {
           create: {
             distance: walkData.distance,
             walkedAt: new Date(),
+            respondedSignals: {
+              create: responses.map(response => ({
+                signalId: response.signalId,
+                responseId: response.id,
+                respondedAt: response.respondedAt,
+              })),
+            },
           },
         },
       },
       include: {
-        walkLog: true,
+        walkLog: {
+          include: {
+            respondedSignals: {
+              include: {
+                signal: {
+                  include: {
+                    category: true,
+                  },
+                },
+                response: true,
+              },
+            },
+          },
+        },
         route: {
           include: {
             points: true,
@@ -103,7 +149,20 @@ export class WalkSessionService {
             theme: true,
           },
         },
-        walkLog: true,
+        walkLog: {
+          include: {
+            respondedSignals: {
+              include: {
+                signal: {
+                  include: {
+                    category: true,
+                  },
+                },
+                response: true,
+              },
+            },
+          },
+        },
       },
     });
   }
@@ -121,7 +180,20 @@ export class WalkSessionService {
             theme: true,
           },
         },
-        walkLog: true,
+        walkLog: {
+          include: {
+            respondedSignals: {
+              include: {
+                signal: {
+                  include: {
+                    category: true,
+                  },
+                },
+                response: true,
+              },
+            },
+          },
+        },
       },
       orderBy: {
         startedAt: 'desc',

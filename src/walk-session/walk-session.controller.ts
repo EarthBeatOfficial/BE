@@ -1,6 +1,6 @@
-import { Controller, Get, Post, Body, Param } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, ParseIntPipe } from '@nestjs/common';
 import { WalkSessionService } from './walk-session.service';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiTags, ApiBody, ApiResponse, ApiParam } from '@nestjs/swagger';
 
 @ApiTags('Walk Sessions')
 @Controller('walk-sessions')
@@ -8,28 +8,118 @@ export class WalkSessionController {
   constructor(private readonly walkSessionService: WalkSessionService) {}
 
   @Post('start')
-  startWalking(@Body() body: { userId: number; routeId: number }) {
-    return this.walkSessionService.startWalking(body.userId, body.routeId);
+  @ApiOperation({ summary: 'Start a new walk session' })
+  @ApiBody({
+    schema: {
+      type: 'object',
+      required: ['userId', 'routeId'],
+      properties: {
+        userId: {
+          type: 'number',
+          description: 'ID of the user starting the walk',
+        },
+        routeId: {
+          type: 'number',
+          description: 'ID of the route to walk',
+        },
+      },
+    },
+    examples: {
+      example1: {
+        value: {
+          userId: 1,
+          routeId: 2,
+        },
+        summary: 'Example of starting a walk session',
+      },
+    },
+  })
+  @ApiResponse({
+    status: 201,
+    description: 'Walk session successfully started',
+    example: {
+      id: 1,
+      userId: 1,
+      routeId: 2,
+      status: 'IN_PROGRESS',
+      startedAt: '2024-03-20T10:00:00Z',
+      route: {
+        id: 2,
+        name: 'Park Route',
+        theme: {
+          id: 1,
+          name: 'Nature',
+        },
+      },
+    },
+  })
+  @ApiResponse({
+    status: 400,
+    description: 'User already has an active session',
+    example: {
+      message: 'You already have an active walking session',
+      error: 'Bad Request',
+      statusCode: 400,
+    },
+  })
+  startWalking(
+    @Body('userId', ParseIntPipe) userId: number,
+    @Body('routeId', ParseIntPipe) routeId: number,
+  ) {
+    return this.walkSessionService.startWalking(userId, routeId);
   }
 
   @Post(':id/end')
+  @ApiOperation({ summary: 'End the walk session' })
+  @ApiParam({ name: 'id', description: 'Session ID' })
+  @ApiBody({
+    schema: {
+      type: 'object',
+      required: ['userId', 'distance', 'duration'],
+      properties: {
+        userId: {
+          type: 'number',
+          description: 'ID of the user ending the walk',
+        },
+        distance: {
+          type: 'number',
+          description: 'Distance walked in kilometers',
+        },
+        duration: {
+          type: 'number',
+          description: 'Duration of the walk in minutes',
+        },
+      },
+    },
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'Walk session successfully ended',
+  })
+  @ApiResponse({
+    status: 404,
+    description: 'Active walking session not found',
+  })
   endWalking(
-    @Param('id') id: string,
-    @Body() body: { userId: number; distance: number; duration: number },
+    @Param('id', ParseIntPipe) id: number,
+    @Body('userId', ParseIntPipe) userId: number,
+    @Body('distance') distance: number,
+    @Body('duration') duration: number,
   ) {
-    return this.walkSessionService.endWalking(body.userId, +id, {
-      distance: body.distance,
-      duration: body.duration,
+    return this.walkSessionService.endWalking(userId, id, {
+      distance,
+      duration,
     });
   }
 
   @Get('active/:userId')
-  getActiveSession(@Param('userId') userId: number) {
+  @ApiOperation({ summary: 'Get active walk session for a user' })
+  @ApiParam({ name: 'userId', description: 'User ID' })
+  @ApiResponse({
+    status: 200,
+    description: 'Active walk session if exists',
+  })
+  getActiveSession(@Param('userId', ParseIntPipe) userId: number) {
     return this.walkSessionService.getActiveSession(userId);
-  }
-
-  @Get('user/:userId')
-  getUserSessions(@Param('userId') userId: number) {
-    return this.walkSessionService.getUserSessions(userId);
   }
 }
