@@ -169,4 +169,13 @@ export class SignalService {
       where: { id },
     });
   }
+
+  async getMySignals(userId: number) {
+    return this.prisma.signal.findMany({
+      where: {
+        selectedUserId: userId,
+        status: SignalStatus.IN_PROGRESS,
+      },
+    });
+  }
 }

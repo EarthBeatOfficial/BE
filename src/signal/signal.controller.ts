@@ -328,4 +328,46 @@ export class SignalController {
   getActiveSignals() {
     return this.signalService.getActiveSignals();
   }
+
+  @Get('mysignals/:userId')
+  @ApiOperation({ summary: 'Get all of my current signals' })
+  @ApiParam({ name: 'userId', description: 'User id' })
+  @ApiResponse({
+    status: 200,
+    description: 'List of my current signals',
+    isArray: true,
+    example: [
+      {
+        id: 3,
+        userId: 5,
+        categoryId: 5,
+        title: 'Help needed with recycling',
+        description: 'Need help sorting recyclables at the community center',
+        lat: 37.5665,
+        lng: 126.978,
+        createdAt: '2025-05-09T13:32:04.142Z',
+        timeLimit: 30,
+        status: 'PENDING',
+        selectedUserId: 1,
+        expiresAt: '2025-05-09T14:02:04.140Z',
+      },
+      {
+        id: 3,
+        userId: 5,
+        categoryId: 5,
+        title: 'Help needed with recycling',
+        description: 'Need help sorting recyclables at the community center',
+        lat: 37.5665,
+        lng: 126.978,
+        createdAt: '2025-05-09T13:32:04.142Z',
+        timeLimit: 30,
+        status: 'PENDING',
+        selectedUserId: 1,
+        expiresAt: '2025-05-09T14:02:04.140Z',
+      },
+    ],
+  })
+  getMySignals(@Param('userId', ParseIntPipe) userId: number) {
+    return this.signalService.getMySignals(userId);
+  }
 }
