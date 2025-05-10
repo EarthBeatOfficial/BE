@@ -79,11 +79,11 @@ export class ResponseController {
   }
 
   @Get(':signalId')
-  @ApiOperation({ summary: 'Get all responses for a signal' })
+  @ApiOperation({ summary: 'Get the response for a signal' })
   @ApiParam({ name: 'signalId', description: 'Signal ID' })
   @ApiResponse({
     status: 200,
-    description: 'List of responses for the signal',
+    description: 'Response for the signal',
     isArray: true,
     example: [
       {
@@ -96,6 +96,9 @@ export class ResponseController {
         user: {
           id: 1,
           username: 'john_doe',
+        },
+        signal: {
+          title: 'Help needed with watering my plant',
         },
       },
     ],

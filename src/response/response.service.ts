@@ -93,6 +93,11 @@ export class ResponseService {
             username: true,
           },
         },
+        signal: {
+          select: {
+            title: true,
+          },
+        },
       },
       orderBy: {
         respondedAt: 'desc',
