@@ -52,17 +52,21 @@ export class SignalController {
       example1: {
         value: {
           id: 1,
+          userId: 1,
+          categoryId: 1,
           title: 'Help needed with recycling',
           description: 'Need help sorting recyclables at the community center',
           lat: 37.5665,
           lng: 126.978,
+          createdAt: '2024-03-20T10:00:00Z',
           timeLimit: 30,
+          status: 'PENDING',
+          selectedUserId: null,
+          expiresAt: '2024-03-20T10:30:00Z',
           category: {
             id: 1,
             name: 'Water Plants / Plant - Related',
           },
-          status: 'PENDING',
-          createdAt: '2024-03-20T10:00:00Z',
         },
         summary: 'Example of a signal creation',
       },
@@ -189,62 +193,64 @@ export class SignalController {
     return this.signalService.cancelSignal(id, userId);
   }
 
-  @Patch(':id/complete')
-  @ApiOperation({ summary: 'Mark a signal as completed' })
-  @ApiParam({ name: 'id', description: 'Signal ID' })
-  @ApiBody({
-    schema: {
-      type: 'object',
-      properties: {
-        userId: {
-          type: 'number',
-          description: 'ID of the user completing the signal',
-        },
-      },
-    },
-  })
-  @ApiResponse({
-    status: 200,
-    description: 'Signal successfully completed',
-    example: {
-      id: 3,
-      userId: 1,
-      categoryId: 5,
-      title: 'Help needed with recycling',
-      description: 'Need help sorting recyclables at the community center',
-      lat: 37.5665,
-      lng: 126.978,
-      createdAt: '2025-05-09T13:32:04.142Z',
-      timeLimit: 30,
-      status: 'COMPLETED',
-      selectedUserId: 1,
-      expiresAt: '2025-05-09T14:02:04.140Z',
-    },
-  })
-  @ApiResponse({
-    status: 403,
-    description: 'Only the selected user can complete this signal',
-    example: {
-      message: 'Only the selected user can complete this signal',
-      error: 'Forbidden',
-      statusCode: 403,
-    },
-  })
-  @ApiResponse({
-    status: 404,
-    description: 'Signal not found',
-    example:{
-      message: "User with id 0 not found",
-      error: "Not Found",
-      statusCode: 404,
-    }
-  })
-  completeSignal(
-    @Param('id', ParseIntPipe) id: number,
-    @Body('userId') userId: number,
-  ) {
-    return this.signalService.completeSignal(id, userId);
-  }
+  // Response Controller will replace this part
+  
+  // @Patch(':id/complete')
+  // @ApiOperation({ summary: 'Mark a signal as completed' })
+  // @ApiParam({ name: 'id', description: 'Signal ID' })
+  // @ApiBody({
+  //   schema: {
+  //     type: 'object',
+  //     properties: {
+  //       userId: {
+  //         type: 'number',
+  //         description: 'ID of the user completing the signal',
+  //       },
+  //     },
+  //   },
+  // })
+  // @ApiResponse({
+  //   status: 200,
+  //   description: 'Signal successfully completed',
+  //   example: {
+  //     id: 3,
+  //     userId: 1,
+  //     categoryId: 5,
+  //     title: 'Help needed with recycling',
+  //     description: 'Need help sorting recyclables at the community center',
+  //     lat: 37.5665,
+  //     lng: 126.978,
+  //     createdAt: '2025-05-09T13:32:04.142Z',
+  //     timeLimit: 30,
+  //     status: 'COMPLETED',
+  //     selectedUserId: 1,
+  //     expiresAt: '2025-05-09T14:02:04.140Z',
+  //   },
+  // })
+  // @ApiResponse({
+  //   status: 403,
+  //   description: 'Only the selected user can complete this signal',
+  //   example: {
+  //     message: 'Only the selected user can complete this signal',
+  //     error: 'Forbidden',
+  //     statusCode: 403,
+  //   },
+  // })
+  // @ApiResponse({
+  //   status: 404,
+  //   description: 'Signal not found',
+  //   example:{
+  //     message: "User with id 0 not found",
+  //     error: "Not Found",
+  //     statusCode: 404,
+  //   }
+  // })
+  // completeSignal(
+  //   @Param('id', ParseIntPipe) id: number,
+  //   @Body('userId') userId: number,
+  // ) {
+  //   return this.signalService.completeSignal(id, userId);
+  // }
 
   @Delete(':id')
   @ApiOperation({ summary: 'Delete a signal' })

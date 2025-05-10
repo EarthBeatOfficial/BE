@@ -152,7 +152,7 @@ export class SignalService {
     });
 
     if (!signal) {
-      throw new NotFoundException(`Signal with ID ${id} not found`);
+      throw new NotFoundException(`Signal with id ${id} not found`);
     }
 
     if (signal.status !== SignalStatus.PENDING) {
