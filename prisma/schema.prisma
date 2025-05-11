@@ -71,6 +71,7 @@ model Response {
   userId     Int      @map("user_id")
   message    String   
   respondedAt DateTime @default(now()) @map("responded_at")
+  isRead     Boolean  @default(false) @map("is_read")
   signal     Signal   @relation(fields: [signalId], references: [id])
   user       User     @relation(fields: [userId], references: [id])
   respondedSignals RespondedSignal[]

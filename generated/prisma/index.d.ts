@@ -6638,6 +6638,7 @@ export namespace Prisma {
     userId: number | null
     message: string | null
     respondedAt: Date | null
+    isRead: boolean | null
   }
 
   export type ResponseMaxAggregateOutputType = {
@@ -6646,6 +6647,7 @@ export namespace Prisma {
     userId: number | null
     message: string | null
     respondedAt: Date | null
+    isRead: boolean | null
   }
 
   export type ResponseCountAggregateOutputType = {
@@ -6654,6 +6656,7 @@ export namespace Prisma {
     userId: number
     message: number
     respondedAt: number
+    isRead: number
     _all: number
   }
 
@@ -6676,6 +6679,7 @@ export namespace Prisma {
     userId?: true
     message?: true
     respondedAt?: true
+    isRead?: true
   }
 
   export type ResponseMaxAggregateInputType = {
@@ -6684,6 +6688,7 @@ export namespace Prisma {
     userId?: true
     message?: true
     respondedAt?: true
+    isRead?: true
   }
 
   export type ResponseCountAggregateInputType = {
@@ -6692,6 +6697,7 @@ export namespace Prisma {
     userId?: true
     message?: true
     respondedAt?: true
+    isRead?: true
     _all?: true
   }
 
@@ -6787,6 +6793,7 @@ export namespace Prisma {
     userId: number
     message: string
     respondedAt: Date
+    isRead: boolean
     _count: ResponseCountAggregateOutputType | null
     _avg: ResponseAvgAggregateOutputType | null
     _sum: ResponseSumAggregateOutputType | null
@@ -6814,6 +6821,7 @@ export namespace Prisma {
     userId?: boolean
     message?: boolean
     respondedAt?: boolean
+    isRead?: boolean
     signal?: boolean | SignalDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
     respondedSignals?: boolean | Response$respondedSignalsArgs<ExtArgs>
@@ -6826,6 +6834,7 @@ export namespace Prisma {
     userId?: boolean
     message?: boolean
     respondedAt?: boolean
+    isRead?: boolean
     signal?: boolean | SignalDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["response"]>
@@ -6836,6 +6845,7 @@ export namespace Prisma {
     userId?: boolean
     message?: boolean
     respondedAt?: boolean
+    isRead?: boolean
     signal?: boolean | SignalDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["response"]>
@@ -6846,9 +6856,10 @@ export namespace Prisma {
     userId?: boolean
     message?: boolean
     respondedAt?: boolean
+    isRead?: boolean
   }
 
-  export type ResponseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "signalId" | "userId" | "message" | "respondedAt", ExtArgs["result"]["response"]>
+  export type ResponseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "signalId" | "userId" | "message" | "respondedAt" | "isRead", ExtArgs["result"]["response"]>
   export type ResponseInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     signal?: boolean | SignalDefaultArgs<ExtArgs>
     user?: boolean | UserDefaultArgs<ExtArgs>
@@ -6877,6 +6888,7 @@ export namespace Prisma {
       userId: number
       message: string
       respondedAt: Date
+      isRead: boolean
     }, ExtArgs["result"]["response"]>
     composites: {}
   }
@@ -7308,6 +7320,7 @@ export namespace Prisma {
     readonly userId: FieldRef<"Response", 'Int'>
     readonly message: FieldRef<"Response", 'String'>
     readonly respondedAt: FieldRef<"Response", 'DateTime'>
+    readonly isRead: FieldRef<"Response", 'Boolean'>
   }
     
 
@@ -13480,7 +13493,8 @@ export namespace Prisma {
     signalId: 'signalId',
     userId: 'userId',
     message: 'message',
-    respondedAt: 'respondedAt'
+    respondedAt: 'respondedAt',
+    isRead: 'isRead'
   };
 
   export type ResponseScalarFieldEnum = (typeof ResponseScalarFieldEnum)[keyof typeof ResponseScalarFieldEnum]
@@ -13638,6 +13652,13 @@ export namespace Prisma {
    * Reference to a field of type 'SignalStatus[]'
    */
   export type ListEnumSignalStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SignalStatus[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -13914,6 +13935,7 @@ export namespace Prisma {
     userId?: IntFilter<"Response"> | number
     message?: StringFilter<"Response"> | string
     respondedAt?: DateTimeFilter<"Response"> | Date | string
+    isRead?: BoolFilter<"Response"> | boolean
     signal?: XOR<SignalScalarRelationFilter, SignalWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     respondedSignals?: RespondedSignalListRelationFilter
@@ -13925,6 +13947,7 @@ export namespace Prisma {
     userId?: SortOrder
     message?: SortOrder
     respondedAt?: SortOrder
+    isRead?: SortOrder
     signal?: SignalOrderByWithRelationInput
     user?: UserOrderByWithRelationInput
     respondedSignals?: RespondedSignalOrderByRelationAggregateInput
@@ -13939,6 +13962,7 @@ export namespace Prisma {
     userId?: IntFilter<"Response"> | number
     message?: StringFilter<"Response"> | string
     respondedAt?: DateTimeFilter<"Response"> | Date | string
+    isRead?: BoolFilter<"Response"> | boolean
     signal?: XOR<SignalScalarRelationFilter, SignalWhereInput>
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     respondedSignals?: RespondedSignalListRelationFilter
@@ -13950,6 +13974,7 @@ export namespace Prisma {
     userId?: SortOrder
     message?: SortOrder
     respondedAt?: SortOrder
+    isRead?: SortOrder
     _count?: ResponseCountOrderByAggregateInput
     _avg?: ResponseAvgOrderByAggregateInput
     _max?: ResponseMaxOrderByAggregateInput
@@ -13966,6 +13991,7 @@ export namespace Prisma {
     userId?: IntWithAggregatesFilter<"Response"> | number
     message?: StringWithAggregatesFilter<"Response"> | string
     respondedAt?: DateTimeWithAggregatesFilter<"Response"> | Date | string
+    isRead?: BoolWithAggregatesFilter<"Response"> | boolean
   }
 
   export type RouteWhereInput = {
@@ -14523,6 +14549,7 @@ export namespace Prisma {
   export type ResponseCreateInput = {
     message: string
     respondedAt?: Date | string
+    isRead?: boolean
     signal: SignalCreateNestedOneWithoutResponsesInput
     user: UserCreateNestedOneWithoutResponsesInput
     respondedSignals?: RespondedSignalCreateNestedManyWithoutResponseInput
@@ -14534,12 +14561,14 @@ export namespace Prisma {
     userId: number
     message: string
     respondedAt?: Date | string
+    isRead?: boolean
     respondedSignals?: RespondedSignalUncheckedCreateNestedManyWithoutResponseInput
   }
 
   export type ResponseUpdateInput = {
     message?: StringFieldUpdateOperationsInput | string
     respondedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isRead?: BoolFieldUpdateOperationsInput | boolean
     signal?: SignalUpdateOneRequiredWithoutResponsesNestedInput
     user?: UserUpdateOneRequiredWithoutResponsesNestedInput
     respondedSignals?: RespondedSignalUpdateManyWithoutResponseNestedInput
@@ -14551,6 +14580,7 @@ export namespace Prisma {
     userId?: IntFieldUpdateOperationsInput | number
     message?: StringFieldUpdateOperationsInput | string
     respondedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isRead?: BoolFieldUpdateOperationsInput | boolean
     respondedSignals?: RespondedSignalUncheckedUpdateManyWithoutResponseNestedInput
   }
 
@@ -14560,11 +14590,13 @@ export namespace Prisma {
     userId: number
     message: string
     respondedAt?: Date | string
+    isRead?: boolean
   }
 
   export type ResponseUpdateManyMutationInput = {
     message?: StringFieldUpdateOperationsInput | string
     respondedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isRead?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type ResponseUncheckedUpdateManyInput = {
@@ -14573,6 +14605,7 @@ export namespace Prisma {
     userId?: IntFieldUpdateOperationsInput | number
     message?: StringFieldUpdateOperationsInput | string
     respondedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isRead?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type RouteCreateInput = {
@@ -15217,6 +15250,11 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type SignalScalarRelationFilter = {
     is?: SignalWhereInput
     isNot?: SignalWhereInput
@@ -15228,6 +15266,7 @@ export namespace Prisma {
     userId?: SortOrder
     message?: SortOrder
     respondedAt?: SortOrder
+    isRead?: SortOrder
   }
 
   export type ResponseAvgOrderByAggregateInput = {
@@ -15242,6 +15281,7 @@ export namespace Prisma {
     userId?: SortOrder
     message?: SortOrder
     respondedAt?: SortOrder
+    isRead?: SortOrder
   }
 
   export type ResponseMinOrderByAggregateInput = {
@@ -15250,12 +15290,21 @@ export namespace Prisma {
     userId?: SortOrder
     message?: SortOrder
     respondedAt?: SortOrder
+    isRead?: SortOrder
   }
 
   export type ResponseSumOrderByAggregateInput = {
     id?: SortOrder
     signalId?: SortOrder
     userId?: SortOrder
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type DateTimeNullableFilter<$PrismaModel = never> = {
@@ -16015,6 +16064,10 @@ export namespace Prisma {
     connect?: RespondedSignalWhereUniqueInput | RespondedSignalWhereUniqueInput[]
   }
 
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
   export type SignalUpdateOneRequiredWithoutResponsesNestedInput = {
     create?: XOR<SignalCreateWithoutResponsesInput, SignalUncheckedCreateWithoutResponsesInput>
     connectOrCreate?: SignalCreateOrConnectWithoutResponsesInput
@@ -16516,6 +16569,19 @@ export namespace Prisma {
     not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -16672,6 +16738,7 @@ export namespace Prisma {
   export type ResponseCreateWithoutUserInput = {
     message: string
     respondedAt?: Date | string
+    isRead?: boolean
     signal: SignalCreateNestedOneWithoutResponsesInput
     respondedSignals?: RespondedSignalCreateNestedManyWithoutResponseInput
   }
@@ -16681,6 +16748,7 @@ export namespace Prisma {
     signalId: number
     message: string
     respondedAt?: Date | string
+    isRead?: boolean
     respondedSignals?: RespondedSignalUncheckedCreateNestedManyWithoutResponseInput
   }
 
@@ -16824,6 +16892,7 @@ export namespace Prisma {
     userId?: IntFilter<"Response"> | number
     message?: StringFilter<"Response"> | string
     respondedAt?: DateTimeFilter<"Response"> | Date | string
+    isRead?: BoolFilter<"Response"> | boolean
   }
 
   export type WalkSessionUpsertWithWhereUniqueWithoutUserInput = {
@@ -17021,6 +17090,7 @@ export namespace Prisma {
   export type ResponseCreateWithoutSignalInput = {
     message: string
     respondedAt?: Date | string
+    isRead?: boolean
     user: UserCreateNestedOneWithoutResponsesInput
     respondedSignals?: RespondedSignalCreateNestedManyWithoutResponseInput
   }
@@ -17030,6 +17100,7 @@ export namespace Prisma {
     userId: number
     message: string
     respondedAt?: Date | string
+    isRead?: boolean
     respondedSignals?: RespondedSignalUncheckedCreateNestedManyWithoutResponseInput
   }
 
@@ -17891,6 +17962,7 @@ export namespace Prisma {
   export type ResponseCreateWithoutRespondedSignalsInput = {
     message: string
     respondedAt?: Date | string
+    isRead?: boolean
     signal: SignalCreateNestedOneWithoutResponsesInput
     user: UserCreateNestedOneWithoutResponsesInput
   }
@@ -17901,6 +17973,7 @@ export namespace Prisma {
     userId: number
     message: string
     respondedAt?: Date | string
+    isRead?: boolean
   }
 
   export type ResponseCreateOrConnectWithoutRespondedSignalsInput = {
@@ -17988,6 +18061,7 @@ export namespace Prisma {
   export type ResponseUpdateWithoutRespondedSignalsInput = {
     message?: StringFieldUpdateOperationsInput | string
     respondedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isRead?: BoolFieldUpdateOperationsInput | boolean
     signal?: SignalUpdateOneRequiredWithoutResponsesNestedInput
     user?: UserUpdateOneRequiredWithoutResponsesNestedInput
   }
@@ -17998,6 +18072,7 @@ export namespace Prisma {
     userId?: IntFieldUpdateOperationsInput | number
     message?: StringFieldUpdateOperationsInput | string
     respondedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isRead?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type RouteCreateManyUserInput = {
@@ -18041,6 +18116,7 @@ export namespace Prisma {
     signalId: number
     message: string
     respondedAt?: Date | string
+    isRead?: boolean
   }
 
   export type WalkSessionCreateManyUserInput = {
@@ -18171,6 +18247,7 @@ export namespace Prisma {
   export type ResponseUpdateWithoutUserInput = {
     message?: StringFieldUpdateOperationsInput | string
     respondedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isRead?: BoolFieldUpdateOperationsInput | boolean
     signal?: SignalUpdateOneRequiredWithoutResponsesNestedInput
     respondedSignals?: RespondedSignalUpdateManyWithoutResponseNestedInput
   }
@@ -18180,6 +18257,7 @@ export namespace Prisma {
     signalId?: IntFieldUpdateOperationsInput | number
     message?: StringFieldUpdateOperationsInput | string
     respondedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isRead?: BoolFieldUpdateOperationsInput | boolean
     respondedSignals?: RespondedSignalUncheckedUpdateManyWithoutResponseNestedInput
   }
 
@@ -18188,6 +18266,7 @@ export namespace Prisma {
     signalId?: IntFieldUpdateOperationsInput | number
     message?: StringFieldUpdateOperationsInput | string
     respondedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isRead?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type WalkSessionUpdateWithoutUserInput = {
@@ -18314,6 +18393,7 @@ export namespace Prisma {
     userId: number
     message: string
     respondedAt?: Date | string
+    isRead?: boolean
   }
 
   export type RespondedSignalCreateManySignalInput = {
@@ -18326,6 +18406,7 @@ export namespace Prisma {
   export type ResponseUpdateWithoutSignalInput = {
     message?: StringFieldUpdateOperationsInput | string
     respondedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isRead?: BoolFieldUpdateOperationsInput | boolean
     user?: UserUpdateOneRequiredWithoutResponsesNestedInput
     respondedSignals?: RespondedSignalUpdateManyWithoutResponseNestedInput
   }
@@ -18335,6 +18416,7 @@ export namespace Prisma {
     userId?: IntFieldUpdateOperationsInput | number
     message?: StringFieldUpdateOperationsInput | string
     respondedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isRead?: BoolFieldUpdateOperationsInput | boolean
     respondedSignals?: RespondedSignalUncheckedUpdateManyWithoutResponseNestedInput
   }
 
@@ -18343,6 +18425,7 @@ export namespace Prisma {
     userId?: IntFieldUpdateOperationsInput | number
     message?: StringFieldUpdateOperationsInput | string
     respondedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    isRead?: BoolFieldUpdateOperationsInput | boolean
   }
 
   export type RespondedSignalUpdateWithoutSignalInput = {

@@ -156,7 +156,8 @@ exports.Prisma.ResponseScalarFieldEnum = {
   signalId: 'signalId',
   userId: 'userId',
   message: 'message',
-  respondedAt: 'respondedAt'
+  respondedAt: 'respondedAt',
+  isRead: 'isRead'
 };
 
 exports.Prisma.RouteScalarFieldEnum = {

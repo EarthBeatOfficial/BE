@@ -75,32 +75,34 @@ export class ResponseService {
     });
   }
 
-  async getSignalResponses(signalId: number) {
-    const signal = await this.prisma.signal.findUnique({
-      where: { id: signalId },
-    });
-
-    if (!signal) {
-      throw new NotFoundException(`Signal with id ${signalId} not found`);
-    }
-
+  async getMySignalResponses(userId: number) {
     return this.prisma.response.findMany({
-      where: { signalId },
-      include: {
-        user: {
-          select: {
-            id: true,
-            username: true,
-          },
-        },
+      where: {
+        isRead: false,
         signal: {
-          select: {
-            title: true,
-          },
+          userId: userId,
         },
       },
-      orderBy: {
-        respondedAt: 'desc',
+    });
+  }
+
+  async markResponseAsRead(responseId: number) {
+    const response = await this.prisma.response.findUnique({
+      where: { id: responseId },
+    });
+
+    if (!response) {
+      throw new NotFoundException(`Response with id ${responseId} not found`);
+    }
+
+    if (response.isRead) {
+      throw new BadRequestException('Response already marked as read');
+    }
+
+    return this.prisma.response.update({
+      where: { id: responseId },
+      data: {
+        isRead: true,
       },
     });
   }
