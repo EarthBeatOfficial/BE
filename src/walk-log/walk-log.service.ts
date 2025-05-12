@@ -1,33 +1,13 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
-import { PrismaService } from '../prisma/prisma.service';
+import { Injectable } from '@nestjs/common';
+import { WalkLogRepository } from './walk-log.repository';
 import { WalkLogDto } from './dto/walk-log.dto';
 
 @Injectable()
 export class WalkLogService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private readonly walkLogRepository: WalkLogRepository) {}
 
   async getUserWalkLogs(userId: number): Promise<WalkLogDto[]> {
-    const walkLogs = await this.prisma.walkLog.findMany({
-      where: {
-        session: {
-          userId,
-        },
-      },
-      include: {
-        respondedSignals: {
-          include: {
-            signal: {
-              include: {
-                category: true,
-              },
-            },
-          },
-        },
-      },
-      orderBy: {
-        walkedAt: 'desc',
-      },
-    });
+    const walkLogs = await this.walkLogRepository.getUserWalkLogs(userId);
 
     return walkLogs.map((log) => ({
       distance: log.distance,
@@ -42,15 +22,9 @@ export class WalkLogService {
   }
 
   async getUserRespondedSignalsCount(userId: number): Promise<number> {
-    const count = await this.prisma.respondedSignal.count({
-      where: {
-        walkLog: {
-          session: {
-            userId,
-          },
-        },
-      },
-    });
+    const count = await this.walkLogRepository.getUserRespondedSignalsCount(
+      userId,
+    );
 
     return count;
   }
