@@ -1,10 +1,10 @@
-import { Injectable } from "@nestjs/common";
-import { PrismaService } from "src/prisma/prisma.service";
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'src/prisma/prisma.service';
 
 enum SessionStatus {
-    IN_PROGRESS = 'IN_PROGRESS',
-    COMPLETED = 'COMPLETED',
-  }
+  IN_PROGRESS = 'IN_PROGRESS',
+  COMPLETED = 'COMPLETED',
+}
 
 @Injectable()
 export class WalkSessionRepository {
@@ -28,7 +28,11 @@ export class WalkSessionRepository {
     });
   }
 
-  async endSessionAndCreateWalkLog(sessionId: number, distance: number, responses: { signalId: number, id: number }[]) {
+  async endSessionAndCreateWalkLog(
+    sessionId: number,
+    distance: number,
+    responses: { signalId: number; id: number }[],
+  ) {
     return this.prisma.$transaction(async (prisma) => {
       const walkLog = await prisma.walkLog.create({
         data: {
@@ -47,13 +51,15 @@ export class WalkSessionRepository {
       const updatedSession = await prisma.walkSession.update({
         where: { id: sessionId },
         data: { status: SessionStatus.COMPLETED, finishedAt: new Date() },
-        include: { walkLog: {
-          include: {
-            respondedSignals: {
-              include: { signal: { include: { category: true } } },
+        include: {
+          walkLog: {
+            include: {
+              respondedSignals: {
+                include: { signal: { include: { category: true } } },
+              },
             },
           },
-        } },
+        },
       });
 
       return updatedSession;

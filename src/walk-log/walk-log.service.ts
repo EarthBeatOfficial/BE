@@ -22,9 +22,8 @@ export class WalkLogService {
   }
 
   async getUserRespondedSignalsCount(userId: number): Promise<number> {
-    const count = await this.walkLogRepository.getUserRespondedSignalsCount(
-      userId,
-    );
+    const count =
+      await this.walkLogRepository.getUserRespondedSignalsCount(userId);
 
     return count;
   }
