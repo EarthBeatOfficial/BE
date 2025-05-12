@@ -5,7 +5,6 @@ import {
   Body,
   Param,
   ParseIntPipe,
-  ForbiddenException,
   Patch,
 } from '@nestjs/common';
 import { ResponseService } from './response.service';
@@ -13,9 +12,13 @@ import { CreateResponseDto } from './dto/create-response.dto';
 import {
   ApiTags,
   ApiOperation,
-  ApiResponse,
   ApiParam,
   ApiBody,
+  ApiNotFoundResponse,
+  ApiBadRequestResponse,
+  ApiOkResponse,
+  ApiCreatedResponse,
+  ApiForbiddenResponse,
 } from '@nestjs/swagger';
 
 @ApiTags('Responses')
@@ -39,8 +42,7 @@ export class ResponseController {
       },
     },
   })
-  @ApiResponse({
-    status: 201,
+  @ApiCreatedResponse({
     description: 'Response successfully sent',
     example: {
       id: 1,
@@ -54,8 +56,7 @@ export class ResponseController {
       },
     },
   })
-  @ApiResponse({
-    status: 403,
+  @ApiForbiddenResponse({
     description: 'Cannot respond to your own signal',
     example: {
       message: 'Cannot respond to your own signal',
@@ -63,8 +64,7 @@ export class ResponseController {
       statusCode: 403,
     },
   })
-  @ApiResponse({
-    status: 404,
+  @ApiNotFoundResponse({
     description: 'Signal not found',
     example: {
       message: 'Signal with id 0 not found',
@@ -82,6 +82,23 @@ export class ResponseController {
   @Get('mysignalresponses/:userId')
   @ApiOperation({ summary: 'Get all responses for a user' })
   @ApiParam({ name: 'userId', description: 'User ID' })
+  @ApiOkResponse({
+    description: 'List of unread responses for the user',
+    example: [
+      {
+        id: 1,
+        signalId: 16,
+        userId: 5,
+        message:
+          'Hi! I just finished watering your plant, it seemed to have dried up a bit.',
+        respondedAt: '2025-05-10T01:30:56.269Z',
+        isRead: false,
+        signal: {
+          title: 'help me finish my project🙄',
+        },
+      },
+    ],
+  })
   getMySignalResponses(@Param('userId', ParseIntPipe) userId: number) {
     return this.responseService.getMySignalResponses(userId);
   }
@@ -99,8 +116,7 @@ export class ResponseController {
       },
     },
   })
-  @ApiResponse({
-    status: 200,
+  @ApiOkResponse({
     description: 'Response successfully marked as read',
     example: {
       id: 1,
@@ -111,8 +127,7 @@ export class ResponseController {
       isRead: true,
     },
   })
-  @ApiResponse({
-    status: 400,
+  @ApiBadRequestResponse({
     description: 'Response already marked as read',
     example: {
       message: 'Response already marked as read',
@@ -120,8 +135,7 @@ export class ResponseController {
       statusCode: 400,
     },
   })
-  @ApiResponse({
-    status: 404,
+  @ApiNotFoundResponse({
     description: 'Response with id not found',
     example: {
       message: 'Response with id 0 not found',

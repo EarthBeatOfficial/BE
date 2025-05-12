@@ -83,6 +83,13 @@ export class ResponseService {
           userId: userId,
         },
       },
+      include: {
+        signal: {
+          select: {
+            title: true,
+          },
+        },
+      },
     });
   }
 

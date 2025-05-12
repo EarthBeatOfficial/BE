@@ -127,18 +127,20 @@ export class WalkSessionService {
   }
 
   async getActiveSession(userId: number) {
-    return this.prisma.walkSession.findFirst({
+    const activeSession = await this.prisma.walkSession.findFirst({
       where: {
         userId,
         status: SessionStatus.IN_PROGRESS,
       },
       include: {
-        route: {
-          include: {
-            theme: true,
-          },
-        },
+        route: true,
       },
     });
+
+    if (!activeSession) {
+      throw new NotFoundException('Active walking session not found');
+    }
+
+    return activeSession;
   }
 }

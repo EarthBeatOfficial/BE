@@ -9,9 +9,10 @@ import { ResponseModule } from '../response/response.module';
 import { RouteModule } from '../route/route.module';
 import { WalkSessionModule } from '../walk-session/walk-session.module';
 import { WalkLogModule } from 'src/walk-log/walk-log.module';
-
+import { ConfigModule } from '@nestjs/config';
 @Module({
   imports: [
+    ConfigModule.forRoot({ isGlobal: true }),
     HttpModule,
     PrismaModule,
     UsersModule,

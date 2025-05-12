@@ -140,9 +140,9 @@ export class SignalService {
       where: {
         status: SignalStatus.PENDING,
       },
-      include: {
-        category: true,
-      },
+      // include: {
+      //   category: true,
+      // },
     });
   }
 

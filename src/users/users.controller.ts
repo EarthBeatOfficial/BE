@@ -8,7 +8,15 @@ import {
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDto, UserResponseDto } from './dto/create-user.dto';
-import { ApiTags, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger';
+import {
+  ApiTags,
+  ApiOperation,
+  ApiBody,
+  ApiCreatedResponse,
+  ApiConflictResponse,
+  ApiOkResponse,
+  ApiNotFoundResponse,
+} from '@nestjs/swagger';
 
 @ApiTags('Users')
 @Controller('users')
@@ -29,13 +37,11 @@ export class UsersController {
       },
     },
   })
-  @ApiResponse({
-    status: 201,
+  @ApiCreatedResponse({
     description: 'User successfully created',
     type: UserResponseDto,
   })
-  @ApiResponse({
-    status: 409,
+  @ApiConflictResponse({
     description: 'Conflict - nickname already exists',
     example: {
       message: "This nickname 'jeffkim' already exists",
@@ -49,13 +55,11 @@ export class UsersController {
 
   @Get(':id')
   @ApiOperation({ summary: 'Get user by their id' })
-  @ApiResponse({
-    status: 200,
+  @ApiOkResponse({
     description: 'User found',
     type: UserResponseDto,
   })
-  @ApiResponse({
-    status: 404,
+  @ApiNotFoundResponse({
     description: 'User not found',
     example: {
       message: 'User with Id 0 not found',

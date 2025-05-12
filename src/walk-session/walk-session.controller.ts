@@ -11,8 +11,11 @@ import {
   ApiOperation,
   ApiTags,
   ApiBody,
-  ApiResponse,
   ApiParam,
+  ApiCreatedResponse,
+  ApiBadRequestResponse,
+  ApiOkResponse,
+  ApiNotFoundResponse,
 } from '@nestjs/swagger';
 
 @ApiTags('Walk Sessions')
@@ -47,8 +50,7 @@ export class WalkSessionController {
       },
     },
   })
-  @ApiResponse({
-    status: 201,
+  @ApiCreatedResponse({
     description: 'Walk session successfully started',
     example: {
       id: 1,
@@ -66,8 +68,7 @@ export class WalkSessionController {
       },
     },
   })
-  @ApiResponse({
-    status: 400,
+  @ApiBadRequestResponse({
     description: 'User already has an active session',
     example: {
       message: 'You already have an active walking session',
@@ -105,13 +106,37 @@ export class WalkSessionController {
       },
     },
   })
-  @ApiResponse({
-    status: 200,
+  @ApiOkResponse({
     description: 'Walk session successfully ended',
+    example: {
+      id: 1,
+      userId: 1,
+      routeId: 2,
+      startedAt: '2024-03-20T10:00:00Z',
+      completedAt: '2024-03-20T10:05:00Z',
+      status: 'COMPLETED',
+      walkLog: {
+        id: 1,
+        sessionId: 1,
+        distance: 1.5,
+        walkedAt: '2024-03-20T10:00:00Z',
+        respondedSignals: [
+          {
+            id: 1,
+            signalId: 1,
+            responseId: 1,
+          },
+        ],
+      },
+    },
   })
-  @ApiResponse({
-    status: 404,
+  @ApiNotFoundResponse({
     description: 'Active walking session not found',
+    example: {
+      message: 'Active walking session not found',
+      error: 'Not Found',
+      statusCode: 404,
+    },
   })
   endWalking(
     @Param('id', ParseIntPipe) id: number,
@@ -123,9 +148,32 @@ export class WalkSessionController {
   @Get('active/:userId')
   @ApiOperation({ summary: 'Get active walk session for a user' })
   @ApiParam({ name: 'userId', description: 'User ID' })
-  @ApiResponse({
-    status: 200,
+  @ApiOkResponse({
     description: 'Active walk session if exists',
+    example: {
+      id: 1,
+      userId: 1,
+      routeId: 2,
+      startedAt: '2024-03-20T10:00:00Z',
+      finishedAt: null,
+      status: 'IN_PROGRESS',
+      route: {
+        id: 2,
+        userId: 1,
+        distance: 1.5,
+        themeId: 1,
+        createdAt: '2024-03-20T10:00:00Z',
+        completedAt: null,
+      },
+    },
+  })
+  @ApiNotFoundResponse({
+    description: 'Active walking session not found',
+    example: {
+      message: 'Active walking session not found',
+      error: 'Not Found',
+      statusCode: 404,
+    },
   })
   getActiveSession(@Param('userId', ParseIntPipe) userId: number) {
     return this.walkSessionService.getActiveSession(userId);

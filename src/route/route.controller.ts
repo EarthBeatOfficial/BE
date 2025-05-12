@@ -1,14 +1,14 @@
-import {
-  Controller,
-  Post,
-  Get,
-  Body,
-  Param,
-  ParseIntPipe,
-} from '@nestjs/common';
+import { Controller, Post, Body } from '@nestjs/common';
 import { RouteService } from './route.service';
 import { RecommendRouteDto } from './dto/recommend-route.dto';
-import { ApiOperation, ApiTags, ApiBody, ApiResponse } from '@nestjs/swagger';
+import {
+  ApiOperation,
+  ApiTags,
+  ApiBody,
+  ApiCreatedResponse,
+  ApiBadRequestResponse,
+  ApiNotFoundResponse,
+} from '@nestjs/swagger';
 
 @ApiTags('Routes')
 @Controller('routes')
@@ -42,16 +42,34 @@ export class RouteController {
       },
     },
   })
-  @ApiResponse({
-    status: 201,
+  @ApiCreatedResponse({
     description: 'Route successfully recommended',
+    example: {
+      origin: {
+        latitude: 37.544582,
+        longitude: 127.037589,
+      },
+      destination: {
+        latitude: 37.544582,
+        longitude: 127.037589,
+      },
+      waypoints: [
+        {
+          latitude: 37.544582,
+          longitude: 127.037589,
+        },
+        {
+          latitude: 37.544582,
+          longitude: 127.037589,
+        },
+      ],
+      travelMode: "google.maps.TravelMode.WALKING",
+    },
   })
-  @ApiResponse({
-    status: 400,
+  @ApiBadRequestResponse({
     description: 'Invalid input data',
   })
-  @ApiResponse({
-    status: 404,
+  @ApiNotFoundResponse({
     description: 'Theme not found',
   })
   recommendRoute(@Body() dto: RecommendRouteDto) {

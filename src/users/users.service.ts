@@ -3,18 +3,15 @@ import {
   NotFoundException,
   ConflictException,
 } from '@nestjs/common';
-import { PrismaService } from '../prisma/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
+import { UsersRepository } from './users.repository';
 
 @Injectable()
 export class UsersService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private readonly usersRepository: UsersRepository) {}
 
   async createUser(dto: CreateUserDto) {
-    // Check if username already exists
-    const existingUser = await this.prisma.user.findUnique({
-      where: { username: dto.username },
-    });
+    const existingUser = await this.usersRepository.getUserByUsername(dto.username);
 
     if (existingUser) {
       throw new ConflictException(
@@ -22,17 +19,11 @@ export class UsersService {
       );
     }
 
-    return this.prisma.user.create({
-      data: {
-        username: dto.username,
-      },
-    });
+    return this.usersRepository.createUser(dto);
   }
 
   async getUserById(id: number) {
-    const user = await this.prisma.user.findUnique({
-      where: { id: id },
-    });
+    const user = await this.usersRepository.getUserById(id);
 
     if (!user) {
       throw new NotFoundException(`User with Id ${id} not found`);
