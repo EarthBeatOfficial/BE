@@ -3,25 +3,16 @@ import {
   NotFoundException,
   BadRequestException,
 } from '@nestjs/common';
-import { PrismaService } from '../prisma/prisma.service';
-
-enum SessionStatus {
-  IN_PROGRESS = 'IN_PROGRESS',
-  COMPLETED = 'COMPLETED',
-}
+import { WalkSessionRepository } from './walk-session.repository';
 
 @Injectable()
 export class WalkSessionService {
-  constructor(private prisma: PrismaService) {}
+  constructor(
+    private readonly walkSessionRepository: WalkSessionRepository,
+  ) {}
 
   async startWalking(userId: number, routeId: number) {
-    // Check if user already has an active session
-    const activeSession = await this.prisma.walkSession.findFirst({
-      where: {
-        userId,
-        status: SessionStatus.IN_PROGRESS,
-      },
-    });
+    const activeSession = await this.walkSessionRepository.getActiveSessionByUserId(userId);
 
     if (activeSession) {
       throw new BadRequestException(
@@ -29,113 +20,31 @@ export class WalkSessionService {
       );
     }
 
-    // Check if route exists
-    const route = await this.prisma.route.findUnique({
-      where: { id: routeId },
-    });
+    const route = await this.walkSessionRepository.getRouteById(routeId);
 
     if (!route) {
       throw new NotFoundException(`Route with ID ${routeId} not found`);
     }
 
-    // Create new walk session
-    return this.prisma.walkSession.create({
-      data: {
-        userId,
-        routeId,
-        status: SessionStatus.IN_PROGRESS,
-        startedAt: new Date(),
-      },
-      include: {
-        route: {
-          include: {
-            theme: true,
-          },
-        },
-      },
-    });
+    return this.walkSessionRepository.startWalking(userId, routeId);
   }
 
   async endWalking(userId: number, sessionId: number) {
-    const session = await this.prisma.walkSession.findFirst({
-      where: {
-        id: sessionId,
-        userId,
-        status: SessionStatus.IN_PROGRESS,
-      },
-      include: {
-        route: true,
-      },
-    });
+    const session = await this.walkSessionRepository.getActiveSessionById(sessionId, userId);
 
     if (!session) {
       throw new NotFoundException('Active walking session not found');
     }
 
     // Get all responses made during this walk session
-    const responses = await this.prisma.response.findMany({
-      where: {
-        userId,
-        respondedAt: {
-          gte: session.startedAt,
-          lte: new Date(),
-        },
-      },
-    });
+    const responses = await this.walkSessionRepository.findResponsesDuringSession(userId, session.startedAt);
 
     // Create walk log and update session in a transaction
-    return this.prisma.$transaction(async (prisma) => {
-      // Create walk log with calculated distance
-      const walkLog = await prisma.walkLog.create({
-        data: {
-          distance: session.route.distance,
-          walkedAt: new Date(),
-          sessionId: sessionId,
-          respondedSignals: {
-            create: responses.map((response) => ({
-              signalId: response.signalId,
-              responseId: response.id,
-            })),
-          },
-        },
-      });
-
-      // Update session status to completed
-      return prisma.walkSession.update({
-        where: { id: sessionId },
-        data: {
-          status: SessionStatus.COMPLETED,
-          finishedAt: new Date(),
-        },
-        include: {
-          walkLog: {
-            include: {
-              respondedSignals: {
-                include: {
-                  signal: {
-                    include: {
-                      category: true,
-                    },
-                  },
-                },
-              },
-            },
-          },
-        },
-      });
-    });
+    return this.walkSessionRepository.endSessionAndCreateWalkLog(sessionId, session.route.distance, responses.map((response) => ({ signalId: response.signalId, id: response.id })));
   }
 
   async getActiveSession(userId: number) {
-    const activeSession = await this.prisma.walkSession.findFirst({
-      where: {
-        userId,
-        status: SessionStatus.IN_PROGRESS,
-      },
-      include: {
-        route: true,
-      },
-    });
+    const activeSession = await this.walkSessionRepository.getActiveSessionByUserId(userId);
 
     if (!activeSession) {
       throw new NotFoundException('Active walking session not found');
