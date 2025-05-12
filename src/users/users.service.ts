@@ -11,7 +11,9 @@ export class UsersService {
   constructor(private readonly usersRepository: UsersRepository) {}
 
   async createUser(dto: CreateUserDto) {
-    const existingUser = await this.usersRepository.getUserByUsername(dto.username);
+    const existingUser = await this.usersRepository.getUserByUsername(
+      dto.username,
+    );
 
     if (existingUser) {
       throw new ConflictException(

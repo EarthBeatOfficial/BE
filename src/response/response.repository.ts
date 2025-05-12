@@ -1,7 +1,7 @@
-import { Injectable } from "@nestjs/common";
-import { PrismaService } from "src/prisma/prisma.service";
-import { CreateResponseDto } from "./dto/create-response.dto";
-import { SignalStatus } from "generated/prisma";
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from 'src/prisma/prisma.service';
+import { CreateResponseDto } from './dto/create-response.dto';
+import { SignalStatus } from 'generated/prisma';
 
 @Injectable()
 export class ResponseRepository {

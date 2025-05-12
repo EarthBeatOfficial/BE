@@ -25,7 +25,6 @@ export class RouteService {
     userId: number,
     dto: RecommendRouteDto,
   ): Promise<DirectionsResponseDto> {
-
     let location: LocationDto;
     try {
       location = JSON.parse(dto.location);
@@ -60,7 +59,7 @@ export class RouteService {
         'Failed to get route recommendation from AI server',
       );
     }
-    
+
     if (
       !aiResponse ||
       !aiResponse.coordinates ||

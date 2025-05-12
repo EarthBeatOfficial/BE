@@ -63,7 +63,7 @@ export class RouteController {
           longitude: 127.037589,
         },
       ],
-      travelMode: "google.maps.TravelMode.WALKING",
+      travelMode: 'google.maps.TravelMode.WALKING',
     },
   })
   @ApiBadRequestResponse({
