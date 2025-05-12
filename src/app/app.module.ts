@@ -10,6 +10,8 @@ import { RouteModule } from '../route/route.module';
 import { WalkSessionModule } from '../walk-session/walk-session.module';
 import { WalkLogModule } from 'src/walk-log/walk-log.module';
 import { ConfigModule } from '@nestjs/config';
+import { AutoCompleteModule } from 'src/places/auto-complete/auto-complete.module';
+import { PlaceDetailModule } from 'src/places/place-detail/place-detail.module';
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
@@ -21,6 +23,8 @@ import { ConfigModule } from '@nestjs/config';
     ResponseModule,
     WalkSessionModule,
     WalkLogModule,
+    AutoCompleteModule,
+    PlaceDetailModule,
   ],
   controllers: [AppController],
   providers: [AppService],
