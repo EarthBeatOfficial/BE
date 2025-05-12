@@ -71,6 +71,11 @@ export class RouteController {
   })
   @ApiNotFoundResponse({
     description: 'Theme not found',
+    example: {
+      message: 'Theme with ID 0 not found',
+      error: 'Not Found',
+      statusCode: 404,
+    },
   })
   recommendRoute(@Body() dto: RecommendRouteDto) {
     return this.routeService.recommendRoute(dto.userId, dto);

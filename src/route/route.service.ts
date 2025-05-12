@@ -8,7 +8,7 @@ import { HttpService } from '@nestjs/axios';
 import { RecommendRouteDto, LocationDto } from './dto/recommend-route.dto';
 import { DirectionsResponseDto } from './dto/directions-response.dto';
 import { firstValueFrom } from 'rxjs';
-
+import { RouteRepository } from './route.repository';
 interface AIResponse {
   route_name: string;
   coordinates: [number, number][];
@@ -17,7 +17,7 @@ interface AIResponse {
 @Injectable()
 export class RouteService {
   constructor(
-    private prisma: PrismaService,
+    private readonly routeRepository: RouteRepository,
     private httpService: HttpService,
   ) {}
 
@@ -25,7 +25,7 @@ export class RouteService {
     userId: number,
     dto: RecommendRouteDto,
   ): Promise<DirectionsResponseDto> {
-    // Parse the location JSON string
+
     let location: LocationDto;
     try {
       location = JSON.parse(dto.location);
@@ -35,15 +35,12 @@ export class RouteService {
       );
     }
 
-    const theme = await this.prisma.theme.findUnique({
-      where: { id: dto.themeId },
-    });
-
+    const theme = await this.routeRepository.getThemeById(dto.themeId);
     if (!theme) {
       throw new NotFoundException(`Theme with ID ${dto.themeId} not found`);
     }
 
-    // Send request to AI server
+    // Send request to the AI server
     let aiResponse: AIResponse;
     try {
       const response = await firstValueFrom(
@@ -63,8 +60,7 @@ export class RouteService {
         'Failed to get route recommendation from AI server',
       );
     }
-
-    // Validate AI response
+    
     if (
       !aiResponse ||
       !aiResponse.coordinates ||
@@ -75,24 +71,11 @@ export class RouteService {
       );
     }
 
-    // Create route in database
-    const route = await this.prisma.route.create({
-      data: {
-        userId,
-        distance: dto.distance,
-        themeId: dto.themeId,
-        points: {
-          create: aiResponse.coordinates.map(([lat, lng], index) => ({
-            lat,
-            lng,
-            order: index,
-          })),
-        },
-      },
-      include: {
-        points: true,
-        theme: true,
-      },
+    const route = await this.routeRepository.createRoute({
+      userId,
+      distance: dto.distance,
+      themeId: dto.themeId,
+      coordinates: aiResponse.coordinates,
     });
 
     // Format response for Google Maps Directions
