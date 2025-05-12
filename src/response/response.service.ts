@@ -6,6 +6,7 @@ import {
 } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
 import { CreateResponseDto } from './dto/create-response.dto';
+import { ResponseRepository } from './response.repository';
 
 enum SignalStatus {
   PENDING = 'PENDING',
@@ -15,12 +16,10 @@ enum SignalStatus {
 
 @Injectable()
 export class ResponseService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private readonly responseRepository: ResponseRepository) {}
 
   async respondToSignal(signalId: number, dto: CreateResponseDto) {
-    const signal = await this.prisma.signal.findUnique({
-      where: { id: signalId },
-    });
+    const signal = await this.responseRepository.getSignalById(signalId);
 
     if (!signal) {
       throw new NotFoundException(`Signal with id ${signalId} not found`);
@@ -47,56 +46,15 @@ export class ResponseService {
     }
 
     // Create response and update signal status in a transaction
-    return this.prisma.$transaction(async (prisma) => {
-      const response = await prisma.response.create({
-        data: {
-          signalId,
-          userId: dto.userId,
-          message: dto.message,
-        },
-        include: {
-          signal: {
-            select: {
-              userId: true,
-              title: true,
-            },
-          },
-        },
-      });
-
-      await prisma.signal.update({
-        where: { id: signalId },
-        data: {
-          status: SignalStatus.COMPLETED,
-        },
-      });
-
-      return response;
-    });
+    return this.responseRepository.createResponse(signalId, dto);
   }
 
   async getMySignalResponses(userId: number) {
-    return this.prisma.response.findMany({
-      where: {
-        isRead: false,
-        signal: {
-          userId: userId,
-        },
-      },
-      include: {
-        signal: {
-          select: {
-            title: true,
-          },
-        },
-      },
-    });
+    return this.responseRepository.getMySignalResponses(userId);
   }
 
   async markResponseAsRead(responseId: number) {
-    const response = await this.prisma.response.findUnique({
-      where: { id: responseId },
-    });
+    const response = await this.responseRepository.getResponseById(responseId);
 
     if (!response) {
       throw new NotFoundException(`Response with id ${responseId} not found`);
@@ -106,11 +64,6 @@ export class ResponseService {
       throw new BadRequestException('Response already marked as read');
     }
 
-    return this.prisma.response.update({
-      where: { id: responseId },
-      data: {
-        isRead: true,
-      },
-    });
+    return this.responseRepository.markResponseAsRead(responseId);
   }
 }
