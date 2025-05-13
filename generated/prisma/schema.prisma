@@ -82,7 +82,7 @@ model Response {
 model Route {
   id          Int           @id @default(autoincrement())
   userId      Int           @map("user_id")
-  distance    Float
+  distance    Float?
   themeId     Int           @map("theme_id")
   createdAt   DateTime      @default(now()) @map("created_at")
   completedAt DateTime?     @map("completed_at")
@@ -122,7 +122,7 @@ model WalkSession {
 model WalkLog {
   id               Int               @id @default(autoincrement())
   sessionId        Int               @unique @map("session_id")
-  distance         Float
+  distance         Float?
   walkedAt         DateTime          @default(now()) @map("walked_at")
   session          WalkSession       @relation(fields: [sessionId], references: [id])
   respondedSignals RespondedSignal[]

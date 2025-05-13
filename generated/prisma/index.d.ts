@@ -7945,7 +7945,7 @@ export namespace Prisma {
   export type RouteGroupByOutputType = {
     id: number
     userId: number
-    distance: number
+    distance: number | null
     themeId: number
     createdAt: Date
     completedAt: Date | null
@@ -8043,7 +8043,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       userId: number
-      distance: number
+      distance: number | null
       themeId: number
       createdAt: Date
       completedAt: Date | null
@@ -11364,7 +11364,7 @@ export namespace Prisma {
   export type WalkLogGroupByOutputType = {
     id: number
     sessionId: number
-    distance: number
+    distance: number | null
     walkedAt: Date
     _count: WalkLogCountAggregateOutputType | null
     _avg: WalkLogAvgAggregateOutputType | null
@@ -11442,7 +11442,7 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       sessionId: number
-      distance: number
+      distance: number | null
       walkedAt: Date
     }, ExtArgs["result"]["walkLog"]>
     composites: {}
@@ -14000,7 +14000,7 @@ export namespace Prisma {
     NOT?: RouteWhereInput | RouteWhereInput[]
     id?: IntFilter<"Route"> | number
     userId?: IntFilter<"Route"> | number
-    distance?: FloatFilter<"Route"> | number
+    distance?: FloatNullableFilter<"Route"> | number | null
     themeId?: IntFilter<"Route"> | number
     createdAt?: DateTimeFilter<"Route"> | Date | string
     completedAt?: DateTimeNullableFilter<"Route"> | Date | string | null
@@ -14013,7 +14013,7 @@ export namespace Prisma {
   export type RouteOrderByWithRelationInput = {
     id?: SortOrder
     userId?: SortOrder
-    distance?: SortOrder
+    distance?: SortOrderInput | SortOrder
     themeId?: SortOrder
     createdAt?: SortOrder
     completedAt?: SortOrderInput | SortOrder
@@ -14029,7 +14029,7 @@ export namespace Prisma {
     OR?: RouteWhereInput[]
     NOT?: RouteWhereInput | RouteWhereInput[]
     userId?: IntFilter<"Route"> | number
-    distance?: FloatFilter<"Route"> | number
+    distance?: FloatNullableFilter<"Route"> | number | null
     themeId?: IntFilter<"Route"> | number
     createdAt?: DateTimeFilter<"Route"> | Date | string
     completedAt?: DateTimeNullableFilter<"Route"> | Date | string | null
@@ -14042,7 +14042,7 @@ export namespace Prisma {
   export type RouteOrderByWithAggregationInput = {
     id?: SortOrder
     userId?: SortOrder
-    distance?: SortOrder
+    distance?: SortOrderInput | SortOrder
     themeId?: SortOrder
     createdAt?: SortOrder
     completedAt?: SortOrderInput | SortOrder
@@ -14059,7 +14059,7 @@ export namespace Prisma {
     NOT?: RouteScalarWhereWithAggregatesInput | RouteScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Route"> | number
     userId?: IntWithAggregatesFilter<"Route"> | number
-    distance?: FloatWithAggregatesFilter<"Route"> | number
+    distance?: FloatNullableWithAggregatesFilter<"Route"> | number | null
     themeId?: IntWithAggregatesFilter<"Route"> | number
     createdAt?: DateTimeWithAggregatesFilter<"Route"> | Date | string
     completedAt?: DateTimeNullableWithAggregatesFilter<"Route"> | Date | string | null
@@ -14196,7 +14196,7 @@ export namespace Prisma {
     NOT?: WalkLogWhereInput | WalkLogWhereInput[]
     id?: IntFilter<"WalkLog"> | number
     sessionId?: IntFilter<"WalkLog"> | number
-    distance?: FloatFilter<"WalkLog"> | number
+    distance?: FloatNullableFilter<"WalkLog"> | number | null
     walkedAt?: DateTimeFilter<"WalkLog"> | Date | string
     session?: XOR<WalkSessionScalarRelationFilter, WalkSessionWhereInput>
     respondedSignals?: RespondedSignalListRelationFilter
@@ -14205,7 +14205,7 @@ export namespace Prisma {
   export type WalkLogOrderByWithRelationInput = {
     id?: SortOrder
     sessionId?: SortOrder
-    distance?: SortOrder
+    distance?: SortOrderInput | SortOrder
     walkedAt?: SortOrder
     session?: WalkSessionOrderByWithRelationInput
     respondedSignals?: RespondedSignalOrderByRelationAggregateInput
@@ -14217,7 +14217,7 @@ export namespace Prisma {
     AND?: WalkLogWhereInput | WalkLogWhereInput[]
     OR?: WalkLogWhereInput[]
     NOT?: WalkLogWhereInput | WalkLogWhereInput[]
-    distance?: FloatFilter<"WalkLog"> | number
+    distance?: FloatNullableFilter<"WalkLog"> | number | null
     walkedAt?: DateTimeFilter<"WalkLog"> | Date | string
     session?: XOR<WalkSessionScalarRelationFilter, WalkSessionWhereInput>
     respondedSignals?: RespondedSignalListRelationFilter
@@ -14226,7 +14226,7 @@ export namespace Prisma {
   export type WalkLogOrderByWithAggregationInput = {
     id?: SortOrder
     sessionId?: SortOrder
-    distance?: SortOrder
+    distance?: SortOrderInput | SortOrder
     walkedAt?: SortOrder
     _count?: WalkLogCountOrderByAggregateInput
     _avg?: WalkLogAvgOrderByAggregateInput
@@ -14241,7 +14241,7 @@ export namespace Prisma {
     NOT?: WalkLogScalarWhereWithAggregatesInput | WalkLogScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"WalkLog"> | number
     sessionId?: IntWithAggregatesFilter<"WalkLog"> | number
-    distance?: FloatWithAggregatesFilter<"WalkLog"> | number
+    distance?: FloatNullableWithAggregatesFilter<"WalkLog"> | number | null
     walkedAt?: DateTimeWithAggregatesFilter<"WalkLog"> | Date | string
   }
 
@@ -14609,7 +14609,7 @@ export namespace Prisma {
   }
 
   export type RouteCreateInput = {
-    distance: number
+    distance?: number | null
     createdAt?: Date | string
     completedAt?: Date | string | null
     user: UserCreateNestedOneWithoutRoutesInput
@@ -14621,7 +14621,7 @@ export namespace Prisma {
   export type RouteUncheckedCreateInput = {
     id?: number
     userId: number
-    distance: number
+    distance?: number | null
     themeId: number
     createdAt?: Date | string
     completedAt?: Date | string | null
@@ -14630,7 +14630,7 @@ export namespace Prisma {
   }
 
   export type RouteUpdateInput = {
-    distance?: FloatFieldUpdateOperationsInput | number
+    distance?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user?: UserUpdateOneRequiredWithoutRoutesNestedInput
@@ -14642,7 +14642,7 @@ export namespace Prisma {
   export type RouteUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
-    distance?: FloatFieldUpdateOperationsInput | number
+    distance?: NullableFloatFieldUpdateOperationsInput | number | null
     themeId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14653,14 +14653,14 @@ export namespace Prisma {
   export type RouteCreateManyInput = {
     id?: number
     userId: number
-    distance: number
+    distance?: number | null
     themeId: number
     createdAt?: Date | string
     completedAt?: Date | string | null
   }
 
   export type RouteUpdateManyMutationInput = {
-    distance?: FloatFieldUpdateOperationsInput | number
+    distance?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -14668,7 +14668,7 @@ export namespace Prisma {
   export type RouteUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
-    distance?: FloatFieldUpdateOperationsInput | number
+    distance?: NullableFloatFieldUpdateOperationsInput | number | null
     themeId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -14789,7 +14789,7 @@ export namespace Prisma {
   }
 
   export type WalkLogCreateInput = {
-    distance: number
+    distance?: number | null
     walkedAt?: Date | string
     session: WalkSessionCreateNestedOneWithoutWalkLogInput
     respondedSignals?: RespondedSignalCreateNestedManyWithoutWalkLogInput
@@ -14798,13 +14798,13 @@ export namespace Prisma {
   export type WalkLogUncheckedCreateInput = {
     id?: number
     sessionId: number
-    distance: number
+    distance?: number | null
     walkedAt?: Date | string
     respondedSignals?: RespondedSignalUncheckedCreateNestedManyWithoutWalkLogInput
   }
 
   export type WalkLogUpdateInput = {
-    distance?: FloatFieldUpdateOperationsInput | number
+    distance?: NullableFloatFieldUpdateOperationsInput | number | null
     walkedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     session?: WalkSessionUpdateOneRequiredWithoutWalkLogNestedInput
     respondedSignals?: RespondedSignalUpdateManyWithoutWalkLogNestedInput
@@ -14813,7 +14813,7 @@ export namespace Prisma {
   export type WalkLogUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     sessionId?: IntFieldUpdateOperationsInput | number
-    distance?: FloatFieldUpdateOperationsInput | number
+    distance?: NullableFloatFieldUpdateOperationsInput | number | null
     walkedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     respondedSignals?: RespondedSignalUncheckedUpdateManyWithoutWalkLogNestedInput
   }
@@ -14821,19 +14821,19 @@ export namespace Prisma {
   export type WalkLogCreateManyInput = {
     id?: number
     sessionId: number
-    distance: number
+    distance?: number | null
     walkedAt?: Date | string
   }
 
   export type WalkLogUpdateManyMutationInput = {
-    distance?: FloatFieldUpdateOperationsInput | number
+    distance?: NullableFloatFieldUpdateOperationsInput | number | null
     walkedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type WalkLogUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     sessionId?: IntFieldUpdateOperationsInput | number
-    distance?: FloatFieldUpdateOperationsInput | number
+    distance?: NullableFloatFieldUpdateOperationsInput | number | null
     walkedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -15307,6 +15307,17 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
   export type DateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -15372,6 +15383,22 @@ export namespace Prisma {
     userId?: SortOrder
     distance?: SortOrder
     themeId?: SortOrder
+  }
+
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
   export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -16152,6 +16179,14 @@ export namespace Prisma {
     connect?: WalkSessionWhereUniqueInput | WalkSessionWhereUniqueInput[]
   }
 
+  export type NullableFloatFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type NullableDateTimeFieldUpdateOperationsInput = {
     set?: Date | string | null
   }
@@ -16593,6 +16628,22 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
+  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
   export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -16625,7 +16676,7 @@ export namespace Prisma {
   }
 
   export type RouteCreateWithoutUserInput = {
-    distance: number
+    distance?: number | null
     createdAt?: Date | string
     completedAt?: Date | string | null
     theme: ThemeCreateNestedOneWithoutRoutesInput
@@ -16635,7 +16686,7 @@ export namespace Prisma {
 
   export type RouteUncheckedCreateWithoutUserInput = {
     id?: number
-    distance: number
+    distance?: number | null
     themeId: number
     createdAt?: Date | string
     completedAt?: Date | string | null
@@ -16811,7 +16862,7 @@ export namespace Prisma {
     NOT?: RouteScalarWhereInput | RouteScalarWhereInput[]
     id?: IntFilter<"Route"> | number
     userId?: IntFilter<"Route"> | number
-    distance?: FloatFilter<"Route"> | number
+    distance?: FloatNullableFilter<"Route"> | number | null
     themeId?: IntFilter<"Route"> | number
     createdAt?: DateTimeFilter<"Route"> | Date | string
     completedAt?: DateTimeNullableFilter<"Route"> | Date | string | null
@@ -16924,7 +16975,7 @@ export namespace Prisma {
   }
 
   export type RouteCreateWithoutThemeInput = {
-    distance: number
+    distance?: number | null
     createdAt?: Date | string
     completedAt?: Date | string | null
     user: UserCreateNestedOneWithoutRoutesInput
@@ -16935,7 +16986,7 @@ export namespace Prisma {
   export type RouteUncheckedCreateWithoutThemeInput = {
     id?: number
     userId: number
-    distance: number
+    distance?: number | null
     createdAt?: Date | string
     completedAt?: Date | string | null
     points?: RoutePointUncheckedCreateNestedManyWithoutRouteInput
@@ -17613,7 +17664,7 @@ export namespace Prisma {
   }
 
   export type RouteCreateWithoutPointsInput = {
-    distance: number
+    distance?: number | null
     createdAt?: Date | string
     completedAt?: Date | string | null
     user: UserCreateNestedOneWithoutRoutesInput
@@ -17624,7 +17675,7 @@ export namespace Prisma {
   export type RouteUncheckedCreateWithoutPointsInput = {
     id?: number
     userId: number
-    distance: number
+    distance?: number | null
     themeId: number
     createdAt?: Date | string
     completedAt?: Date | string | null
@@ -17648,7 +17699,7 @@ export namespace Prisma {
   }
 
   export type RouteUpdateWithoutPointsInput = {
-    distance?: FloatFieldUpdateOperationsInput | number
+    distance?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user?: UserUpdateOneRequiredWithoutRoutesNestedInput
@@ -17659,7 +17710,7 @@ export namespace Prisma {
   export type RouteUncheckedUpdateWithoutPointsInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
-    distance?: FloatFieldUpdateOperationsInput | number
+    distance?: NullableFloatFieldUpdateOperationsInput | number | null
     themeId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -17691,7 +17742,7 @@ export namespace Prisma {
   }
 
   export type RouteCreateWithoutSessionsInput = {
-    distance: number
+    distance?: number | null
     createdAt?: Date | string
     completedAt?: Date | string | null
     user: UserCreateNestedOneWithoutRoutesInput
@@ -17702,7 +17753,7 @@ export namespace Prisma {
   export type RouteUncheckedCreateWithoutSessionsInput = {
     id?: number
     userId: number
-    distance: number
+    distance?: number | null
     themeId: number
     createdAt?: Date | string
     completedAt?: Date | string | null
@@ -17715,14 +17766,14 @@ export namespace Prisma {
   }
 
   export type WalkLogCreateWithoutSessionInput = {
-    distance: number
+    distance?: number | null
     walkedAt?: Date | string
     respondedSignals?: RespondedSignalCreateNestedManyWithoutWalkLogInput
   }
 
   export type WalkLogUncheckedCreateWithoutSessionInput = {
     id?: number
-    distance: number
+    distance?: number | null
     walkedAt?: Date | string
     respondedSignals?: RespondedSignalUncheckedCreateNestedManyWithoutWalkLogInput
   }
@@ -17774,7 +17825,7 @@ export namespace Prisma {
   }
 
   export type RouteUpdateWithoutSessionsInput = {
-    distance?: FloatFieldUpdateOperationsInput | number
+    distance?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user?: UserUpdateOneRequiredWithoutRoutesNestedInput
@@ -17785,7 +17836,7 @@ export namespace Prisma {
   export type RouteUncheckedUpdateWithoutSessionsInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
-    distance?: FloatFieldUpdateOperationsInput | number
+    distance?: NullableFloatFieldUpdateOperationsInput | number | null
     themeId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -17804,14 +17855,14 @@ export namespace Prisma {
   }
 
   export type WalkLogUpdateWithoutSessionInput = {
-    distance?: FloatFieldUpdateOperationsInput | number
+    distance?: NullableFloatFieldUpdateOperationsInput | number | null
     walkedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     respondedSignals?: RespondedSignalUpdateManyWithoutWalkLogNestedInput
   }
 
   export type WalkLogUncheckedUpdateWithoutSessionInput = {
     id?: IntFieldUpdateOperationsInput | number
-    distance?: FloatFieldUpdateOperationsInput | number
+    distance?: NullableFloatFieldUpdateOperationsInput | number | null
     walkedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     respondedSignals?: RespondedSignalUncheckedUpdateManyWithoutWalkLogNestedInput
   }
@@ -17906,7 +17957,7 @@ export namespace Prisma {
   }
 
   export type WalkLogCreateWithoutRespondedSignalsInput = {
-    distance: number
+    distance?: number | null
     walkedAt?: Date | string
     session: WalkSessionCreateNestedOneWithoutWalkLogInput
   }
@@ -17914,7 +17965,7 @@ export namespace Prisma {
   export type WalkLogUncheckedCreateWithoutRespondedSignalsInput = {
     id?: number
     sessionId: number
-    distance: number
+    distance?: number | null
     walkedAt?: Date | string
   }
 
@@ -17993,7 +18044,7 @@ export namespace Prisma {
   }
 
   export type WalkLogUpdateWithoutRespondedSignalsInput = {
-    distance?: FloatFieldUpdateOperationsInput | number
+    distance?: NullableFloatFieldUpdateOperationsInput | number | null
     walkedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     session?: WalkSessionUpdateOneRequiredWithoutWalkLogNestedInput
   }
@@ -18001,7 +18052,7 @@ export namespace Prisma {
   export type WalkLogUncheckedUpdateWithoutRespondedSignalsInput = {
     id?: IntFieldUpdateOperationsInput | number
     sessionId?: IntFieldUpdateOperationsInput | number
-    distance?: FloatFieldUpdateOperationsInput | number
+    distance?: NullableFloatFieldUpdateOperationsInput | number | null
     walkedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -18077,7 +18128,7 @@ export namespace Prisma {
 
   export type RouteCreateManyUserInput = {
     id?: number
-    distance: number
+    distance?: number | null
     themeId: number
     createdAt?: Date | string
     completedAt?: Date | string | null
@@ -18128,7 +18179,7 @@ export namespace Prisma {
   }
 
   export type RouteUpdateWithoutUserInput = {
-    distance?: FloatFieldUpdateOperationsInput | number
+    distance?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     theme?: ThemeUpdateOneRequiredWithoutRoutesNestedInput
@@ -18138,7 +18189,7 @@ export namespace Prisma {
 
   export type RouteUncheckedUpdateWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
-    distance?: FloatFieldUpdateOperationsInput | number
+    distance?: NullableFloatFieldUpdateOperationsInput | number | null
     themeId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -18148,7 +18199,7 @@ export namespace Prisma {
 
   export type RouteUncheckedUpdateManyWithoutUserInput = {
     id?: IntFieldUpdateOperationsInput | number
-    distance?: FloatFieldUpdateOperationsInput | number
+    distance?: NullableFloatFieldUpdateOperationsInput | number | null
     themeId?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -18297,13 +18348,13 @@ export namespace Prisma {
   export type RouteCreateManyThemeInput = {
     id?: number
     userId: number
-    distance: number
+    distance?: number | null
     createdAt?: Date | string
     completedAt?: Date | string | null
   }
 
   export type RouteUpdateWithoutThemeInput = {
-    distance?: FloatFieldUpdateOperationsInput | number
+    distance?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     user?: UserUpdateOneRequiredWithoutRoutesNestedInput
@@ -18314,7 +18365,7 @@ export namespace Prisma {
   export type RouteUncheckedUpdateWithoutThemeInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
-    distance?: FloatFieldUpdateOperationsInput | number
+    distance?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     points?: RoutePointUncheckedUpdateManyWithoutRouteNestedInput
@@ -18324,7 +18375,7 @@ export namespace Prisma {
   export type RouteUncheckedUpdateManyWithoutThemeInput = {
     id?: IntFieldUpdateOperationsInput | number
     userId?: IntFieldUpdateOperationsInput | number
-    distance?: FloatFieldUpdateOperationsInput | number
+    distance?: NullableFloatFieldUpdateOperationsInput | number | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     completedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }

@@ -4,7 +4,7 @@ import { RecommendRouteDto } from './dto/recommend-route.dto';
 
 interface createRouteParams {
   userId: number;
-  distance: number;
+  distance: number | null;
   themeId: number;
   coordinates: [number, number][];
 }

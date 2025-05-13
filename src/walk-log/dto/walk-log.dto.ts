@@ -1,4 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { IsOptional } from 'class-validator';
 
 export class RespondedSignalDto {
   @ApiProperty({
@@ -25,7 +26,8 @@ export class RespondedSignalDto {
 
 export class WalkLogDto {
   @ApiProperty({ description: 'Total distance in kilometers', example: '1.5' })
-  distance: number;
+  @IsOptional()
+  distance: number | null;
 
   @ApiProperty({
     description: 'When the walk was completed',

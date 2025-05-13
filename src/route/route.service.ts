@@ -46,7 +46,7 @@ export class RouteService {
         this.httpService.post<AIResponse>(
           process.env.AI_SERVER_URL + '/recommend',
           {
-            distance: dto.distance.toString(),
+            distance: dto.distance?.toString() ?? null,
             theme: theme.name,
             latitude: location.latitude,
             longitude: location.longitude,
@@ -72,7 +72,7 @@ export class RouteService {
 
     const route = await this.routeRepository.createRoute({
       userId,
-      distance: dto.distance,
+      distance: dto.distance ?? null,
       themeId: dto.themeId,
       coordinates: aiResponse.coordinates,
     });

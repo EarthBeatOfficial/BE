@@ -1,4 +1,4 @@
-import { IsNumber, IsPositive, IsString } from 'class-validator';
+import { IsNumber, IsPositive, IsString, IsOptional } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 
@@ -33,9 +33,15 @@ export class RecommendRouteDto {
   @Type(() => Number)
   themeId: number;
 
-  @ApiProperty({ description: 'Distance in kilometers', example: 2.5 })
+  @ApiProperty({ 
+    description: 'Distance in kilometers', 
+    example: 2.5,
+    required: false,
+    nullable: true
+  })
   @IsNumber()
   @IsPositive()
+  @IsOptional()
   @Type(() => Number)
-  distance: number;
+  distance?: number | null;
 }

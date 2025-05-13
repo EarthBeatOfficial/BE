@@ -30,14 +30,14 @@ export class WalkSessionRepository {
 
   async endSessionAndCreateWalkLog(
     sessionId: number,
-    distance: number,
+    distance: number | null,
     responses: { signalId: number; id: number }[],
   ) {
     return this.prisma.$transaction(async (prisma) => {
       const walkLog = await prisma.walkLog.create({
         data: {
           sessionId,
-          distance,
+          distance: distance ?? null,
           walkedAt: new Date(),
           respondedSignals: {
             create: responses.map((response) => ({
