@@ -1,6 +1,9 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class DirectionsResponseDto {
+  @ApiProperty({ description: 'Unique identifier for the route' })
+  id: number;
+
   @ApiProperty({ description: 'Starting point coordinates' })
   origin: { lat: number; lng: number };
 

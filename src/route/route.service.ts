@@ -82,6 +82,7 @@ export class RouteService {
     // Format response for Google Maps Directions
     const coordinates = aiResponse.coordinates;
     const directionsResponse: DirectionsResponseDto = {
+      id: route.id,
       origin: { lat: location.latitude, lng: location.longitude },
       destination: { lat: location.latitude, lng: location.longitude },
       waypoints: coordinates.slice(1, -1).map(([lat, lng]) => ({

@@ -45,6 +45,7 @@ export class RouteController {
   @ApiCreatedResponse({
     description: 'Route successfully recommended',
     example: {
+      id: 150,
       origin: {
         latitude: 37.544582,
         longitude: 127.037589,
