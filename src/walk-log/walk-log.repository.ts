@@ -11,6 +11,15 @@ export class WalkLogRepository {
         session: { userId },
       },
       include: {
+        session: {
+          include: {
+            route: {
+              include: {
+                theme: true,
+              },
+            },
+          },
+        },
         respondedSignals: {
           include: {
             signal: {

@@ -12,9 +12,11 @@ export class WalkLogService {
     return walkLogs.map((log) => ({
       distance: log.distance,
       walkedAt: log.walkedAt,
+      theme: log.session.route.theme,
       respondedSignals: log.respondedSignals.map((ws) => ({
         title: ws.signal.title,
         description: ws.signal.description,
+        categoryId: ws.signal.category.id,
         category: ws.signal.category.name,
         respondedAt: ws.respondedAt,
       })),

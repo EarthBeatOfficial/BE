@@ -44,7 +44,6 @@ export class CreateSignalDto {
   })
   @IsNumber()
   @Min(10)
-  @Max(180)
   timeLimit: number;
 
   @ApiProperty({

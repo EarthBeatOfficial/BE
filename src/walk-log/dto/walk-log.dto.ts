@@ -11,9 +11,12 @@ export class RespondedSignalDto {
   @ApiProperty({ description: 'Signal description', example: 'I have an ~~~' })
   description: string;
 
+  @ApiProperty({ description: 'Signal category id', example: 1 })
+  categoryId: number;
+
   @ApiProperty({
     description: 'Signal category',
-    example: 'Nature-focused Walk',
+    example: 'Water Plants / Plant - Related',
   })
   category: string;
 
@@ -22,6 +25,14 @@ export class RespondedSignalDto {
     example: '2024-03-20T15:25:00Z',
   })
   respondedAt: Date;
+}
+
+export class ThemeDto {
+  @ApiProperty({ description: 'Theme id', example: 1 })
+  id: number;
+
+  @ApiProperty({ description: 'Theme name', example: 'Nature-focused Walk' })
+  name: string;
 }
 
 export class WalkLogDto {
@@ -34,6 +45,12 @@ export class WalkLogDto {
     example: '2024-03-20T15:30:00Z',
   })
   walkedAt: Date;
+
+  @ApiProperty({
+    description: 'Theme of the walk',
+    type: ThemeDto,
+  })
+  theme: ThemeDto;
 
   @ApiProperty({
     description: 'Signals responded to during the walk',

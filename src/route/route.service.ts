@@ -9,6 +9,8 @@ import { RecommendRouteDto, LocationDto } from './dto/recommend-route.dto';
 import { DirectionsResponseDto } from './dto/directions-response.dto';
 import { firstValueFrom } from 'rxjs';
 import { RouteRepository } from './route.repository';
+import { TravelMode } from '@googlemaps/google-maps-services-js';
+
 interface AIResponse {
   route_name: string;
   coordinates: [number, number][];
@@ -85,7 +87,7 @@ export class RouteService {
       waypoints: coordinates.slice(1, -1).map(([lat, lng]) => ({
         location: { lat, lng },
       })),
-      travelMode: 'google.maps.TravelMode.WALKING',
+      travelMode: TravelMode.walking,
     };
 
     return directionsResponse;
