@@ -1,6 +1,7 @@
 # Earth Beat - Walk for the World 🌎
 
-![Logo](./assets/images/earth-beat-logo.png)
+![image](https://github.com/user-attachments/assets/373d9312-47fb-49ac-87ea-61e1d411cca9)
+
 
 We aim to help the world become a better place by providing a platform for the community members to help each other out while taking themed walks!
 
